@@ -2,15 +2,21 @@ import { Route, Routes } from 'react-router-dom'
 
 // PAGES
 import TestingPage from './pages/testingPage'
+import { Login } from './pages/client/Login';
 
 function App() {
 
   // SET UP THE PAGES ROUTES
-    const routes = [{
-      pathname: "/",
-      element: TestingPage
-    }
-  ];
+    const routes = [
+      {
+        pathname: "/",
+        element: Login
+      },
+      {
+        pathname: "/",
+        element: TestingPage
+      }
+    ];
     
     return(
       <>
