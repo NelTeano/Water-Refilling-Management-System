@@ -10,12 +10,8 @@ function App() {
     const routes = [
       {
         pathname: "/",
-        element: Login
-      },
-      {
-        pathname: "/",
         element: TestingPage
-      }
+      },
     ];
     
     return(

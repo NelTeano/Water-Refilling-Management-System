@@ -1,7 +1,8 @@
+
 export const Login = () => {
     return (
         <div>
-            Testing
+            <h1>Testing</h1>
         </div>
     )
 }
