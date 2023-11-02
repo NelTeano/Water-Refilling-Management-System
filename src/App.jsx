@@ -2,7 +2,6 @@ import { Route, Routes } from 'react-router-dom'
 
 // PAGES
 import TestingPage from './pages/testingPage'
-import { Login } from './pages/client/Login';
 
 function App() {
 
