@@ -2,6 +2,8 @@ import { Route, Routes } from 'react-router-dom'
 
 // PAGES
 import TestingPage from './pages/testingPage'
+import { Index } from './pages/client/Index';
+import { Dashboard } from './pages/client/Dashboard';
 
 function App() {
 
@@ -9,7 +11,11 @@ function App() {
     const routes = [
       {
         pathname: "/",
-        element: TestingPage
+        element: Index
+      },
+      {
+        pathname: "/client-dashboard",
+        element: Dashboard
       },
     ];
     
