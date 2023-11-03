@@ -5,10 +5,13 @@ export default function Authbutton() {
     const { loginWithRedirect, logout,  isAuthenticated } = useAuth0();
 
     const buttonStyle = {
-        backgroundColor: '#ADA7FF',
-        color: 'white',
-        borderRadius: '999px',
-        padding: '16px 32px',
+        backgroundColor: '#099DBD',
+        color: '#FFFFFF',
+        borderRadius: '30px',
+        padding: '0 40px',
+        fontSize: '17px',
+        height: '50px',
+        border: 'none',
         _hover: {
             backgroundColor: '#8984c7',
             color: 'white',
