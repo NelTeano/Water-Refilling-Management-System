@@ -2,3 +2,11 @@ body{
     padding: 0;
     margin: 0;
 }
+
+.herobanner{
+    height: 100vh;
+    width: 100vw;
+    background-image: url(../../assets/images/machine_1.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
