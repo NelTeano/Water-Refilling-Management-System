@@ -3,6 +3,7 @@
     height: 70px;
     position: fixed;
     background-color: #fff;
+    z-index: 1000;
 }
 
 .header div{
@@ -17,6 +18,10 @@
     color: #34ACAC;
     font-family: inter;
     font-size: 30px;
+}
+
+a{
+    text-decoration: none;
 }
 
 .header div h1 span{
