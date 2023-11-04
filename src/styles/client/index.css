@@ -14,7 +14,7 @@ section{
     background-size: cover;
     background-repeat: no-repeat;
     position: fixed;
-
+    z-index: -1;
 }
 
 .index-grid{
@@ -22,8 +22,8 @@ section{
     height: 400px;
     width: 95%;
     margin: 0 auto;
-    position: relative;
-    top: calc(100vh);
+    /* position: relative;
+    top: calc(100vh); */
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-row: 1fr 1fr;
