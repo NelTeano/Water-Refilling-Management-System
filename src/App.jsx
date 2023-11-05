@@ -5,6 +5,7 @@ import TestingPage from './pages/testingPage'
 import { Index } from './pages/client/Index';
 import { Dashboard } from './pages/client/Dashboard';
 import { Header } from './components/client/Header';
+import { Footer } from './components/client/Footer';
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
           <Route key={index} path={route.pathname} element={<route.element />} />
           ))}
         </Routes>
+        <Footer />
       </>
     )
 }

@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom"
+import '../../styles/client/footer.css'
 
 export const Footer = () => {
     return(
         <footer>
-            <div>
-                <div><h1>Hydro<span>Maze</span></h1></div>
-                <div>
+            <div className="footer-wrapper">
+                <div className="footer-logo"><h1>Hydro<span>Maze</span></h1></div>
+                <div className="footer-links">
                     <div><Link>About Us</Link></div>
                     <div><Link>Contact Us</Link></div>
                     <div><Link>Privacy Policy</Link></div>
