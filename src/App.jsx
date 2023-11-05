@@ -5,6 +5,7 @@ import Home from './pages/client/Home';
 import { Dashboard } from './pages/client/Dashboard';
 import { Header } from './components/client/Header';
 import { Footer } from './components/client/Footer';
+import { Login } from './pages/admin/Login';
 
 // STYLES
 import './App.css'
@@ -21,6 +22,10 @@ function App() {
       {
         pathname: "/client-dashboard",
         element: Dashboard
+      },
+      {
+        pathname: "/admin",
+        element: Login
       },
     ];
     
