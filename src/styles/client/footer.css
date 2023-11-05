@@ -31,16 +31,15 @@ footer{
     position: absolute;
     right: 0;
     top: 0;
-    height: 100%;
-    width: 340px;
-
+    height: 65%;
+    width: 40%;
     display: flex;
     flex-wrap: wrap;
+    margin-top: 37px;
 }
 
 .footer-links div{
     width: 48%;
-
     display: flex;
     align-items: center;
 }

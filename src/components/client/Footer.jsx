@@ -14,7 +14,7 @@ export const Footer = () => {
                 </div>
             </div>
             <hr />
-            <p>©2023 HydroMaze. All rights reserved</p>
+            <p>©2023 HydroMaze. All rights reserved.</p>
         </footer>
     )
 }
