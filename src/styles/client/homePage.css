@@ -1,0 +1,104 @@
+/* ----------------------------first section board----------------------------------- */
+
+.home-board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    height: 800px;
+    width: 100%;
+    background-image: url('../../assets/images/board-picture.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+}
+
+.board-buttons{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.board-buttons button{
+    padding: 20px 32px;
+    border-radius: 118px;
+    border: 1.5px solid #2C2F24;
+    font-weight: 700;
+    font-style: normal;
+    cursor: pointer;
+}
+
+.board-buttons button:first-child{
+    background-color: #099DBD;
+    color: white;
+    border: none;
+}
+
+.home-board h1{
+    font-size: 60px;
+    font-family: Playfair Display;
+}
+
+.home-board p{
+    font-size: 20px;
+}
+
+
+
+/* ----------------------------second section ----------------------------------- */
+
+
+.home-about-products{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+    height: 712px;
+    background-color: white;
+    width: 100%;
+}
+
+.home-about-products h1{
+    font-family: Playfair Display;
+}
+
+.about-boxes{
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+.about-boxes article{
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    width: 306px;
+    height: 375px;
+    border-radius: 12px;
+    border: 1.5px solid  #DBDFD0;
+    background-color: #fff;
+}
+
+.about-boxes header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    background-color: #DBDFD0;
+}
+
+.about-boxes img{
+    max-height: 50px;
+}
+
+
+
+
+
+

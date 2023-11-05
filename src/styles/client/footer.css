@@ -1,7 +1,7 @@
 footer{
     background-color: #54595F;
     height: 250px;
-    width: 100vw;
+    width: 100%;
 }
 
 .footer-wrapper{
@@ -33,7 +33,7 @@ footer{
     top: 0;
     height: 65%;
     width: 40%;
-    display: flex;
+    display: flex;  
     flex-wrap: wrap;
     margin-top: 37px;
 }

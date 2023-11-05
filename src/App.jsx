@@ -1,11 +1,14 @@
 import { Route, Routes } from 'react-router-dom'
 
 // PAGES
-import TestingPage from './pages/testingPage'
-import { Index } from './pages/client/Index';
+import Home from './pages/client/Home';
 import { Dashboard } from './pages/client/Dashboard';
 import { Header } from './components/client/Header';
 import { Footer } from './components/client/Footer';
+
+// STYLES
+import './App.css'
+
 
 function App() {
 
@@ -13,7 +16,7 @@ function App() {
     const routes = [
       {
         pathname: "/",
-        element: Index
+        element: Home
       },
       {
         pathname: "/client-dashboard",
