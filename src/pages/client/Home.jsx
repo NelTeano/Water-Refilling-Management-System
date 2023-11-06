@@ -1,5 +1,5 @@
-// import { useEffect, useState} from 'react'
-// import axios from 'axios'
+import { useEffect, useState} from 'react'
+import axios from 'axios'
 
 // IMAGES
 import cleanLogo from '../../assets/images/cleanwater-logo.png'
@@ -16,27 +16,27 @@ import { IoLocationOutline, IoMailOutline, IoCallOutline } from "react-icons/io5
 
 export default function Home() {
 
-    // const [users, setUsers] = useState('');
+    const [users, setUsers] = useState('');
 
-    // useEffect(()=>{
+    useEffect(()=>{
 
-    //     async function getUsers() {
-    //         try {
-    //         const response = await axios.get('http://localhost:5174/api/users', {
-    //             headers: {
-    //             Accept: 'application/json',
-    //             },
-    //         });
-    //         const jsonData = response.data;
-    //         setUsers(jsonData);
-    //         } catch (err) {
-    //         console.error('Error fetching data:', err);
-    //         }
-    //     }
+        async function getUsers() {
+            try {
+            const response = await axios.get('http://localhost:5174/api/users', {
+                headers: {
+                Accept: 'application/json',
+                },
+            });
+            const jsonData = response.data;
+            setUsers(jsonData);
+            } catch (err) {
+            console.error('Error fetching data:', err);
+            }
+        }
 
-    //     getUsers();
-    // },[]);
-    // console.log("test fetch", users);
+        getUsers();
+    },[]);
+    console.log("test fetch", users);
 
     return (
         <>
