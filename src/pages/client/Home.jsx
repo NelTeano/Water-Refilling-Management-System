@@ -12,7 +12,8 @@ import contactLogo from '../../assets/images/poster.jpg'
 import '../../styles/client/homePage.css'
 
 // ICONS
-import { IoLocationOutline, IoMailOutline, IoCallOutline } from "react-icons/io5";
+// import { IoLocationOutline, IoMailOutline, IoCallOutline } from "react-icons/io5"; 
+// May error kaya naka comment ito ^
 
 export default function Home() {
 

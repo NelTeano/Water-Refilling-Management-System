@@ -1,9 +1,5 @@
 import express from "express"
-<<<<<<< HEAD
-import userModel from "../../models/users.js"
-=======
 import userModel from '../../models/users.js'
->>>>>>> joshua
 
 const LoginRoute = express.Router()
 
