@@ -15,7 +15,8 @@ export const Login = () => {
         setPassword(e.target.value)
     }
 
-    const submitHandler = () => {
+    const submitHandler = (e) => {
+        e.preventDefault()
         axios.get("http://localhost:5174/api/users")
             .then((res)=>console.log(res))
             .catch((err)=>console.log(err))
