@@ -109,9 +109,10 @@ export default function Home() {
                         <h1>come and visit us</h1>
                         <article>
                             <div>
-                                <IoCallOutline fontSize={'25px'}/>
+                                {/* May error kaya naka comment */}
+                                {/* <IoCallOutline fontSize={'25px'}/>
                                 <IoMailOutline fontSize={'25px'}/>
-                                <IoLocationOutline fontSize={'25px'}/>
+                                <IoLocationOutline fontSize={'25px'}/> */}
                             </div>
                             <aside>
                                 <p>414 857 - 0107</p>
