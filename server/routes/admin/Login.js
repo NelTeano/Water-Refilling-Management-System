@@ -1,4 +1,5 @@
 import express from "express"
+import {userModel} from "../../models/users"
 
 const LoginRoute = express.Router()
 

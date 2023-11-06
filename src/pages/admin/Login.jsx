@@ -26,27 +26,27 @@ export const Login = () => {
         <>
             <div className="login">
                 
-                <div class="container">
-                    <div class="login-container-wrapper clearfix">
-                        <div class="welcome">ADMIN LOGIN</div>
+                <div className="container">
+                    <div className="login-container-wrapper clearfix">
+                        <div className="welcome">ADMIN LOGIN</div>
 
-                        <form class="form-horizontal login-form" onSubmit={submitHandler}>
-                            <div class="form-group relative">
-                                <input id="login_username" class="form-control input-lg" type="email" placeholder="Username" onChange={usernameHandler} required />
+                        <form className="form-horizontal login-form" onSubmit={submitHandler}>
+                            <div className="form-group relative">
+                                <input id="login_username" className="form-control input-lg" type="email" placeholder="Username" onChange={usernameHandler} required />
                              
                             </div>
-                            <div class="form-group relative password">
-                                <input id="login_password" class="form-control input-lg" type="password" placeholder="Password"  onChange={passwordHandler} required />
+                            <div className="form-group relative password">
+                                <input id="login_password" className="form-control input-lg" type="password" placeholder="Password"  onChange={passwordHandler} required />
                               
                             </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-success btn-lg btn-block">Login</button>
+                            <div className="form-group">
+                                <button type="submit" className="btn btn-success btn-lg btn-block">Login</button>
                             </div>
-                            <div class="checkbox pull-left">
+                            <div className="checkbox pull-left">
                                 <label><input type="checkbox" /> Remember</label>
                             </div>
-                            <div class="checkbox pull-right">
-                                <label> <a class="forget" href="" title="forget">Forgot your password</a> </label>
+                            <div className="checkbox pull-right">
+                                <label> <a className="forget" href="" title="forget">Forgot your password</a> </label>
                             </div>
                         </form>
                     </div>
