@@ -18,7 +18,7 @@ export const Login = () => {
     const submitHandler = (e) => {
         e.preventDefault()
         axios.get("http://localhost:5174/api/users")
-            .then((res)=>console.log(res))
+            .then((res)=>console.log(res.data))
             .catch((err)=>console.log(err))
     }
 
