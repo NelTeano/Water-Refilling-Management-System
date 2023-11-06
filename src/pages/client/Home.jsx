@@ -12,8 +12,7 @@ import contactLogo from '../../assets/images/poster.jpg'
 import '../../styles/client/homePage.css'
 
 // ICONS
-// import { IoLocationOutline, IoMailOutline, IoCallOutline } from "react-icons/io5"; 
-// May error kaya naka comment ito ^
+import { IoLocationOutline, IoMailOutline, IoCallOutline } from "react-icons/io5"; 
 
 export default function Home() {
 
@@ -109,10 +108,9 @@ export default function Home() {
                         <h1>come and visit us</h1>
                         <article>
                             <div>
-                                {/* May error kaya naka comment */}
-                                {/* <IoCallOutline fontSize={'25px'}/>
+                                <IoCallOutline fontSize={'25px'}/>
                                 <IoMailOutline fontSize={'25px'}/>
-                                <IoLocationOutline fontSize={'25px'}/> */}
+                                <IoLocationOutline fontSize={'25px'}/>
                             </div>
                             <aside>
                                 <p>414 857 - 0107</p>
