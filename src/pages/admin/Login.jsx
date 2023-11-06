@@ -1,12 +1,14 @@
 import { useState,useEffect } from 'react'
 import axios from 'axios'
+// import { useSignIn } from 'react-auth-kit'
 import '../../styles/admin/login.css'
 
 
 export const Login = () => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-    
+    // const signIn = useSignIn()
+
     const usernameHandler = (e) => {
         setUsername(e.target.value)
     }
@@ -17,9 +19,22 @@ export const Login = () => {
 
     const submitHandler = (e) => {
         e.preventDefault()
-        axios.get("http://localhost:5174/api/users")
+        
+        let data = {
+            username: username, 
+            password: password
+        }
+
+        axios.post("http://localhost:5174/login", data)
             .then((res)=>console.log(res.data))
             .catch((err)=>console.log(err))
+        
+        // signIn(({
+        //         token: res.data.username,
+        //         expiresIn:3600,
+        //         tokenType: "Bearer",
+                
+        // }))
     }
 
     return(
