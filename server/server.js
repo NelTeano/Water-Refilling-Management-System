@@ -6,9 +6,11 @@ import cors from 'cors';
 // DATABASE CONNECTION
 import { initDatabase } from './database.js'
 
-// ROUTES 
+// CLIENT ROUTES 
 import UserRoutes from './routes/client/UserRoutes.js'
 
+//ADMIN ROUTES
+import LoginRoute from "./routes/admin/Login.js";
 
 const app = express();
 dotenv.config();      // ACCESS .ENV 
@@ -34,3 +36,4 @@ app.listen(PORT, function () {
 });
 
 app.use('/api', UserRoutes); // FOR TESTING ROUTE WORKS
+app.use('/login',LoginRoute)
