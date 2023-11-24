@@ -16,7 +16,7 @@ LoginRoute.post('/', (req, res, next) => {
             if (err) {
                 return res.status(500).json({ message: 'Login failed' });
             }
-            req.user = user.username
+            req.session.user = { id: user._id, username: user.username };
             isAuthenticated = true
             return res.status(200).json({ message: 'Login successful', user: user });
         });
@@ -24,7 +24,8 @@ LoginRoute.post('/', (req, res, next) => {
 });
 
 LoginRoute.get('/checker',(req,res)=> {
-    res.send({isAuthenticated})
+    res.send({isAuthenticated: isAuthenticated})
+    console.log(isAuthenticated)
 })
 
 export default LoginRoute
