@@ -9,6 +9,7 @@ import { Login } from './pages/admin/Login';
 
 // STYLES
 import './App.css'
+import { Index } from './pages/admin/Dashboard/Index';
 
 
 function App() {
@@ -27,17 +28,23 @@ function App() {
         pathname: "/admin",
         element: Login
       },
+      {
+        pathname: "/admin/dashboard",
+        element: Index
+      },
     ];
+
+    const isAdminRoute = location.pathname.startsWith('/admin');
     
     return(
       <>
-        <Header />
+        {!isAdminRoute && <Header />}
         <Routes>
           {routes.map((route, index) => (
           <Route key={index} path={route.pathname} element={<route.element />} />
           ))}
         </Routes>
-        <Footer />
+        {!isAdminRoute && <Footer />}
       </>
     )
 }
