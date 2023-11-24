@@ -13,11 +13,14 @@ import { fileURLToPath } from 'url';
 // DATABASE CONNECTION
 import { initDatabase } from './database.js'
 
+import { EnsureAuthentication } from "./routes/admin/EnsureAuthenticated.js";
+
 // CLIENT ROUTES 
 import UserRoutes from './routes/client/UserRoutes.js'
 
 //ADMIN ROUTES
 import LoginRoute from "./routes/admin/Login.js";
+import passportInit from './routes/admin/PassportConfig.js';
 
 const app = express();
 dotenv.config();      // ACCESS .ENV 
@@ -38,9 +41,11 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
 }));
+
+//PASSPORT INIT
 app.use(passport.authenticate('session'));
-
-
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -51,5 +56,6 @@ app.listen(PORT, function () {
     console.log("Listening on http://localhost:" + PORT);
 });
 
-app.use('/api', UserRoutes); // FOR TESTING ROUTE WORKS
+app.use('/api',EnsureAuthentication, UserRoutes); // FOR TESTING ROUTE WORKS
 app.use('/login',LoginRoute)
+

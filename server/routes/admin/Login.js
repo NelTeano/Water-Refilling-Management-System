@@ -1,52 +1,26 @@
 import express from "express"
-import userModel from '../../models/users.js'
-import passport from 'passport'
-import LocalStrategy from 'passport-local'
-//import bcrypt from 'bcrypt'
-
+import passport from "passport";
 const LoginRoute = express.Router()
 
-passport.use(new LocalStrategy(async function verify(username, password, cb) {
-    try {
-      let user = await userModel.findOne({ username: username });
-      
-      if (!user) {
-        //console.log("intruder alert");
-        return cb(null, false, { message: 'Incorrect username or password.' });
-      }
-  
-      return cb(null, user);
-    } catch (err) {
-      return cb(err);
-    }
-  }));
-
-passport.serializeUser(function(user, cb) {
-    process.nextTick(function() {
-      cb(null, { id: user.id, username: user.username });
-    });
-  });
-  
-  passport.deserializeUser(function(user, cb) {
-    process.nextTick(function() {
-      return cb(null, user);
-    });
-  });
-
-LoginRoute.post('/auth', 
-    passport.authenticate('local'),
-    (req,res) => {
-        res.send({isAuthenticated: true})
+LoginRoute.post('/', (req, res, next) => {
+    passport.authenticate('local', (err, user, info) => {
+        if (err) {
+            return res.status(500).json({ message: 'An error occurred' });
+        }
+        if (!user) {
+            return res.status(401).json({ message: 'Incorrect username or password' });
+        }
+        req.logIn(user, (err) => {
+            if (err) {
+                return res.status(500).json({ message: 'Login failed' });
+            }
+            return res.status(200).json({ message: 'Login successful', user: user });
+        });
+    })(req, res, next);
 });
 
-//   LoginRoute.post('/auth', (req,res)=>{
-//     res.send('test')
-//   });
-
-// LoginRoute.post('/',async (req,res)=>{
-//     const {username,password} = req.body
-//     res.send(`username: ${username} password: ${password}`)
-//     console.log(username,password)
-// })
+LoginRoute.get('/checker',(req,res)=> {
+    res.send(req.isAuthenticated())
+})
 
 export default LoginRoute

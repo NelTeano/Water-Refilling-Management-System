@@ -26,7 +26,7 @@ export const Login = () => {
         }
 
         try{
-            const response = await axios.post("http://localhost:5174/login/auth", data)
+            const response = await axios.post("http://localhost:5174/login", data)
             console.log(response.data)
             window.alert("you are now logged in")
 
@@ -36,6 +36,12 @@ export const Login = () => {
         }
         
 
+    }
+
+    const authChecker = () => {
+        axios.get("http://localhost:5174/login/checker")
+        .then(res => console.log(res.data))
+        .catch(err => console.log(err))
     }
 
     return(
@@ -65,6 +71,7 @@ export const Login = () => {
                                 <label> <a className="forget" href="" title="forget">Forgot your password</a> </label>
                             </div>
                         </form>
+                        <button onClick={authChecker}>Check Authentication</button>
                     </div>
             
                 </div>
