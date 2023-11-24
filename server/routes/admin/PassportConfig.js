@@ -8,9 +8,11 @@ const passportInit = () => {
         cb(null, {id: user._id, username: user.username});
     });
     
-    passport.deserializeUser(function(user, cb) {
-        cb(null, user);
-    });
+    passport.deserializeUser((id, done) => {
+        // Fetch user from database using 'id' and pass it to 'done'
+        User.findById(id, (err, user) => {
+          done(err, user);
+        })})
     
     passport.use(new LocalStrategy(async function verify(username, password, cb) {
         try {

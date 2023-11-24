@@ -8,12 +8,20 @@ export const Index = () => {
 
     useEffect(()=>{
         const getUser = async () => {
-            const user = await axios.get('http://localhost:5174/login/checker')
-            if(!user.data.isAuthenticated){
+            try {
+              const user = await axios.get('http://localhost:5174/login/checker');
+              if(!user.data.isAuthenticated){
                 navigate('/admin')
+              }
+            } catch (err) {
+              console.error('Error:', err);
+              navigate('/admin')
+              // Handle error (e.g., redirect or display an error message)
             }
-        }
-        getUser()
+          };
+          
+          getUser();
+          
     },[])
 
     return(

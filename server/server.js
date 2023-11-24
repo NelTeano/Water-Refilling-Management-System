@@ -57,9 +57,8 @@ app.use(session({
 app.use(passport.authenticate('session'));
 
 //PASSPORT INIT
-// app.use(passport.authenticate('session'));
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
