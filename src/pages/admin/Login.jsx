@@ -17,7 +17,7 @@ export const Login = () => {
         setPassword(e.target.value)
     }
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault()
         
         let data = {
@@ -25,16 +25,17 @@ export const Login = () => {
             password: password
         }
 
-        axios.post("http://localhost:5174/login/auth", data)
-            .then((res)=>console.log(res.data))
-            .catch((err)=>console.log(err))
+        try{
+            const response = await axios.post("http://localhost:5174/login/auth", data)
+            console.log(response.data)
+            window.alert("you are now logged in")
+
+        }catch(err){
+            console.log(err.message)
+            window.alert("Invalid username or password")
+        }
         
-        // signIn(({
-        //         token: res.data.username,
-        //         expiresIn:3600,
-        //         tokenType: "Bearer",
-                
-        // }))
+
     }
 
     return(

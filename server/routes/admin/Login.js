@@ -2,7 +2,7 @@ import express from "express"
 import userModel from '../../models/users.js'
 import passport from 'passport'
 import LocalStrategy from 'passport-local'
-import bcrypt from 'bcrypt'
+//import bcrypt from 'bcrypt'
 
 const LoginRoute = express.Router()
 
@@ -11,10 +11,10 @@ passport.use(new LocalStrategy(async function verify(username, password, cb) {
       let user = await userModel.findOne({ username: username });
       
       if (!user) {
+        //console.log("intruder alert");
         return cb(null, false, { message: 'Incorrect username or password.' });
       }
   
-      console.log(user);
       return cb(null, user);
     } catch (err) {
       return cb(err);
@@ -36,7 +36,7 @@ passport.serializeUser(function(user, cb) {
 LoginRoute.post('/auth', 
     passport.authenticate('local'),
     (req,res) => {
-        res.send("it works")
+        res.send({isAuthenticated: true})
 });
 
 //   LoginRoute.post('/auth', (req,res)=>{
