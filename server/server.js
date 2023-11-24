@@ -2,6 +2,9 @@
 import express from "express"; 
 import dotenv from "dotenv";
 import cors from 'cors';
+import passport from 'passport'
+import LocalStrategy from 'passport-local'
+import bcrypt from 'bcrypt'
 
 // DATABASE CONNECTION
 import { initDatabase } from './database.js'
