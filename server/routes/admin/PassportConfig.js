@@ -5,7 +5,7 @@ import userModel from '../../models/users.js';
 // Passport Configuration
 const passportInit = () => {
     passport.serializeUser(function(user, cb) {
-        cb(null, user);
+        cb(null, {id: user._id, username: user.username});
     });
     
     passport.deserializeUser(function(user, cb) {

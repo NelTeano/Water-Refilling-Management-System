@@ -14,8 +14,8 @@ import { Index } from './pages/admin/Dashboard/Index';
 
 function App() {
 
-  // SET UP THE PAGES ROUTES
     const routes = [
+      //CLIENT ROUTES------------------
       {
         pathname: "/",
         element: Home
@@ -24,26 +24,28 @@ function App() {
         pathname: "/client-dashboard",
         element: Dashboard
       },
+      //ADMIN ROUTES--------------------
       {
         pathname: "/admin",
         element: Login
       },
       {
         pathname: "/admin/dashboard",
-        element: Index
+        element: Index,
       },
     ];
 
     const isAdminRoute = location.pathname.startsWith('/admin');
-    
+    const isProtectedRoute = location.pathname.startsWith('/admin/dashboard');
+
     return(
       <>
         {!isAdminRoute && <Header />}
-        <Routes>
-          {routes.map((route, index) => (
-          <Route key={index} path={route.pathname} element={<route.element />} />
-          ))}
-        </Routes>
+          <Routes>
+            {routes.map((route, index) => (
+              <Route key={index} path={route.pathname} element={<route.element />} />
+            ))}
+          </Routes>
         {!isAdminRoute && <Footer />}
       </>
     )

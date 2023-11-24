@@ -2,11 +2,13 @@ import { useState,useEffect } from 'react'
 import axios from 'axios'
 // import { useSignIn } from 'react-auth-kit'
 import '../../styles/admin/login.css'
+import { useNavigate } from 'react-router'
 
 
 export const Login = () => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const navigate = useNavigate();
     // const signIn = useSignIn()
 
     const usernameHandler = (e) => {
@@ -23,12 +25,13 @@ export const Login = () => {
         let data = {
             username: username, 
             password: password
-        }
+        } 
 
         try{
             const response = await axios.post("http://localhost:5174/login", data)
             console.log(response.data)
-            window.alert("you are now logged in")
+            navigate('/admin/dashboard')
+
 
         }catch(err){
             console.log(err.message)

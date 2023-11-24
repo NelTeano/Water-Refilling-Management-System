@@ -2,6 +2,8 @@ import express from "express"
 import passport from "passport";
 const LoginRoute = express.Router()
 
+let isAuthenticated=false //temporary only. Will integrate JWT later on for better security
+
 LoginRoute.post('/', (req, res, next) => {
     passport.authenticate('local', (err, user, info) => {
         if (err) {
@@ -14,13 +16,15 @@ LoginRoute.post('/', (req, res, next) => {
             if (err) {
                 return res.status(500).json({ message: 'Login failed' });
             }
+            req.user = user.username
+            isAuthenticated = true
             return res.status(200).json({ message: 'Login successful', user: user });
         });
     })(req, res, next);
 });
 
 LoginRoute.get('/checker',(req,res)=> {
-    res.send(req.isAuthenticated())
+    res.send({isAuthenticated})
 })
 
 export default LoginRoute
