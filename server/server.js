@@ -5,6 +5,10 @@ import cors from 'cors';
 import passport from 'passport'
 import LocalStrategy from 'passport-local'
 import bcrypt from 'bcrypt'
+import path from 'path'
+import session from 'express-session'
+
+import { fileURLToPath } from 'url';
 
 // DATABASE CONNECTION
 import { initDatabase } from './database.js'
@@ -22,10 +26,19 @@ initDatabase();
 const PORT = 5174;
 console.log("app is running");
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 app.use(cors({
     origin: ['http://localhost:5173','http://localhost:5173']  // THE HTTP(ORIGIN) THAT WILL ALLOW TO ACCESS THE ROUTES
 }));
+
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: false,
+}));
+app.use(passport.authenticate('session'));
 
 
 

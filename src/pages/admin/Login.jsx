@@ -25,7 +25,7 @@ export const Login = () => {
             password: password
         }
 
-        axios.post("http://localhost:5174/login", data)
+        axios.post("http://localhost:5174/login/auth", data)
             .then((res)=>console.log(res.data))
             .catch((err)=>console.log(err))
         
@@ -47,7 +47,7 @@ export const Login = () => {
 
                         <form className="form-horizontal login-form" onSubmit={submitHandler}>
                             <div className="form-group relative">
-                                <input id="login_username" className="form-control input-lg" type="email" placeholder="Username" onChange={usernameHandler} required />
+                                <input id="login_username" className="form-control input-lg" type="text" placeholder="Username" onChange={usernameHandler} required />
                              
                             </div>
                             <div className="form-group relative password">
