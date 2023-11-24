@@ -71,7 +71,6 @@ export const Login = () => {
                                 <label> <a className="forget" href="" title="forget">Forgot your password</a> </label>
                             </div>
                         </form>
-                        <button onClick={authChecker}>Check Authentication</button>
                     </div>
             
                 </div>
