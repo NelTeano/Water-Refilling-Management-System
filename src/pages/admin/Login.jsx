@@ -1,15 +1,13 @@
-import { useState,useEffect } from 'react'
-import axios from 'axios'
-// import { useSignIn } from 'react-auth-kit'
-import '../../styles/admin/login.css'
+import { useState } from 'react'
 import { useNavigate } from 'react-router'
+import axios from 'axios'
+//import bcrypt from 'bcrypt'
+import '../../styles/admin/login.css'
 
 
 export const Login = () => {
-    const [username, setUsername] = useState("")
-    const [password, setPassword] = useState("")
-    const navigate = useNavigate();
-    // const signIn = useSignIn()
+    const [username,setUsername] = useState("")
+    const [password,setPassword] = useState("")
 
     const usernameHandler = (e) => {
         setUsername(e.target.value)
@@ -19,32 +17,18 @@ export const Login = () => {
         setPassword(e.target.value)
     }
 
-    const submitHandler = async (e) => {
+    const submitHandler = async(e) => {
         e.preventDefault()
         
-        let data = {
-            username: username, 
+        //const hashedPassword = await bcrypt.hash(password,10)
+
+        const data = {
+            username: username,
             password: password
-        } 
-
-        try{
-            const response = await axios.post("http://localhost:5174/login", data)
-            console.log(response.data)
-            navigate('/admin/dashboard')
-
-
-        }catch(err){
-            console.log(err.message)
-            window.alert("Invalid username or password")
         }
-        
 
-    }
-
-    const authChecker = () => {
-        axios.get("http://localhost:5174/login/checker")
-        .then(res => console.log(res.data))
-        .catch(err => console.log(err))
+        axios.post('http://localhost:5174/login', data)
+            .then((res)=>console.log(res.data))
     }
 
     return(
@@ -61,7 +45,7 @@ export const Login = () => {
                              
                             </div>
                             <div className="form-group relative password">
-                                <input id="login_password" className="form-control input-lg" type="password" placeholder="Password"  onChange={passwordHandler} required />
+                                <input id="login_password" className="form-control input-lg" type="password" placeholder="Password" onChange={passwordHandler} required />
                               
                             </div>
                             <div className="form-group">

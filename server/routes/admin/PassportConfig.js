@@ -1,41 +1,30 @@
 import passport from 'passport';
 import LocalStrategy from 'passport-local';
 import userModel from '../../models/users.js';
+import bcrypt from 'bcrypt'
 
-// Passport Configuration
-const passportInit = () => {
-    passport.serializeUser(function(user, cb) {
-        cb(null, {id: user._id, username: user.username});
-    });
-    
-    passport.deserializeUser((id, done) => {
-        // Fetch user from database using 'id' and pass it to 'done'
-        User.findById(id, (err, user) => {
-          done(err, user);
-        })})
-    
-    passport.use(new LocalStrategy(async function verify(username, password, cb) {
-        try {
-            let user = await userModel.findOne({ username: username });
-            
-            if (!user) {
-                return cb(null, false, { message: 'Incorrect username or password.' });
-            }
-    
-            // You might verify the password here using bcrypt.compare()
-            // For example:
-            // const isValidPassword = await bcrypt.compare(password, user.password);
-            // if (!isValidPassword) {
-            //     return cb(null, false, { message: 'Incorrect password.' });
-            // }
-    
-            return cb(null, user);
-        } catch (err) {
-            return cb(err);
-        }
-    }));
+export default function(passport) {
+
+    passport.use(
+        new LocalStrategy((username,password,done)=>{
+            userModel.findOne({username:username})
+                .then((data)=>{
+                    if(!data){
+                        return done(null, false)
+                    }
+                    //brypt.compare code goes here
+                    return done(null, data)
+                })
+        })
+    )
+
+    passport.serializeUser((user,cb)=>{
+        cb(null, user.id)
+    })
+
+    passport.deserializeUser((id,cb)=>{
+        userModel.findOne({_id:id})
+            .then((data) => cb(null,data))
+            .catch((err) => cb(err, data))
+    })
 }
-
-passportInit(); // Invoke passportInit to set up Passport
-
-export default passport;
