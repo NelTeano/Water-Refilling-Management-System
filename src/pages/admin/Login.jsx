@@ -31,6 +31,11 @@ export const Login = () => {
             .then((res)=>console.log(res.data))
     }
 
+    const authChecker = () => {
+        axios.get('http://localhost:5174/checker')
+            .then((res)=>console.log(res.data))
+    }
+
     return(
         <>
             <div className="login">
@@ -58,6 +63,7 @@ export const Login = () => {
                                 <label> <a className="forget" href="" title="forget">Forgot your password</a> </label>
                             </div>
                         </form>
+                        <button onClick={authChecker}>Check Auth</button>
                     </div>
             
                 </div>
