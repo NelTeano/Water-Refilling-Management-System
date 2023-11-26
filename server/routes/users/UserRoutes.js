@@ -17,7 +17,7 @@ userRoute.get('/users', async (req, res) =>{
 });
 
 
-// CREATE A USER
+// USER DETAILS POST
 userRoute.post('/users', async (req, res) => {
 
 

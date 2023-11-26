@@ -20,17 +20,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       redirect_uri: window.location.origin
     }}
   >
-    {/* <AuthProvider 
-      authType = {'cookie'}
-      authName={'_auth'}
-      cookieDomain={window.location.hostname}
-      cookieSecure={false}
-    > */}
       <React.StrictMode>
         <BrowserRouter>
           <App />
         </BrowserRouter>
       </React.StrictMode>
-    {/* </AuthProvider> */}
   </Auth0Provider>
 )

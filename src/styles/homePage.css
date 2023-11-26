@@ -65,7 +65,8 @@
 }
 
 .about-boxes{
-    display: inline-flex;
+    display: flex;
+    justify-content: center;
     align-items: flex-start;
     gap: 24px;
 }
