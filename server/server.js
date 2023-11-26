@@ -8,7 +8,7 @@ import { initDatabase } from './database.js'
 
 // CLIENT ROUTES 
 import UserRoutes from './routes/users/UserRoutes.js'
-
+import orderRoute from "./routes/OrderRoutes.js";
 
 
 const app = express();
@@ -39,4 +39,5 @@ app.listen(PORT, function () {
 });
 
 app.use('/api', UserRoutes); // FOR TESTING ROUTE WORKS
+app.use('/api', orderRoute)
 
