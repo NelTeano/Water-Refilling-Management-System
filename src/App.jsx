@@ -1,19 +1,16 @@
 import { Route, Routes } from 'react-router-dom'
 
 // PAGES
-import Home from './pages/client/Home';
-import { Dashboard } from './pages/client/Dashboard';
-import { Header } from './components/client/Header';
-import { Footer } from './components/client/Footer';
-import { Login } from './pages/admin/Login';
+import Home from './pages/Home'
+import { Dashboard } from './pages/Dashboard';
+import { Header } from './components/Header';
+import { Footer } from './components/Footer';
 
 // STYLES
 import './App.css'
 
-
 function App() {
 
-  // SET UP THE PAGES ROUTES
     const routes = [
       {
         pathname: "/",
@@ -23,21 +20,20 @@ function App() {
         pathname: "/client-dashboard",
         element: Dashboard
       },
-      {
-        pathname: "/admin",
-        element: Login
-      },
     ];
-    
+
+    const isAdminRoute = location.pathname.startsWith('/admin');
+    const isProtectedRoute = location.pathname.startsWith('/admin/dashboard');
+
     return(
       <>
-        <Header />
-        <Routes>
-          {routes.map((route, index) => (
-          <Route key={index} path={route.pathname} element={<route.element />} />
-          ))}
-        </Routes>
-        <Footer />
+        {!isAdminRoute && <Header />}
+          <Routes>
+            {routes.map((route, index) => (
+              <Route key={index} path={route.pathname} element={<route.element />} />
+            ))}
+          </Routes>
+        {!isAdminRoute && <Footer />}
       </>
     )
 }
