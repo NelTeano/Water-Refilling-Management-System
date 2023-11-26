@@ -1,21 +1,17 @@
 import { Route, Routes } from 'react-router-dom'
 
 // PAGES
-import Home from './pages/client/Home';
-import { Dashboard } from './pages/client/Dashboard';
-import { Header } from './components/client/Header';
-import { Footer } from './components/client/Footer';
-import { Login } from './pages/admin/Login';
+import Home from './pages/Home'
+import { Dashboard } from './pages/Dashboard';
+import { Header } from './components/Header';
+import { Footer } from './components/Footer';
 
 // STYLES
 import './App.css'
-import { Index } from './pages/admin/Dashboard/Index';
-
 
 function App() {
 
     const routes = [
-      //CLIENT ROUTES------------------
       {
         pathname: "/",
         element: Home
@@ -23,15 +19,6 @@ function App() {
       {
         pathname: "/client-dashboard",
         element: Dashboard
-      },
-      //ADMIN ROUTES--------------------
-      {
-        pathname: "/admin",
-        element: Login
-      },
-      {
-        pathname: "/admin/dashboard",
-        element: Index,
       },
     ];
 

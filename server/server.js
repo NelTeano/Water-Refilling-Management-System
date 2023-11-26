@@ -7,9 +7,7 @@ import LocalStrategy from 'passport-local'
 import bcrypt from 'bcrypt'
 import path from 'path'
 import session from 'express-session'
-import cookieParser from 'cookie-parser'
-// import MongoDBSession from 'connect-mongodb-session';
-// const MongoDBStore = MongoDBSession(session);
+import cookieParser, { JSONCookie } from 'cookie-parser'
 
 //import { fileURLToPath } from 'url';
 
@@ -34,13 +32,18 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 app.use(cors({
-    origin: ['http://localhost:5173','http://localhost:5173'],  // THE HTTP(ORIGIN) THAT WILL ALLOW TO ACCESS THE ROUTES
+    origin: [
+      'http://localhost:5173',
+      'http://localhost:5173/admin',
+      'http://localhost:5173/admin/dashboard'
+    ],  // THE HTTP(ORIGIN) THAT WILL ALLOW TO ACCESS THE ROUTES
     credentials: true,
   }));
 app.use(session({
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: true,
+  cookie: {secure: false}
 }));
 app.use(cookieParser('keyboard cat'))
 app.use(passport.initialize())
@@ -56,12 +59,31 @@ app.listen(PORT, function () {
 app.use('/api', UserRoutes); // FOR TESTING ROUTE WORKS
 
 
-app.post('/login', passport.authenticate('local'),(req, res, next) => {
-  return res.status(200).json({ message: 'Login successful', user: req.user });
-})
-
+app.post('/login', (req, res, next) => {
+  passport.authenticate('local', (err, user, info) => {
+      if (err) {
+          return res.status(500).json({ message: 'An error occurred' });
+      }
+      if (!user) {
+          return res.status(401).json({ message: 'Incorrect username or password' });
+      }
+      req.logIn(user, (err) => {
+        if (err) {
+            return res.status(500).json({ message: 'Login failed' });
+        }
+        req.session.user = user;
+        return res.status(200).json({ message: 'Login successful', user: req.user});
+    });
+  })(req, res, next);
+});
 app.get('/checker',(req,res)=> {
-  res.send(req.isAuthenticated())
+  //res.send(req.user)
+  // res.cookie('myCookie', 'cookieValue', { 
+  //   maxAge: 900000, // Expires after 15 minutes
+  //   httpOnly: true, // Cookie cannot be accessed by client-side scripts
+  // });
+  // res.send('Cookie is set');
+  res.send(req.user)
 })
 
 const isAuth = (req,res,next) => {
@@ -70,6 +92,12 @@ const isAuth = (req,res,next) => {
 }
 
 app.get('/',isAuth,(req,res)=>{
+  res.send('ok')
+})
+
+app.get('/getcookie',(req,res)=>{
+  const cookieValue = req.cookies['myCookie'];
+  console.log('Cookie Value: ' + cookieValue);
   res.send('ok')
 })
 

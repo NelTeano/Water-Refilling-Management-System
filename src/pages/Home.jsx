@@ -1,12 +1,12 @@
 
 // IMAGES
-import cleanLogo from '../../assets/images/cleanwater-logo.png'
-import odorLogo from '../../assets/images/noOdor-logo.png'
-import phLogo from '../../assets/images/phlevel-logo.png'
-import containerLogo  from '../../assets/images/container-logo.png'
+import cleanLogo from '../assets/images/cleanwater-logo.png'
+import odorLogo from '../assets/images/noOdor-logo.png'
+import phLogo from '../assets/images/phlevel-logo.png'
+import containerLogo  from '../assets/images/container-logo.png'
 
 // STYLES
-import '../../styles/client/homePage.css'
+import '../styles/homePage.css'
 
 
 export default function Home() {
