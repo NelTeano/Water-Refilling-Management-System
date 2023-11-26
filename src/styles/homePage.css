@@ -8,7 +8,7 @@
     background-color: white;
     height: 800px;
     width: 100%;
-    background-image: url('../../assets/images/board-picture.png');
+    background-image: url('../assets/images/board-picture.png');
     background-repeat: no-repeat;
     background-size: cover;
     text-align: center;

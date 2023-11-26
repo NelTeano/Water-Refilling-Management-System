@@ -1,4 +1,4 @@
-import '../../styles/client/header.css'
+import '../styles/header.css'
 import Authbutton from './AuthButton'
 import { Link } from 'react-router-dom'
 
