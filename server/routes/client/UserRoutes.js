@@ -16,4 +16,30 @@ userRoute.get('/users', async (req, res) =>{
     }
 });
 
+
+// CREATE A USER
+userRoute.post('/users', async (req, res) => {
+
+
+    const userDetails = new userModel({
+        username : req.body.userName,
+        address : req.body.userAddress,
+        phone : req.body.userPhone,
+        picture : req.body.userPicture
+    });
+
+    try {
+        
+        const saveUserData = await userDetails.save();
+
+        res.send(saveUserData);
+        console.log("Successfully Submitting a User");
+
+    } catch (error) {
+        res.status(500).json({ message: "Create User Request Failed" , error });
+        console.log("Failed Submitting a User");
+    }
+});
+
+
 export default userRoute
