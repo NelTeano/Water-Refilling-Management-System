@@ -13,12 +13,14 @@ orderRoute.get('/orders',async (req,res)=>{
 })
 
 orderRoute.post('/place-order',async (req,res)=>{
+    console.log(currentDate)
     const orderDetails = new orderModel({
         round: req.body.round,
         slim: req.body.slim,
         total: req.body.total,
         isOwned: req.body.isOwned,
         status: req.body.status,
+        custID: req.body.custID,
     })
 
     try {   

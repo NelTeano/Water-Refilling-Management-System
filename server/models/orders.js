@@ -17,6 +17,9 @@ const orderSchema = mongoose.Schema(
         status:{
             type: String,
         },
+        custID:{
+            type: String,
+        },
     },
     { timestamps: true }
 )
