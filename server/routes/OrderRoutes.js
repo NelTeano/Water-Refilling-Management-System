@@ -12,4 +12,23 @@ orderRoute.get('/orders',async (req,res)=>{
     }
 })
 
+orderRoute.post('/place-order',async (req,res)=>{
+    const orderDetails = new orderModel({
+        round: req.body.round,
+        slim: req.body.slim,
+        total: req.body.total,
+        isOwned: req.body.isOwned,
+    })
+
+    try {   
+        const saveOrderData = await orderDetails.save();
+        res.send(saveOrderData);
+        console.log("Successfully placed an order");
+
+    } catch (error) {
+        res.status(500).json({ message: "order failed" , error });
+        console.log("Failed creating an order");
+    }
+})
+
 export default orderRoute
