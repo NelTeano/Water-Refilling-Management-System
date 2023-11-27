@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom'
 
 // PAGES
 import Home from './pages/Home'
-import { Dashboard } from './pages/Dashboard';
+import Dashboard from './pages/DashboardPage';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 
@@ -27,13 +27,13 @@ function App() {
 
     return(
       <>
-        {!isAdminRoute && <Header />}
+        {/* {!isAdminRoute && <Header />} */}
           <Routes>
             {routes.map((route, index) => (
               <Route key={index} path={route.pathname} element={<route.element />} />
             ))}
           </Routes>
-        {!isAdminRoute && <Footer />}
+        {/* {!isAdminRoute && <Footer />} */}
       </>
     )
 }

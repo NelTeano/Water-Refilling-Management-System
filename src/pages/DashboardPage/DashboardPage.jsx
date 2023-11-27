@@ -1,9 +1,9 @@
 import { useAuth0 } from "@auth0/auth0-react"
 
-export const Dashboard = () => {
+const DashboardPage = () => {
     const {user, isAuthenticated} = useAuth0()
-    
-    return(
+
+    return (
         <div>
             {
                 isAuthenticated ? 
@@ -14,6 +14,6 @@ export const Dashboard = () => {
     )
 }
 
-
+export default DashboardPage
 
 
