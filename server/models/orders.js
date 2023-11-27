@@ -1,19 +1,25 @@
 import mongoose from "mongoose";
 
-const orderSchema = mongoose.Schema({
-    round:{
-        type: Number,
+const orderSchema = mongoose.Schema(
+    {
+        round:{
+            type: Number,
+        },
+        slim:{
+            type: Number,
+        },
+        total:{
+            type: Number,
+        },
+        isOwned:{
+            type: Boolean,
+        },
+        status:{
+            type: String,
+        },
     },
-    slim:{
-        type: Number,
-    },
-    total:{
-        type: Number,
-    },
-    isOwned:{
-        type: Boolean,
-    },
-})
+    { timestamps: true }
+)
 
 const orderModel = mongoose.model("orders",orderSchema)
 
