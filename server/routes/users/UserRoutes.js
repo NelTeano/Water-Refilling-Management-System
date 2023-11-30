@@ -18,7 +18,7 @@ userRoute.get('/users', async (req, res) =>{
 
 
 // USER DETAILS POST
-userRoute.post('/users', async (req, res) => {
+userRoute.post('/users/new', async (req, res) => {
     try{
         const data = await userModel.findOne({username: req.body.userName})
         if(data){
@@ -34,25 +34,36 @@ userRoute.post('/users', async (req, res) => {
                     longitude: req.body.longitude
                 }]
             });
-        
-            try {
-                
-                const saveUserData = await userDetails.save();
-        
-                res.send(saveUserData);
-                console.log("Successfully Submitting a User");
-        
-            } catch (error) {
-                res.status(500).json({ message: "Create User Request Failed" , error });
-                console.log("Failed Submitting a User");
-            }
+          
+            const saveUserData = await userDetails.save();
+            res.send(saveUserData);
+            console.log("Successfully Submitted User Data");
         }
     }catch(err){
-        console.log(err)
+        res.status(500).json({ message: "Create User Request Failed" , err });
+        console.log("Failed to Submit User Details");
     }
        
     
 });
+
+userRoute.post('/users/loc/add',async (req,res)=>{
+    try{
+        const userData = await userModel.findOne({username:req.body.userName})
+        userData.location.push({
+            address: req.body.address,
+            latitude: req.body.latitude,
+            longitude: req.body.longitude
+        })
+         
+        const saveUser = await userData.save()
+        res.send(saveUser)
+        
+    }catch(err){
+        res.status(500).json({ message: "Add Location Request Failed" , err });
+        console.log("Failed to Add Location");
+    }
+})
 
 
 export default userRoute
