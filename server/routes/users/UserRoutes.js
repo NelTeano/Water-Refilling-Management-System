@@ -23,9 +23,13 @@ userRoute.post('/users', async (req, res) => {
 
     const userDetails = new userModel({
         username : req.body.userName,
-        address : req.body.userAddress,
         phone : req.body.userPhone,
-        picture : req.body.userPicture
+        picture : req.body.userPicture,
+        location: [{
+            address: req.body.address,
+            latitude: req.body.latitude,
+            longitude: req.body.longitude
+        }]
     });
 
     try {
