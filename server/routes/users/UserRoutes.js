@@ -19,30 +19,39 @@ userRoute.get('/users', async (req, res) =>{
 
 // USER DETAILS POST
 userRoute.post('/users', async (req, res) => {
-
-
-    const userDetails = new userModel({
-        username : req.body.userName,
-        phone : req.body.userPhone,
-        picture : req.body.userPicture,
-        location: [{
-            address: req.body.address,
-            latitude: req.body.latitude,
-            longitude: req.body.longitude
-        }]
-    });
-
-    try {
+    try{
+        const data = await userModel.findOne({username: req.body.userName})
+        if(data){
+            res.send({message: "Username not available"})
+        }else{
+            const userDetails = new userModel({
+                username : req.body.userName,
+                phone : req.body.userPhone,
+                picture : req.body.userPicture,
+                location: [{
+                    address: req.body.address,
+                    latitude: req.body.latitude,
+                    longitude: req.body.longitude
+                }]
+            });
         
-        const saveUserData = await userDetails.save();
-
-        res.send(saveUserData);
-        console.log("Successfully Submitting a User");
-
-    } catch (error) {
-        res.status(500).json({ message: "Create User Request Failed" , error });
-        console.log("Failed Submitting a User");
+            try {
+                
+                const saveUserData = await userDetails.save();
+        
+                res.send(saveUserData);
+                console.log("Successfully Submitting a User");
+        
+            } catch (error) {
+                res.status(500).json({ message: "Create User Request Failed" , error });
+                console.log("Failed Submitting a User");
+            }
+        }
+    }catch(err){
+        console.log(err)
     }
+       
+    
 });
 
 
