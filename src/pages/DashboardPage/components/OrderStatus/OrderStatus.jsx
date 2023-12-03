@@ -15,9 +15,9 @@ const OrderStatus = () => {
     }
 
   return (
-    <Box mt={3}>
-        <Typography color="#5B7C8E" fontWeight={500}>My Orders</Typography>
-        <Grid container spacing={2} mt={1}>
+    <Box mt={5}>
+        <Typography color="textSecondary">My Orders</Typography>
+        <Grid container spacing={2} mt={.5}>
             <Grid item xs={6}>
                 <Card>
                     <CardContent>

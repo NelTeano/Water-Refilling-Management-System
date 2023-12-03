@@ -12,8 +12,7 @@ import singleImg from '../../../../assets/images/single_img.jpg'
 const OrderType = () => {
   return (
     <Box mt={2}>
-        <Typography color="#5B7C8E" fontWeight={500}>Order</Typography>
-        <Grid container spacing={2} mt={1}>
+        <Grid container spacing={2} mt={.5}>
             <Grid item xs={6}>
                 <Card>
                     <CardMedia

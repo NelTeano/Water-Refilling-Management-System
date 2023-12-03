@@ -95,8 +95,8 @@ const AuthHeader = () => {
   );
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ background:'#099DBD' }}>
+    <Box sx={{ flexGrow: 1, mb: 7 }}>
+      <AppBar position="fixed" sx={{ background:'#099DBD' }}>
         <Toolbar>
           <IconButton
             size="large"

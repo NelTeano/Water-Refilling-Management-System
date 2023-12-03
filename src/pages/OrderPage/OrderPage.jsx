@@ -60,7 +60,7 @@ const OrderPage = () => {
 
     return (
         <Container>
-            <Typography mt={3}>Order Details</Typography>
+            <Typography mt={10}>Order Details</Typography>
             {orders.map((item, index) => (
                 <Card key={item.id} sx={{ mb: 2, mt: 2 }}>
                     <CardContent
