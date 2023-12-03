@@ -6,6 +6,12 @@ import {
     Container,
     IconButton,
     Typography,
+    FormGroup,
+    FormControlLabel,
+    Checkbox,
+    Grid,
+    Divider,
+    Button,
 } from '@mui/material';
 import {
     RemoveTwoTone as RemoveTwoToneIcon,
@@ -105,6 +111,100 @@ const OrderPage = () => {
                     </CardContent>
                 </Card>
             ))}
+
+            <FormGroup>
+                <FormControlLabel sx={{ color: '#3B3B3B' }} control={<Checkbox size="small" />} label="Do you own the gallon/s?" />
+            </FormGroup>
+
+            <Card sx={{ mt: 3, mb: 3 }}>
+                <CardContent sx={{ background: '#EDFCFF' }}>
+                    <Typography 
+                        variant='subtitle2'
+                        mb={2}
+                    >
+                        Order Summary
+                    </Typography>
+
+                    <Grid container spacing={2} mb={1}>
+                        <Grid item xs={6}>
+                            <Typography color="textSecondary">Item Description</Typography>
+                        </Grid>
+                        <Grid item xs>
+                            <Typography sx={{ float: 'right' }}>0</Typography>
+                        </Grid>
+                    </Grid>
+
+                    <Grid container spacing={2} mb={2}>
+                        <Grid item xs={6}>
+                            <Typography color="textSecondary">Delivery Fee</Typography>
+                        </Grid>
+                        <Grid item xs>
+                            <Typography sx={{ float: 'right' }}>0</Typography>
+                        </Grid>
+                    </Grid>
+
+                    <Grid container spacing={2} mb={2}>
+                        <Grid item xs={6}>
+                            <Typography>Item Total</Typography>
+                        </Grid>
+                        <Grid item xs>
+                            <Typography variant='h6' sx={{ float: 'right' }}>0</Typography>
+                        </Grid>
+                    </Grid>
+
+                    <Divider />
+
+                    <Box mt={2}>
+                        <Typography color="textSecondary" mb={1}>Address</Typography>
+
+                        <Box 
+                            sx={{ 
+                                display: 'flex',
+                                alignItems: 'start',
+                                justifyContent: 'space-between'
+                            }}
+                        >
+                            <Box>
+                                <Typography sx={{ fontSize: '.8rem', fontWeight: 500 }}>Home</Typography>
+                                <Typography sx={{ fontSize: '.7rem', color: 'textSecondary' }}>Sampaloc V, Dasmarinas, Cavite</Typography>
+                            </Box>
+                            <Box color='#5B7C8E'>
+                                <Button 
+                                    variant="text"
+                                    color="inherit"
+                                    size="small"
+                                    sx={{ fontSize: '.7rem' }}
+                                >
+                                    Edit
+                                </Button>
+                            </Box>
+                        </Box>
+                    </Box>
+
+                    <Grid container spacing={2} mt={3}>
+                        <Grid item xs={6}>
+                            <Button 
+                                variant='outlined'
+                                sx={{
+                                    width: '100%'
+                                }}
+                            >
+                                Cancel
+                            </Button>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Button 
+                                variant='contained'
+                                sx={{
+                                    width: '100%'
+                                }}
+                            >
+                                Confirm Order
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </CardContent>
+            </Card>
         </Container>
     );
 }
