@@ -5,7 +5,7 @@ import {
     Container,
     Button,
 } from "@mui/material"
-import { OrderType } from './components'
+import { OrderType, OrderStatus } from './components'
 
 const DashboardPage = () => {
     const {user, isAuthenticated} = useAuth0()
@@ -48,6 +48,8 @@ const DashboardPage = () => {
                             </Typography>
 
                             <OrderType />
+
+                            <OrderStatus />
                         </Container>
                     </>
                 ) : (
