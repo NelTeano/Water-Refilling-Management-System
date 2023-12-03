@@ -14,17 +14,19 @@ import {
     EditTwoTone as EditTwoToneIcon,
 } from '@mui/icons-material';
 import { useState } from 'react';
-import { LocationAdd } from './components';
+import { LocationDetail } from './components';
 
 const LocationPage = () => {
     const [selectedValue, setSelectedValue] = useState('home');
+    const [locationType, setLocationType] = useState();
     const [showLocationDetail, setShowLocationDetail] = useState(false);
 
     const handleRadioChange = (event) => {
       setSelectedValue(event.target.value);
     };
 
-    const openLocationDetail = () => {
+    const openLocationDetail = (type) => {
+        setLocationType(type);
         setShowLocationDetail(true);
     }
 
@@ -49,7 +51,7 @@ const LocationPage = () => {
                             <Typography>Select your Location</Typography>
                             <Button 
                                 variant="text"
-                                onClick={openLocationDetail}
+                                onClick={() => openLocationDetail(true)}
                             >
                                 Add New
                             </Button>
@@ -81,7 +83,10 @@ const LocationPage = () => {
                                                     </Typography>
                                                 </Box>
                                                 <Box>
-                                                    <IconButton size='small'>
+                                                    <IconButton 
+                                                        size='small'
+                                                        onClick={() => openLocationDetail(false)}
+                                                    >
                                                         <EditTwoToneIcon fontSize='inherit' />
                                                     </IconButton>
                                                 </Box>
@@ -106,7 +111,10 @@ const LocationPage = () => {
                                                     </Typography>
                                                 </Box>
                                                 <Box>
-                                                    <IconButton size='small'>
+                                                    <IconButton 
+                                                        size='small'
+                                                        onClick={() => openLocationDetail(false)}
+                                                    >
                                                         <EditTwoToneIcon fontSize='inherit' />
                                                     </IconButton>
                                                 </Box>
@@ -130,7 +138,10 @@ const LocationPage = () => {
                                                     </Typography>
                                                 </Box>
                                                 <Box>
-                                                    <IconButton size='small'>
+                                                    <IconButton 
+                                                        size='small'
+                                                        onClick={() => openLocationDetail(false)}
+                                                    >
                                                         <EditTwoToneIcon fontSize='inherit' />
                                                     </IconButton>
                                                 </Box>
@@ -144,7 +155,7 @@ const LocationPage = () => {
                 </Slide>
                 <Slide direction="left" in={showLocationDetail} mountOnEnter unmountOnExit>
                     <Box>
-                        <LocationAdd closeLocationDetail={closeLocationDetail} />
+                        <LocationDetail closeLocationDetail={closeLocationDetail} isAdd={locationType} />
                     </Box>
                 </Slide>
             </Container>

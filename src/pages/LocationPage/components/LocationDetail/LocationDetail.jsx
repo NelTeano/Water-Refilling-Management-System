@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import PropTypes from 'prop-types';
 
-const LocationAdd = ({ closeLocationDetail }) => {
+const LocationDetail = ({ closeLocationDetail, isAdd }) => {
     const sampleLocations = [
         { city: 'Manila', state: 'Metro Manila' },
         { city: 'Cebu City', state: 'Cebu' },
@@ -22,7 +22,7 @@ const LocationAdd = ({ closeLocationDetail }) => {
   return (
     <Container>
         <Typography mt={2} mb={3}>
-            Add New Location
+            {isAdd===true ? 'Add New ' : 'Edit '} Location
         </Typography>
 
         <TextField 
@@ -68,8 +68,9 @@ const LocationAdd = ({ closeLocationDetail }) => {
   )
 }
 
-LocationAdd.propTypes = {
+LocationDetail.propTypes = {
     closeLocationDetail: PropTypes.func.isRequired,
+    isAdd: PropTypes.bool.isRequired,
 }
 
-export default LocationAdd;
+export default LocationDetail;

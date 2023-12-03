@@ -1,5 +1,3 @@
 import LocationDetail from './LocationDetail';
 
-export {
-    LocationDetail,
-};
+export default LocationDetail;
