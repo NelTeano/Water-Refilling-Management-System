@@ -70,13 +70,20 @@ const LocationPage = () => {
                                         control={<Radio />} 
                                         sx={{ mb: 2 }}
                                         label={
-                                            <Box sx={{ display: 'flex', alignItems: 'start', justifyContent: 'space-between', width: '100%' }}>
+                                            <Box 
+                                                sx={{ 
+                                                    display: 'flex', 
+                                                    alignItems: 'start', 
+                                                    justifyContent: 'space-between', 
+                                                    width: '100%' 
+                                                    }}
+                                                >
                                                 <Box mr={10}>
                                                     <Typography 
                                                         variant="subtitle2" 
                                                         sx={{ color: selectedValue === 'home' ? '#099DBD' : 'inherit' }}
                                                     >
-                                                            Home
+                                                        Home
                                                     </Typography>
                                                     <Typography variant="body2" color="textSecondary">
                                                         Sampaloc V, Dasmarinas, Cavite
@@ -98,7 +105,14 @@ const LocationPage = () => {
                                         control={<Radio />} 
                                         sx={{ mb: 2 }}
                                         label={
-                                            <Box sx={{ display: 'flex', alignItems: 'start', justifyContent: 'space-between', width: '100%' }}>
+                                            <Box 
+                                                sx={{ 
+                                                    display: 'flex', 
+                                                    alignItems: 'start', 
+                                                    justifyContent: 'space-between', 
+                                                    width: '100%' 
+                                                    }}
+                                                >
                                                 <Box mr={10}>
                                                     <Typography 
                                                         variant="subtitle2" 
@@ -125,7 +139,14 @@ const LocationPage = () => {
                                         value="school" 
                                         control={<Radio />} 
                                         label={
-                                            <Box sx={{ display: 'flex', alignItems: 'start', justifyContent: 'space-between', width: '100%' }}>
+                                            <Box 
+                                                sx={{ 
+                                                    display: 'flex', 
+                                                    alignItems: 'start', 
+                                                    justifyContent: 'space-between', 
+                                                    width: '100%' 
+                                                    }}
+                                                >
                                                 <Box mr={10}>
                                                     <Typography 
                                                         variant="subtitle2" 
@@ -155,7 +176,10 @@ const LocationPage = () => {
                 </Slide>
                 <Slide direction="left" in={showLocationDetail} mountOnEnter unmountOnExit>
                     <Box>
-                        <LocationDetail closeLocationDetail={closeLocationDetail} isAdd={locationType} />
+                        <LocationDetail 
+                            closeLocationDetail={closeLocationDetail} 
+                            isAdd={locationType}
+                        />
                     </Box>
                 </Slide>
             </Container>
