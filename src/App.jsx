@@ -3,9 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 // PAGES
 import Home from './pages/Home'
 import Dashboard from './pages/DashboardPage';
-import Header from './components/Auth'
-// import { Header } from './components/Header';
-// import { Footer } from './components/Footer';
+import HeaderAuth from './components/Auth'
 
 // STYLES
 import './App.css'
@@ -28,13 +26,12 @@ function App() {
 
     return(
       <>
-        {!isAdminRoute && <Header />}
+        {!isAdminRoute && <HeaderAuth />}
           <Routes>
             {routes.map((route, index) => (
               <Route key={index} path={route.pathname} element={<route.element />} />
             ))}
           </Routes>
-        {/* {!isAdminRoute && <Footer />} */}
       </>
     )
 }

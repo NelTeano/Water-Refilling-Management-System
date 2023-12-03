@@ -23,7 +23,7 @@ import {
 } from '@mui/icons-material'; 
 import { cloneElement } from 'react';
 
-const Header = () => {
+const AuthHeader = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -128,4 +128,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default AuthHeader;

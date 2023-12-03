@@ -1,3 +1,5 @@
+import { Header } from '../components/Header';
+import { Footer } from '../components/Footer';
 
 // IMAGES
 import cleanLogo from '../assets/images/cleanwater-logo.png'
@@ -14,6 +16,7 @@ export default function Home() {
 
     return (
         <>
+            <Header/>
             <div className='home-board'>
                 <section>
                     <h1>Welcome to Hydromaze <br></br>Water Refilling Station</h1>
@@ -75,6 +78,7 @@ export default function Home() {
                     </article>
                 </section>
             </div>
+            <Footer />
         </>
     )
 }
