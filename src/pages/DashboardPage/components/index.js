@@ -1,3 +1,7 @@
 import SearchLocation from './SearchLocation';
+import OrderType from "./OrderType";
 
-export default SearchLocation;
+export { 
+    SearchLocation,
+    OrderType,
+};
