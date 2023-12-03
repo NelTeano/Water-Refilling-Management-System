@@ -42,6 +42,7 @@ const DashboardPage = () => {
                             </Box>
                         </Container>
 
+                        {/* Dashboard Contents */}
                         <Container sx={{ mt: 2 }}>
                             <Typography fontWeight={500}>
                                 Welcome {user.given_name}!
