@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom'
 
 // PAGES
 import Home from './pages/Home'
-import Dashboard from './pages/DashboardPage';
+import DashboardPage from './pages/DashboardPage';
 import HeaderAuth from './components/Auth'
 
 // STYLES
@@ -17,7 +17,7 @@ function App() {
       },
       {
         pathname: "/client-dashboard",
-        element: Dashboard
+        element: DashboardPage
       },
     ];
 
