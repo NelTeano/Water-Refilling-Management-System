@@ -44,7 +44,7 @@ const DashboardPage = () => {
 
                         {/* Dashboard Contents */}
                         <Container sx={{ mt: 2 }}>
-                            <Typography fontWeight={500}>
+                            <Typography fontWeight={500} variant="h5" color="#272727">
                                 Welcome {user.given_name}!
                             </Typography>
 

@@ -48,7 +48,7 @@ const LocationDetail = ({ closeLocationDetail, isAdd }) => {
             )}
         />
 
-        <Box sx={{ mt: 2, float: 'right'  }}>
+        <Box sx={{ mt: 5, float: 'right'  }}>
             <Button 
                 size='small'
                 onClick={closeLocationDetail}

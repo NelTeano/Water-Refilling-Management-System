@@ -5,6 +5,7 @@ import HeaderAuth from './components/Auth'
 import Home from './pages/Home'
 import DashboardPage from './pages/DashboardPage';
 import LocationPage from './pages/LocationPage';
+import OrderPage from './pages/OrderPage';
 
 // STYLES
 import './App.css'
@@ -29,6 +30,10 @@ function App() {
       {
         pathname: "/client-dashboard/location",
         element: LocationPage
+      },
+      {
+        pathname: "/client-dashboard/order",
+        element: OrderPage
       },
       
     ];

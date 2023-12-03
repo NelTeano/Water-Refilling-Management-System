@@ -44,7 +44,7 @@ const LocationPage = () => {
                                 display: 'flex', 
                                 alignItems: 'center', 
                                 justifyContent: 'space-between',
-                                mt: 2,
+                                mt: 9,
                                 mb: 2,
                             }}
                         >
@@ -56,7 +56,7 @@ const LocationPage = () => {
                                 Add New
                             </Button>
                         </Box>
-                        <Box mt={2}>
+                        <Box mt={3}>
                             <FormControl>
                                 <RadioGroup
                                     aria-labelledby="demo-radio-buttons-group-label"
@@ -175,7 +175,7 @@ const LocationPage = () => {
                     </Box>
                 </Slide>
                 <Slide direction="left" in={showLocationDetail} mountOnEnter unmountOnExit>
-                    <Box>
+                    <Box sx={{ mt: 10 }}>
                         <LocationDetail 
                             closeLocationDetail={closeLocationDetail} 
                             isAdd={locationType}
