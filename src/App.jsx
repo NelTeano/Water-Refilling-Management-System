@@ -1,10 +1,10 @@
 import { Route, Routes } from 'react-router-dom'
 
 // PAGES
+import HeaderAuth from './components/Auth'
 import Home from './pages/Home'
-import { Dashboard } from './pages/Dashboard';
-import { Header } from './components/Header';
-import { Footer } from './components/Footer';
+import DashboardPage from './pages/DashboardPage';
+import LocationPage from './pages/LocationPage';
 
 // STYLES
 import './App.css'
@@ -18,8 +18,19 @@ function App() {
       },
       {
         pathname: "/client-dashboard",
-        element: Dashboard
+        element: DashboardPage,
+        // children: [
+        //   {
+        //     pathname: "/location",
+        //     element: LocationPage
+        //   },
+        // ]
       },
+      {
+        pathname: "/client-dashboard/location",
+        element: LocationPage
+      },
+      
     ];
 
     const isAdminRoute = location.pathname.startsWith('/admin');
@@ -27,13 +38,12 @@ function App() {
 
     return(
       <>
-        {!isAdminRoute && <Header />}
+        {!isAdminRoute && <HeaderAuth />}
           <Routes>
             {routes.map((route, index) => (
               <Route key={index} path={route.pathname} element={<route.element />} />
             ))}
           </Routes>
-        {!isAdminRoute && <Footer />}
       </>
     )
 }
