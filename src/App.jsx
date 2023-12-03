@@ -1,9 +1,10 @@
 import { Route, Routes } from 'react-router-dom'
 
 // PAGES
+import HeaderAuth from './components/Auth'
 import Home from './pages/Home'
 import DashboardPage from './pages/DashboardPage';
-import HeaderAuth from './components/Auth'
+import LocationPage from './pages/LocationPage';
 
 // STYLES
 import './App.css'
@@ -17,8 +18,19 @@ function App() {
       },
       {
         pathname: "/client-dashboard",
-        element: DashboardPage
+        element: DashboardPage,
+        // children: [
+        //   {
+        //     pathname: "/location",
+        //     element: LocationPage
+        //   },
+        // ]
       },
+      {
+        pathname: "/client-dashboard/location",
+        element: LocationPage
+      },
+      
     ];
 
     const isAdminRoute = location.pathname.startsWith('/admin');
