@@ -14,7 +14,7 @@ import {
     EditTwoTone as EditTwoToneIcon,
 } from '@mui/icons-material';
 import { useState } from 'react';
-import LocationDetail from './components';
+import { LocationAdd } from './components';
 
 const LocationPage = () => {
     const [selectedValue, setSelectedValue] = useState('home');
@@ -144,7 +144,7 @@ const LocationPage = () => {
                 </Slide>
                 <Slide direction="left" in={showLocationDetail} mountOnEnter unmountOnExit>
                     <Box>
-                        <LocationDetail closeLocationDetail={closeLocationDetail} />
+                        <LocationAdd closeLocationDetail={closeLocationDetail} />
                     </Box>
                 </Slide>
             </Container>

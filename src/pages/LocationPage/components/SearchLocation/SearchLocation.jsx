@@ -35,4 +35,4 @@ const SearchLocation = () => {
   )
 }
 
-export default SearchLocation
+export default SearchLocation;

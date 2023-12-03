@@ -1,3 +1,7 @@
-import LocationDetail from './LocationDetail';
+import LocationAdd from './LocationAdd';
+import SearchLocation from './SearchLocation';
 
-export default LocationDetail;
+export {
+    SearchLocation,
+    LocationAdd,
+};
