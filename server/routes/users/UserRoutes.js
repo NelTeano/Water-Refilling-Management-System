@@ -29,6 +29,7 @@ userRoute.post('/users/new', async (req, res) => {
                 phone : req.body.userPhone,
                 picture : req.body.userPicture,
                 location: [{
+                    name: req.body.locationName,
                     address: req.body.address,
                     latitude: req.body.latitude,
                     longitude: req.body.longitude

@@ -11,6 +11,10 @@ const userSchema = mongoose.Schema({
         required: true
     },
     location  : [{
+        name:{
+            type: String,
+            required: true
+        },
         address: {
             type: String,
             required: true
