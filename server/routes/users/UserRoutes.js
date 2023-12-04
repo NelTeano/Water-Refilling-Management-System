@@ -3,11 +3,11 @@ import userModel from '../../models/users.js'
 
 const userRoute = express.Router();
 
-userRoute.get('/users', async (req, res) =>{
+userRoute.get('/users/:username', async (req, res) =>{
     
     try {
         
-        const getUsers = await userModel.find({});
+        const getUsers = await userModel.find({username: req.params.username});
         res.send(getUsers);
         console.log("Successfully get the users")
     } catch (error) {

@@ -13,13 +13,18 @@ import {
 import {
     EditTwoTone as EditTwoToneIcon,
 } from '@mui/icons-material';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { LocationDetail } from './components';
+import axios from 'axios';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const LocationPage = () => {
     const [selectedValue, setSelectedValue] = useState('home');
     const [locationType, setLocationType] = useState();
     const [showLocationDetail, setShowLocationDetail] = useState(false);
+    const [locationList, setLocationList] = useState()
+    const {user} = useAuth0()
+    const [loading, setLoading] = useState(true); 
 
     const handleRadioChange = (event) => {
       setSelectedValue(event.target.value);
@@ -33,6 +38,30 @@ const LocationPage = () => {
     const closeLocationDetail = () => {
         setShowLocationDetail(false);
     }
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                if (user && user.email) {
+                    const response = await axios.get(`http://localhost:5174/api/users/${user.email}`);  
+                    setLocationList(response.data[0].location)
+                    setLoading(false); 
+                } else {
+                    console.error('User or user.email is undefined or null.');
+                    setLoading(false); 
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                setLoading(false);
+            }
+        };
+        fetchData();
+    }, [user]);
+
+    useEffect(()=>{
+        console.log('location list \n',locationList)
+    },[locationList])
+
 
     return (
         <>
@@ -65,18 +94,23 @@ const LocationPage = () => {
                                     value={selectedValue}
                                     onChange={handleRadioChange}
                                 >
-                                    <FormControlLabel 
-                                        value="home" 
-                                        control={<Radio />} 
-                                        sx={{ mb: 2 }}
-                                        label={
-                                            <Box 
-                                                sx={{ 
-                                                    display: 'flex', 
-                                                    alignItems: 'start', 
-                                                    justifyContent: 'space-between', 
-                                                    width: '100%' 
-                                                    }}
+                                    {
+                                    locationList &&
+                                    locationList.map((location, index)=>{
+                                        return(
+                                            <FormControlLabel 
+                                                value="home" 
+                                                control={<Radio />} 
+                                                sx={{ mb: 2 }}
+                                                label={
+                                                
+                                                <Box 
+                                                    sx={{ 
+                                                        display: 'flex', 
+                                                        alignItems: 'start', 
+                                                        justifyContent: 'space-between', 
+                                                        width: '100%' 
+                                                        }}
                                                 >
                                                 <Box mr={10}>
                                                     <Typography 
@@ -86,7 +120,7 @@ const LocationPage = () => {
                                                         Home
                                                     </Typography>
                                                     <Typography variant="body2" color="textSecondary">
-                                                        Sampaloc V, Dasmarinas, Cavite
+                                                        {location.address}
                                                     </Typography>
                                                 </Box>
                                                 <Box>
@@ -99,76 +133,9 @@ const LocationPage = () => {
                                                 </Box>
                                             </Box>
                                         }
-                                    />
-                                    <FormControlLabel 
-                                        value="work" 
-                                        control={<Radio />} 
-                                        sx={{ mb: 2 }}
-                                        label={
-                                            <Box 
-                                                sx={{ 
-                                                    display: 'flex', 
-                                                    alignItems: 'start', 
-                                                    justifyContent: 'space-between', 
-                                                    width: '100%' 
-                                                    }}
-                                                >
-                                                <Box mr={10}>
-                                                    <Typography 
-                                                        variant="subtitle2" 
-                                                        sx={{ color: selectedValue === 'work' ? '#099DBD' : 'inherit' }}
-                                                    >
-                                                        Work
-                                                    </Typography>
-                                                    <Typography variant="body2" color="textSecondary">
-                                                        Sampaloc V, Dasmarinas, Cavite
-                                                    </Typography>
-                                                </Box>
-                                                <Box>
-                                                    <IconButton 
-                                                        size='small'
-                                                        onClick={() => openLocationDetail(false)}
-                                                    >
-                                                        <EditTwoToneIcon fontSize='inherit' />
-                                                    </IconButton>
-                                                </Box>
-                                            </Box>
-                                        }
-                                    />
-                                    <FormControlLabel 
-                                        value="school" 
-                                        control={<Radio />} 
-                                        label={
-                                            <Box 
-                                                sx={{ 
-                                                    display: 'flex', 
-                                                    alignItems: 'start', 
-                                                    justifyContent: 'space-between', 
-                                                    width: '100%' 
-                                                    }}
-                                                >
-                                                <Box mr={10}>
-                                                    <Typography 
-                                                        variant="subtitle2" 
-                                                        sx={{ color: selectedValue === 'school' ? '#099DBD' : 'inherit' }}
-                                                    >
-                                                        School
-                                                    </Typography>
-                                                    <Typography variant="body2" color="textSecondary">
-                                                        Sampaloc V, Dasmarinas, Cavite
-                                                    </Typography>
-                                                </Box>
-                                                <Box>
-                                                    <IconButton 
-                                                        size='small'
-                                                        onClick={() => openLocationDetail(false)}
-                                                    >
-                                                        <EditTwoToneIcon fontSize='inherit' />
-                                                    </IconButton>
-                                                </Box>
-                                            </Box>
-                                        }
-                                    />
+                                            />
+                                        )
+                                    })}
                                 </RadioGroup>
                             </FormControl>
                         </Box>
