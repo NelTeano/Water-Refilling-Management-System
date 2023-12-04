@@ -52,17 +52,18 @@ userRoute.post('/users/loc/add',async (req,res)=>{
     try{
         const userData = await userModel.findOne({username:req.body.userName})
         userData.location.push({
+            locName: req.body.locName,
             address: req.body.address,
             latitude: req.body.latitude,
             longitude: req.body.longitude
         })
-         
         const saveUser = await userData.save()
         res.send(saveUser)
         
     }catch(err){
         res.status(500).json({ message: "Add Location Request Failed" , err });
         console.log("Failed to Add Location");
+        console.log(err)
     }
 })
 

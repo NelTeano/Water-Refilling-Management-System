@@ -11,9 +11,9 @@ const userSchema = mongoose.Schema({
         required: true
     },
     location  : [{
-        name:{
+        locName:{
             type: String,
-            required: true
+        
         },
         address: {
             type: String,
