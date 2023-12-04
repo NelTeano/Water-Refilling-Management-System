@@ -100,7 +100,7 @@ const LocationPage = () => {
                                         return(
                                             <FormControlLabel
                                                 key={index} 
-                                                value={index} 
+                                                value={location.locName} 
                                                 control={<Radio />} 
                                                 sx={{ mb: 2 }}
                                                 label={ 
