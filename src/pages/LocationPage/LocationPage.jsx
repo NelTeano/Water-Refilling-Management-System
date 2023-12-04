@@ -100,7 +100,7 @@ const LocationPage = () => {
                                         return(
                                             <FormControlLabel
                                                 key={index} 
-                                                value="home" 
+                                                value={index} 
                                                 control={<Radio />} 
                                                 sx={{ mb: 2 }}
                                                 label={ 
@@ -117,7 +117,7 @@ const LocationPage = () => {
                                                                 variant="subtitle2" 
                                                                 sx={{ color: selectedValue === 'home' ? '#099DBD' : 'inherit' }}
                                                             >
-                                                                Home
+                                                                {location.locName}
                                                             </Typography>
                                                             <Typography variant="body2" color="textSecondary">
                                                                 {location.address}
