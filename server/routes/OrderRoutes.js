@@ -13,7 +13,7 @@ orderRoute.get('/orders',async (req,res)=>{
 })
 
 orderRoute.post('/place-order',async (req,res)=>{
-    console.log(currentDate)
+    
     const orderDetails = new orderModel({
         round: req.body.round,
         slim: req.body.slim,
