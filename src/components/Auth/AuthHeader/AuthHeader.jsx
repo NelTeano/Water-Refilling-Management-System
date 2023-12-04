@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom'
 import {
   Box,
   AppBar,
@@ -37,12 +38,12 @@ const AuthHeader = () => {
   const menuList = [
     {
       name: 'Home',
-      url: '#',
+      url: '/',
       icon: <HomeTwoToneIcon />,
     },
     {
       name: 'Order',
-      url: '#',
+      url: '/client-dashboard/order',
       icon: <ShoppingCartTwoToneIcon />,
     },
     {
@@ -80,19 +81,23 @@ const AuthHeader = () => {
       </List>
       <Divider />
       <List>
-        {menuList.map((item) => (
-          <ListItem key={item} disablePadding>
+        {menuList.map((item, index) => (
+          <ListItem key={index} disablePadding>
             <ListItemButton>
               <ListItemIcon>
                 {renderIcon(item.icon)}
               </ListItemIcon>
-              <ListItemText primary={item.name} />
+              <Link to={item.url}>
+                <ListItemText  style={{ color: 'black' }} primary={item.name} />
+              </Link>
             </ListItemButton>
           </ListItem>
         ))}
       </List>
     </Box>
   );
+
+  
 
   return (
     <Box sx={{ flexGrow: 1, mb: 7 }}>

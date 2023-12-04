@@ -19,7 +19,7 @@ function App() {
       },
       {
         pathname: "/client-dashboard",
-        element: DashboardPage,
+        element: DashboardPage
         // children: [
         //   {
         //     pathname: "/location",
@@ -39,16 +39,16 @@ function App() {
     ];
 
     const isAdminRoute = location.pathname.startsWith('/admin');
-    const isProtectedRoute = location.pathname.startsWith('/admin/dashboard');
+    // const isProtectedRoute = location.pathname.startsWith('/admin/dashboard');
 
     return(
       <>
         {!isAdminRoute && <HeaderAuth />}
           <Routes>
-            {routes.map((route, index) => (
-              <Route key={index} path={route.pathname} element={<route.element />} />
-            ))}
-          </Routes>
+          {routes.map((route, index)=> (
+            <Route key={index} path={route.pathname} element={<route.element />} />
+          ))}
+        </Routes>
       </>
     )
 }

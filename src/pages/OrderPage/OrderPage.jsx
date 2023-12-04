@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect} from 'react';
 import {
     Box,
     Card,
@@ -18,36 +18,44 @@ import {
     AddTwoTone as AddTwoToneIcon,
 } from '@mui/icons-material';
 
+
+
 const OrderPage = () => {
+
+
+    // SETTING UP THE VALUES ORDERS OF ROUND AND SLIM
     const [orders, setOrders] = useState([
         {
             id: 1,
-            name: 'Single Order (Round)',
+            name: 'Set Order (Round)',
             qty: 1,
         },
         {
             id: 2,
-            name: 'Single Order (Slim)',
+            name: 'Set Order (Slim)',
             qty: 0,
         },
-        {
-            id: 3,
-            name: 'Bulk Order (Round)',
-            description: '5 Gallon',
-            qty: 1,
-        },
-        {
-            id: 4,
-            name: 'Single Order (Slim)',
-            description: '5 Gallon',
-            qty: 0,
-        }
     ]);
+
+
+    // THE DATA WILL BE SUBMITTED WHEN THE ORDER CONFIRMS
+    const [orderDetails, setOrderDetails] = useState({
+        round: 0,
+        slim: 0,
+        custId: 100,
+        status: 'pending',
+        isOwned: false,
+        total: 30,
+    });
+
+
 
     const handleIncrement = (index) => {
         const updatedOrders = [...orders];
         updatedOrders[index].qty += 1;
         setOrders(updatedOrders);
+        updateOrderDetails(updatedOrders); 
+        updateTotal();
     };
 
     const handleDecrement = (index) => {
@@ -55,8 +63,72 @@ const OrderPage = () => {
         if (updatedOrders[index].qty > 0) {
             updatedOrders[index].qty -= 1;
             setOrders(updatedOrders);
+            updateOrderDetails(updatedOrders); 
+        }
+        updateTotal();
+    };
+
+    const handleCheckboxChange = () => {
+        setOrderDetails((prevOrderDetails) => ({
+        ...prevOrderDetails,
+        isOwned: !prevOrderDetails.isOwned,
+        }));
+        
+    };
+
+    
+
+
+    const handleSubmit = async () => {
+        try {
+            const response = await fetch("http://localhost:5174/api/place-order", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(orderDetails),
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                console.log("Order Successful" , data);
+            } else {
+                console.error('Server responded with an error:', response.statusText);
+            }
+        } catch (err) {
+            console.error('Error fetching data:', err);
         }
     };
+
+    const updateOrderDetails = (updatedOrders) => {
+        setOrderDetails((prevOrderDetails) => ({
+            ...prevOrderDetails,
+            round: updatedOrders[0].qty,
+            slim: updatedOrders[1].qty,
+        }));
+    };
+
+    const updateTotal = () => {
+        const totalQty = orders.reduce((acc, order) => acc + order.qty, 0);
+        const unitPrice = totalQty <= 4 ? 30 : 25;
+        const updatedTotal = totalQty * unitPrice;
+    
+        setOrderDetails((prevOrderDetails) => ({
+            ...prevOrderDetails,
+            total: updatedTotal,
+        }));
+    };
+
+    useEffect(() => {
+        setOrderDetails((prevOrderDetails) => ({
+            ...prevOrderDetails,
+            round: orders[0].qty,
+            slim: orders[1].qty,
+        }));
+    }, [orders]);
+
+
+    console.log(orderDetails)
 
     return (
         <Container>
@@ -113,7 +185,17 @@ const OrderPage = () => {
             ))}
 
             <FormGroup>
-                <FormControlLabel sx={{ color: '#3B3B3B' }} control={<Checkbox size="small" />} label="Do you own the gallon/s?" />
+                <FormControlLabel
+                    sx={{ color: '#3B3B3B' }}
+                    control={
+                        <Checkbox
+                        size="small"
+                        checked={orderDetails.isOwned}  // Controlled by orderDetails.isOwned
+                        onChange={handleCheckboxChange}  // Event handler for checkbox change
+                        />
+                    }
+                    label="Do you own the gallon/s?"
+                />
             </FormGroup>
 
             <Card sx={{ mt: 3, mb: 3 }}>
@@ -129,26 +211,36 @@ const OrderPage = () => {
                         <Grid item xs={6}>
                             <Typography color="textSecondary">Item Description</Typography>
                         </Grid>
-                        <Grid item xs>
-                            <Typography sx={{ float: 'right' }}>0</Typography>
-                        </Grid>
                     </Grid>
+                    
 
-                    <Grid container spacing={2} mb={2}>
+    
+                    <Grid container spacing={2} mb={1}>
                         <Grid item xs={6}>
-                            <Typography color="textSecondary">Delivery Fee</Typography>
+                            <Typography color="textSecondary">Round</Typography>
                         </Grid>
                         <Grid item xs>
-                            <Typography sx={{ float: 'right' }}>0</Typography>
+                            <Typography variant='h6' sx={{ float: 'right' }}>{orderDetails.round}</Typography>
                         </Grid>
                     </Grid>
+                    <Grid container spacing={2} mb={1}>
+                        <Grid item xs={6}>
+                            <Typography color="textSecondary">Slim</Typography>
+                        </Grid>
+                        <Grid item xs>
+                            <Typography variant='h6' sx={{ float: 'right' }}>{orderDetails.slim}</Typography>
+                        </Grid>
+                    </Grid>
+                    
+                    
+
 
                     <Grid container spacing={2} mb={2}>
                         <Grid item xs={6}>
                             <Typography>Item Total</Typography>
                         </Grid>
                         <Grid item xs>
-                            <Typography variant='h6' sx={{ float: 'right' }}>0</Typography>
+                            <Typography variant='h6' sx={{ float: 'right' }}>{orderDetails.total}</Typography>
                         </Grid>
                     </Grid>
 
@@ -194,6 +286,7 @@ const OrderPage = () => {
                         </Grid>
                         <Grid item xs={6}>
                             <Button 
+                                onClick={handleSubmit}
                                 variant='contained'
                                 sx={{
                                     width: '100%'
