@@ -47,11 +47,11 @@ const LocationPage = () => {
                     setLocationList(response.data[0].location)
                     setLoading(false); 
                 } else {
-                    console.error('User or user.email is undefined or null.');
+                    console.log('User or user.email is undefined or null.');
                     setLoading(false); 
                 }
             } catch (error) {
-                console.error('Error fetching data:', error);
+                console.log('Error fetching data:', error);
                 setLoading(false);
             }
         };
@@ -98,41 +98,41 @@ const LocationPage = () => {
                                     locationList &&
                                     locationList.map((location, index)=>{
                                         return(
-                                            <FormControlLabel 
+                                            <FormControlLabel
+                                                key={index} 
                                                 value="home" 
                                                 control={<Radio />} 
                                                 sx={{ mb: 2 }}
-                                                label={
-                                                
-                                                <Box 
-                                                    sx={{ 
-                                                        display: 'flex', 
-                                                        alignItems: 'start', 
-                                                        justifyContent: 'space-between', 
-                                                        width: '100%' 
-                                                        }}
-                                                >
-                                                <Box mr={10}>
-                                                    <Typography 
-                                                        variant="subtitle2" 
-                                                        sx={{ color: selectedValue === 'home' ? '#099DBD' : 'inherit' }}
+                                                label={ 
+                                                    <Box 
+                                                        sx={{ 
+                                                            display: 'flex', 
+                                                            alignItems: 'start', 
+                                                            justifyContent: 'space-between', 
+                                                            width: '100%' 
+                                                            }}
                                                     >
-                                                        Home
-                                                    </Typography>
-                                                    <Typography variant="body2" color="textSecondary">
-                                                        {location.address}
-                                                    </Typography>
-                                                </Box>
-                                                <Box>
-                                                    <IconButton 
-                                                        size='small'
-                                                        onClick={() => openLocationDetail(false)}
-                                                    >
-                                                        <EditTwoToneIcon fontSize='inherit' />
-                                                    </IconButton>
-                                                </Box>
-                                            </Box>
-                                        }
+                                                        <Box mr={10}>
+                                                            <Typography 
+                                                                variant="subtitle2" 
+                                                                sx={{ color: selectedValue === 'home' ? '#099DBD' : 'inherit' }}
+                                                            >
+                                                                Home
+                                                            </Typography>
+                                                            <Typography variant="body2" color="textSecondary">
+                                                                {location.address}
+                                                            </Typography>
+                                                        </Box>
+                                                        <Box>
+                                                            <IconButton 
+                                                                size='small'
+                                                                onClick={() => openLocationDetail(false)}
+                                                            >
+                                                                <EditTwoToneIcon fontSize='inherit' />
+                                                            </IconButton>
+                                                        </Box>
+                                                    </Box>
+                                                }
                                             />
                                         )
                                     })}
