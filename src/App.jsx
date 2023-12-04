@@ -9,6 +9,7 @@ import OrderPage from './pages/OrderPage';
 
 // STYLES
 import './App.css'
+import { RegisterPage } from './pages/RegisterPage/RegisterPage';
 
 function App() {
 
@@ -34,6 +35,10 @@ function App() {
       {
         pathname: "/client-dashboard/order",
         element: OrderPage
+      },
+      {
+        pathname: "/register",
+        element: RegisterPage
       },
       
     ];
