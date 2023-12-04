@@ -41,7 +41,7 @@ userRoute.post('/users/new', async (req, res) => {
         }
     }catch(err){
         res.status(500).json({ message: "Create User Request Failed" , err });
-        console.log("Failed to Submit User Details");
+        console.log("Failed to Submit User Details",err);
     }
        
     
