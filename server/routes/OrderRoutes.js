@@ -20,7 +20,7 @@ orderRoute.post('/place-order',async (req,res)=>{
         total: req.body.total,
         isOwned: req.body.isOwned,
         status: req.body.status,
-        custID: req.body.custID,
+        username: req.body.username
     })
 
     try {   

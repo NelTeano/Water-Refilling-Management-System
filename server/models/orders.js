@@ -17,8 +17,9 @@ const orderSchema = mongoose.Schema(
         status:{
             type: String,
         },
-        custID:{
+        username:{
             type: String,
+            required: true
         },
     },
     { timestamps: true }
