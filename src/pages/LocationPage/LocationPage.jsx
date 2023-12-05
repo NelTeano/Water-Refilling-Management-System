@@ -17,14 +17,16 @@ import { useState, useEffect } from 'react';
 import { LocationDetail } from './components';
 import axios from 'axios';
 import { useAuth0 } from '@auth0/auth0-react';
+import { useNavigate } from 'react-router';
 
 const LocationPage = () => {
     const [selectedValue, setSelectedValue] = useState('home');
     const [locationType, setLocationType] = useState();
     const [showLocationDetail, setShowLocationDetail] = useState(false);
     const [locationList, setLocationList] = useState()
-    const {user} = useAuth0()
     const [loading, setLoading] = useState(true); 
+    const {user} = useAuth0()
+    const navigate = useNavigate()
 
     const handleRadioChange = (event) => {
       setSelectedValue(event.target.value);
@@ -37,6 +39,20 @@ const LocationPage = () => {
 
     const closeLocationDetail = () => {
         setShowLocationDetail(false);
+    }
+
+    const handleSubmit = () => {
+        let data = {
+            userName: user.email,
+            locName: selectedValue
+        }
+        axios.post('http://localhost:5174/api/users/loc/select', data)
+        .then(res => {
+            console.log(res.data)
+            if(res.status === 200){
+                navigate('/client-dashboard')
+            }
+        })
     }
 
     useEffect(() => {
@@ -142,8 +158,9 @@ const LocationPage = () => {
                                 size='small'
                                 variant='contained'
                                 sx={{ ml: 1 }}
+                                onClick={handleSubmit}
                             >
-                                Select
+                                Submit
                             </Button>
                         </Box>
                     </Box>
