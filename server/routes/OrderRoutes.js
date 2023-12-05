@@ -3,9 +3,9 @@ import orderModel from '../models/orders.js'
 
 const orderRoute = express.Router()
 
-orderRoute.get('/orders',async (req,res)=>{
+orderRoute.get('/orders/:username',async (req,res)=>{
     try{
-        const getOrders = await orderModel.find({})
+        const getOrders = await orderModel.find({username:req.params.username})
         res.send(getOrders)
     }catch(err){
         console.log(err)
