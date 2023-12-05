@@ -6,14 +6,37 @@ import {
     Button,
 } from "@mui/material"
 import { OrderType, OrderStatus } from './components'
+import axios from "axios"
+import { useEffect, useState } from "react"
+
 
 const DashboardPage = () => {
     const {user, isAuthenticated} = useAuth0()
+    const [userDetails, setUserDetails] = useState()
+    const [isLoading, setIsLoading] = useState(true)
+
+    useEffect(()=>{
+        const fetchData = async () =>{
+            if(user){
+                await axios.get(`http://localhost:5174/api/users/${user.email}`)
+                .then((res)=>{
+                    setUserDetails(res.data)
+                    setIsLoading(false)
+                })
+            }
+        }
+        fetchData()
+
+    },[user])
+
+    useEffect(()=>{
+        console.log(userDetails)
+    },[userDetails])
 
     return (
         <>
             {
-                isAuthenticated ? (
+                isAuthenticated && !isLoading ? (
                     <>
                         {/* Current Location */}
                         <Container 
@@ -27,8 +50,8 @@ const DashboardPage = () => {
                             }}
                         >
                             <Box>
-                                <Typography sx={{ fontSize: '.8rem', color: '#5B7C8E', fontWeight: 500 }}>Home</Typography>
-                                <Typography sx={{ fontSize: '.7rem', color: '#91AAB8' }}>Sampaloc V, Dasmarinas, Cavite</Typography>
+                                <Typography sx={{ fontSize: '.8rem', color: '#5B7C8E', fontWeight: 500 }}>{userDetails[0].location[0].locName}</Typography>
+                                <Typography sx={{ fontSize: '.7rem', color: '#91AAB8' }}>{userDetails[0].location[0].address}</Typography>
                             </Box>
                             <Box color='#5B7C8E'>
                                 <Button 
