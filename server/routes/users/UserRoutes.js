@@ -74,5 +74,32 @@ userRoute.post('/users/loc/add',async (req,res)=>{
     }
 })
 
+userRoute.post('/users/loc/select',async (req,res)=>{   
+    try{
+        const userData = await userModel.findOne({username:req.body.userName})
+        
+        let selectedLoc
+
+        for(let i in userData.location){
+            if(userData.location[i].locName === req.body.locName){
+                selectedLoc = i
+                userData.location[i].isSelected = true
+            }else{
+                userData.location[i].isSelected = false
+            }
+        }
+        
+        const saveSelectedLoc = await userData.save()
+        res.send(saveSelectedLoc)
+        
+    }catch(err){
+        res.status(500).json({ message: "Select Location Request Failed" , err });
+        console.log("Failed to select Location");
+        console.log(err)
+    }
+
+
+})
+
 
 export default userRoute
