@@ -17,11 +17,15 @@ import {
     RemoveTwoTone as RemoveTwoToneIcon,
     AddTwoTone as AddTwoToneIcon,
 } from '@mui/icons-material';
-
-
+import { useAuth0 } from '@auth0/auth0-react';
+import axios from 'axios';
+import { useNavigate } from 'react-router';
 
 const OrderPage = () => {
-
+    const {user} = useAuth0()
+    const navigate = useNavigate()
+    const [location, setLocation] = useState()
+    const [isLoading, setIsLoading] = useState(true)
 
     // SETTING UP THE VALUES ORDERS OF ROUND AND SLIM
     const [orders, setOrders] = useState([
@@ -76,9 +80,6 @@ const OrderPage = () => {
         
     };
 
-    
-
-
     const handleSubmit = async () => {
         try {
             const response = await fetch("http://localhost:5174/api/place-order", {
@@ -127,10 +128,23 @@ const OrderPage = () => {
         }));
     }, [orders]);
 
-
-    console.log(orderDetails)
+    useEffect(()=>{
+        if(user){
+            axios.get(`http://localhost:5174/api/users/${user.email}`)
+            .then((res)=>{
+                for(let i in res.data[0].location){
+                    if(res.data[0].location[i].isSelected){
+                        setLocation(res.data[0].location[i])
+                    }
+                }
+                setIsLoading(false)
+            })
+        }
+    },[user])
+    
 
     return (
+        user && !isLoading &&
         <Container>
             <Typography mt={10}>Order Details</Typography>
             {orders.map((item, index) => (
@@ -257,8 +271,8 @@ const OrderPage = () => {
                             }}
                         >
                             <Box>
-                                <Typography sx={{ fontSize: '.8rem', fontWeight: 500 }}>Home</Typography>
-                                <Typography sx={{ fontSize: '.7rem', color: 'textSecondary' }}>Sampaloc V, Dasmarinas, Cavite</Typography>
+                                <Typography sx={{ fontSize: '.8rem', fontWeight: 500 }}>{location.locName}</Typography>
+                                <Typography sx={{ fontSize: '.7rem', color: 'textSecondary' }}>{location.address}</Typography>
                             </Box>
                             <Box color='#5B7C8E'>
                                 <Button 
@@ -266,6 +280,7 @@ const OrderPage = () => {
                                     color="inherit"
                                     size="small"
                                     sx={{ fontSize: '.7rem' }}
+                                    onClick={()=>navigate('/client-dashboard/location')}
                                 >
                                     Edit
                                 </Button>
