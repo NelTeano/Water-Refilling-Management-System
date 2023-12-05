@@ -38,7 +38,7 @@ const AuthHeader = () => {
   const menuList = [
     {
       name: 'Home',
-      url: '/',
+      url: '/client-dashboard',
       icon: <HomeTwoToneIcon />,
     },
     {

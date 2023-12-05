@@ -43,12 +43,12 @@ function App() {
       
     ];
 
-    const isAdminRoute = location.pathname.startsWith('/admin');
+    const isAdminRoute = location.pathname.startsWith('/client-dashboard');
     // const isProtectedRoute = location.pathname.startsWith('/admin/dashboard');
 
     return(
       <>
-        {!isAdminRoute && <HeaderAuth />}
+        {isAdminRoute && <HeaderAuth />}
           <Routes>
           {routes.map((route, index)=> (
             <Route key={index} path={route.pathname} element={<route.element />} />
