@@ -138,6 +138,13 @@ const LocationPage = () => {
                                     })}
                                 </RadioGroup>
                             </FormControl>
+                            <Button 
+                                size='small'
+                                variant='contained'
+                                sx={{ ml: 1 }}
+                            >
+                                Select
+                            </Button>
                         </Box>
                     </Box>
                 </Slide>

@@ -4,6 +4,7 @@ import {
     Typography,
     Container,
     Button,
+    CircularProgress
 } from "@mui/material"
 import { OrderType, OrderStatus } from './components'
 import axios from "axios"
@@ -80,7 +81,15 @@ const DashboardPage = () => {
                         </Container>
                     </>
                 ) : (
-                    <p>Loading Spinner</p>
+                    <div style={{
+                            width:"100vw",
+                            height:"70vh",
+                            display:'flex',
+                            justifyContent:'center',
+                            alignItems:"center"
+                        }}>
+                        <CircularProgress />
+                    </div>
                 )
             }
         </>

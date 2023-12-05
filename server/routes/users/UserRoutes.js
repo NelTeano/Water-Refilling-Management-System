@@ -32,7 +32,8 @@ userRoute.post('/users/new', async (req, res) => {
                     name: req.body.locationName,
                     address: req.body.address,
                     latitude: req.body.latitude,
-                    longitude: req.body.longitude
+                    longitude: req.body.longitude,
+                    isSelected: true
                 }]
             });
           
