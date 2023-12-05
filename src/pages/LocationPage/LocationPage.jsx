@@ -50,7 +50,7 @@ const LocationPage = () => {
         .then(res => {
             console.log(res.data)
             if(res.status === 200){
-                navigate('/client-dashboard')
+                navigate(-1)
             }
         })
     }

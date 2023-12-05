@@ -295,6 +295,7 @@ const OrderPage = () => {
                                 sx={{
                                     width: '100%'
                                 }}
+                                onClick={()=>navigate(-1)}
                             >
                                 Cancel
                             </Button>
