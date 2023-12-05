@@ -8,8 +8,12 @@ import {
 } from '@mui/material';
 import bulkImg from '../../../../assets/images/bulk_img.jpg'
 import singleImg from '../../../../assets/images/single_img.jpg'
+import { useNavigate } from 'react-router-dom';
+
 
 const OrderType = () => {
+    const navigate = useNavigate()
+
   return (
     <Box mt={2}>
         <Grid container spacing={2} mt={.5}>
@@ -19,6 +23,7 @@ const OrderType = () => {
                         sx={{ height: 140 }}
                         image={singleImg}
                         title="green iguana"
+                        onClick = {()=>navigate('/client-dashboard/order')}
                     />
                     <CardContent>
                         <Typography>Single Order</Typography>
@@ -31,6 +36,7 @@ const OrderType = () => {
                         sx={{ height: 140 }}
                         image={bulkImg}
                         title="green iguana"
+                        onClick = {()=>navigate('/client-dashboard/order')}
                     />
                     <CardContent>
                         <Typography>Bulk Order</Typography>

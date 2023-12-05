@@ -8,10 +8,12 @@ import {
 import { OrderType, OrderStatus } from './components'
 import axios from "axios"
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 
 const DashboardPage = () => {
     const {user, isAuthenticated} = useAuth0()
+    const navigate = useNavigate()
     const [userDetails, setUserDetails] = useState()
     const [isLoading, setIsLoading] = useState(true)
 
@@ -59,6 +61,7 @@ const DashboardPage = () => {
                                     color="inherit"
                                     size="small"
                                     sx={{ fontSize: '.7rem' }}
+                                    onClick={()=>navigate('/client-dashboard/location')}
                                 >
                                     Edit
                                 </Button>
