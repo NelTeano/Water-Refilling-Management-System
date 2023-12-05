@@ -6,10 +6,10 @@ import {
     Grid,
 } from '@mui/material'
 
-const OrderStatus = () => {
+const OrderStatus = ({pending}) => {
     const sampleOrderStatus = {
         confirmed: 0,
-        pending: 2,
+        pending: pending,
         rejected: 0,
         completed: 0,
     }

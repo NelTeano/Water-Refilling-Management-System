@@ -18,11 +18,12 @@ const DashboardPage = () => {
     const [userDetails, setUserDetails] = useState()
     const [isLoading, setIsLoading] = useState(true)
     const [selectedLoc, setSelectedLoc] = useState()
+    const [pending, setPending] = useState(0)
 
     useEffect(()=>{
-        const fetchData = async () =>{
+        const fetchUser = async () =>{
             if(user){
-                await axios.get(`http://localhost:5174/api/users/${user.email}`)
+                axios.get(`http://localhost:5174/api/users/${user.email}`)
                 .then((res)=>{
                     setUserDetails(res.data[0])
                     
@@ -37,7 +38,25 @@ const DashboardPage = () => {
                 })
             }
         }
-        fetchData()
+
+        let pending = 0
+
+        const fetchOrder = async () =>{
+            if(user){
+                axios.get(`http://localhost:5174/api/orders/${user.email}`)
+                .then((res)=>{
+                    for(let i in res.data){
+                        if(res.data[i].status === "pending"){
+                            pending++
+                        }
+                    }
+                    setPending(pending)
+                })
+            }
+        }
+
+        fetchUser()
+        fetchOrder()
 
     },[user])
 
@@ -82,7 +101,7 @@ const DashboardPage = () => {
 
                             <OrderType />
 
-                            <OrderStatus />
+                            <OrderStatus pending={pending}/>
                         </Container>
                     </>
                 ) : (
