@@ -17,24 +17,29 @@ const DashboardPage = () => {
     const navigate = useNavigate()
     const [userDetails, setUserDetails] = useState()
     const [isLoading, setIsLoading] = useState(true)
+    const [selectedLoc, setSelectedLoc] = useState()
 
     useEffect(()=>{
         const fetchData = async () =>{
             if(user){
                 await axios.get(`http://localhost:5174/api/users/${user.email}`)
                 .then((res)=>{
-                    setUserDetails(res.data)
+                    setUserDetails(res.data[0])
+                    
+                    for(let i in res.data[0].location){
+                        if(res.data[0].location[i].isSelected){
+                            setSelectedLoc(res.data[0].location[i])
+                        }
+                    }
+                    
                     setIsLoading(false)
+                
                 })
             }
         }
         fetchData()
 
     },[user])
-
-    useEffect(()=>{
-        console.log(userDetails)
-    },[userDetails])
 
     return (
         <>
@@ -53,8 +58,8 @@ const DashboardPage = () => {
                             }}
                         >
                             <Box>
-                                <Typography sx={{ fontSize: '.8rem', color: '#5B7C8E', fontWeight: 500 }}>{userDetails[0].location[0].locName}</Typography>
-                                <Typography sx={{ fontSize: '.7rem', color: '#91AAB8' }}>{userDetails[0].location[0].address}</Typography>
+                                <Typography sx={{ fontSize: '.8rem', color: '#5B7C8E', fontWeight: 500 }}>{selectedLoc.locName}</Typography>
+                                <Typography sx={{ fontSize: '.7rem', color: '#91AAB8' }}>{selectedLoc.address}</Typography>
                             </Box>
                             <Box color='#5B7C8E'>
                                 <Button 

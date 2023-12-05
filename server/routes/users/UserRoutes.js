@@ -29,7 +29,7 @@ userRoute.post('/users/new', async (req, res) => {
                 phone : req.body.userPhone,
                 picture : req.body.userPicture,
                 location: [{
-                    name: req.body.locationName,
+                    locName: 'Home',
                     address: req.body.address,
                     latitude: req.body.latitude,
                     longitude: req.body.longitude,
@@ -52,11 +52,17 @@ userRoute.post('/users/new', async (req, res) => {
 userRoute.post('/users/loc/add',async (req,res)=>{
     try{
         const userData = await userModel.findOne({username:req.body.userName})
+        
+        for(let i in userData.location){
+            userData.location[i].isSelected = false
+        }
+        
         userData.location.push({
             locName: req.body.locName,
             address: req.body.address,
             latitude: req.body.latitude,
-            longitude: req.body.longitude
+            longitude: req.body.longitude,
+            isSelected: true
         })
         const saveUser = await userData.save()
         res.send(saveUser)
