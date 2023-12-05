@@ -50,6 +50,7 @@ const OrderPage = () => {
         status: 'pending',
         isOwned: false,
         total: 30,
+        username: ""
     });
 
 
@@ -93,6 +94,7 @@ const OrderPage = () => {
             if (response.ok) {
                 const data = await response.json();
                 console.log("Order Successful" , data);
+                navigate(-1)
             } else {
                 console.error('Server responded with an error:', response.statusText);
             }
@@ -130,6 +132,11 @@ const OrderPage = () => {
 
     useEffect(()=>{
         if(user){
+            setOrderDetails((prevOrderDetails) => ({
+                ...prevOrderDetails,
+                username:user.email
+            }));
+
             axios.get(`http://localhost:5174/api/users/${user.email}`)
             .then((res)=>{
                 for(let i in res.data[0].location){
