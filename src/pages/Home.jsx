@@ -1,5 +1,6 @@
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
+import { Link } from 'react-router-dom';
 
 // IMAGES
 import cleanLogo from '../assets/images/cleanwater-logo.png'
@@ -10,6 +11,7 @@ import containerLogo  from '../assets/images/container-logo.png'
 // STYLES
 import '../styles/homePage.css'
 
+import AuthButton from '../components/AuthButton.jsx'
 
 export default function Home() {
 
@@ -25,8 +27,12 @@ export default function Home() {
                     <p>Discover delectable cuisine and unforgettable moments<br></br> in our welcoming, culinary haven.</p>
                 </section>
                 <section className='board-buttons'>
+                <Link to={'/client-dashboard/order'}>
                     <button>Order a Water</button>
-                    <button>Explore Products</button>
+                </Link>
+                    {/* <button>Explore Products</button> */}
+                    <AuthButton />
+                    
                 </section>
             </div>
             <div className='home-about-products'>
