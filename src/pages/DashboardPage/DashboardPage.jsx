@@ -80,7 +80,7 @@ const DashboardPage = () => {
                         </Container>
                     </>
                 ) : (
-                    <p>You are not logged in</p>
+                    <p>Loading Spinner</p>
                 )
             }
         </>

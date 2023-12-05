@@ -22,7 +22,7 @@ const OrderType = () => {
                     <CardMedia
                         sx={{ height: 140 }}
                         image={singleImg}
-                        title="green iguana"
+                       
                         onClick = {()=>navigate('/client-dashboard/order')}
                     />
                     <CardContent>
@@ -35,7 +35,7 @@ const OrderType = () => {
                     <CardMedia
                         sx={{ height: 140 }}
                         image={bulkImg}
-                        title="green iguana"
+                      
                         onClick = {()=>navigate('/client-dashboard/order')}
                     />
                     <CardContent>

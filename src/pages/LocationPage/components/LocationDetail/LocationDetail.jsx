@@ -12,6 +12,7 @@ import { useState, useEffect } from 'react';
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { FaLocationDot } from "react-icons/fa6";
 import "mapbox-gl/dist/mapbox-gl.css";
+import { useAuth0 } from '@auth0/auth0-react';
 
 const token = import.meta.env.VITE_MAPBOX_TOKEN;
 
@@ -25,6 +26,7 @@ const LocationDetail = ({ closeLocationDetail, isAdd }) => {
         latitude: 0,
         zoom: 15,
       });
+    const {user} = useAuth0()
 
     const sampleLocations = [
         { city: 'Manila', state: 'Metro Manila' },
@@ -46,7 +48,7 @@ const LocationDetail = ({ closeLocationDetail, isAdd }) => {
 
       const handleSubmit = () => {
         const data = {
-            userName: 'joshuamagwili@gmail.com',
+            userName: user.email,
             locName: locName,
             address: address,
             latitude: latitude,
@@ -101,7 +103,7 @@ const LocationDetail = ({ closeLocationDetail, isAdd }) => {
             </li>
             )}
         />
-        <div style={{ width: "50vw", height: "400px" }}>
+        <div style={{ width: "83vw", height: "400px", marginTop:"30px"}}>
             <ReactMapGL
                 {...viewport}
                 mapboxAccessToken={token}
