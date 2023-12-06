@@ -24,7 +24,8 @@ const LocationPage = () => {
     const [locationType, setLocationType] = useState();
     const [showLocationDetail, setShowLocationDetail] = useState(false);
     const [locationList, setLocationList] = useState()
-    const [loading, setLoading] = useState(true); 
+    const [loading, setLoading] = useState(true);
+    const [locationData, setLocationData] = useState() 
     const {user} = useAuth0()
     const navigate = useNavigate()
 
@@ -76,6 +77,7 @@ const LocationPage = () => {
 
     useEffect(()=>{
         console.log('location list \n',locationList)
+        console.log(location)
     },[locationList])
 
 
@@ -142,7 +144,10 @@ const LocationPage = () => {
                                                         <Box>
                                                             <IconButton 
                                                                 size='small'
-                                                                onClick={() => openLocationDetail(false)}
+                                                                onClick={() =>{ 
+                                                                    openLocationDetail(false)
+                                                                    setLocationData(location)
+                                                                }}
                                                             >
                                                                 <EditTwoToneIcon fontSize='inherit' />
                                                             </IconButton>
@@ -170,6 +175,7 @@ const LocationPage = () => {
                         <LocationDetail 
                             closeLocationDetail={closeLocationDetail} 
                             isAdd={locationType}
+                            location={locationData}
                         />
                     </Box>
                 </Slide>
