@@ -16,7 +16,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 
 const token = import.meta.env.VITE_MAPBOX_TOKEN;
 
-const LocationDetail = ({ closeLocationDetail, isAdd }) => {
+const LocationDetail = ({ closeLocationDetail, isAdd, location }) => {
     const [locName, setLocName] = useState("")
     const [address, setAddress] = useState("")
     const [longitude, setLongitude] = useState(0)
@@ -87,6 +87,7 @@ const LocationDetail = ({ closeLocationDetail, isAdd }) => {
             size="small"
             sx={{ mb: 2, width: '100%' }}
             onChange={locNameChange}
+            value={!isAdd ? location.locName : ""}
         />
 
         <Autocomplete
@@ -156,7 +157,7 @@ const LocationDetail = ({ closeLocationDetail, isAdd }) => {
                 onClick={handleSubmit}
                 sx={{ ml: 1 }}
             >
-                Add
+                {isAdd ? "Add" : "Edit"}
             </Button>
         </Box>
        
