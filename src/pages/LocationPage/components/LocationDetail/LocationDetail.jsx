@@ -13,6 +13,7 @@ import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { FaLocationDot } from "react-icons/fa6";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useAuth0 } from '@auth0/auth0-react';
+import { useNavigate } from 'react-router';
 
 const token = import.meta.env.VITE_MAPBOX_TOKEN;
 
@@ -27,6 +28,7 @@ const LocationDetail = ({ closeLocationDetail, isAdd, location }) => {
         zoom: 15,
       });
     const {user} = useAuth0()
+    const navigate = useNavigate()
 
     const sampleLocations = [
         { city: 'Manila', state: 'Metro Manila' },
@@ -47,15 +49,31 @@ const LocationDetail = ({ closeLocationDetail, isAdd, location }) => {
       }
 
       const handleSubmit = () => {
-        const data = {
-            userName: user.email,
-            locName: locName,
-            address: address,
-            latitude: latitude,
-            longitude: longitude
+        if(isAdd){
+            const data = {
+                userName: user.email,
+                locName: locName,
+                address: address,
+                latitude: latitude,
+                longitude: longitude
+            }
+            axios.post('http://localhost:5174/api/users/loc/add', data)
+            .then((res)=>console.log(res))
+        }else{
+            const data = {
+                username: user.email,
+                prevLocName: location.locName,
+                newLocName: locName,
+                address: address,
+                latitude: latitude,
+                longitude: longitude
+            }
+            axios.post('http://localhost:5174/api/users/loc/edit',data)
+            .then(res => {
+                console.log(res.data)
+                navigate(-1)
+            })
         }
-        axios.post('http://localhost:5174/api/users/loc/add', data)
-        .then((res)=>console.log(res))
     }
 
       useEffect(() => {
@@ -87,7 +105,6 @@ const LocationDetail = ({ closeLocationDetail, isAdd, location }) => {
             size="small"
             sx={{ mb: 2, width: '100%' }}
             onChange={locNameChange}
-            value={!isAdd ? location.locName : ""}
         />
 
         <Autocomplete
