@@ -97,29 +97,29 @@ userRoute.post('/users/loc/select',async (req,res)=>{
         console.log("Failed to select Location");
         console.log(err)
     }
+})
 
-    userRoute.post('/users/loc/edit',async (req,res)=>{
-        try{
-            userData = await userModel.findOne({username: req.body.username})
+userRoute.post('/users/loc/edit',async (req,res)=>{
+    try{
+        const userData = await userModel.findOne({username: req.body.username})
 
-            for(let i in userData.location){
-                if(userData.location[i].locName === req.body.prevLocName){
-                    userData.location[i].locName = req.body.newLocName
-                    userData.location[i].address = req.body.address
-                    userData.location[i].latitude = req.body.latitude
-                    userData.location[i].longitude = req.body.longitude
-                    break
-                }
+        for(let i in userData.location){
+            if(userData.location[i].locName === req.body.prevLocName){
+                userData.location[i].locName = req.body.newLocName
+                userData.location[i].address = req.body.address
+                userData.location[i].latitude = req.body.latitude
+                userData.location[i].longitude = req.body.longitude
+                break
             }
-
-            const saveData = await userData.save()
-            res.send(saveData)
-        }catch{
-            res.status(500).json({ message: "Edit Location Request Failed" , err });
-            console.log("Failed to edit Location");
-            console.log(err)
         }
-    })
+
+        const saveData = await userData.save()
+        res.send(saveData)
+    }catch(err){
+        res.status(500).json({ message: "Edit Location Request Failed" , err });
+        console.log("Failed to edit Location");
+        console.log(err)
+    }
 })
 
 
