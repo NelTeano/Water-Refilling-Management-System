@@ -18,8 +18,8 @@ import { useNavigate } from 'react-router';
 const token = import.meta.env.VITE_MAPBOX_TOKEN;
 
 const LocationDetail = ({ closeLocationDetail, isAdd, location }) => {
-    const [locName, setLocName] = useState("")
-    const [address, setAddress] = useState("")
+    const [locName, setLocName] = useState(!isAdd ? location.locName : "")
+    const [address, setAddress] = useState(!isAdd ? location.address : "")
     const [longitude, setLongitude] = useState(0)
     const [latitude, setLatitude] = useState(0)
     const [viewport, setViewport] = useState({
@@ -90,6 +90,7 @@ const LocationDetail = ({ closeLocationDetail, isAdd, location }) => {
           (error) => console.log(error),
           { enableHighAccuracy: true }
         );
+        console.log(location.address)
       }, []);
 
   return (
@@ -105,6 +106,7 @@ const LocationDetail = ({ closeLocationDetail, isAdd, location }) => {
             size="small"
             sx={{ mb: 2, width: '100%' }}
             onChange={locNameChange}
+            defaultValue={location.locName}
         />
 
         <Autocomplete

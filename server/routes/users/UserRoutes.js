@@ -49,6 +49,7 @@ userRoute.post('/users/new', async (req, res) => {
     
 });
 
+//POST METHOD TO ADD NEW LOCATION
 userRoute.post('/users/loc/add',async (req,res)=>{
     try{
         const userData = await userModel.findOne({username:req.body.userName})
@@ -74,6 +75,8 @@ userRoute.post('/users/loc/add',async (req,res)=>{
     }
 })
 
+
+//POST METHOD TO SELECT LOCATION
 userRoute.post('/users/loc/select',async (req,res)=>{   
     try{
         const userData = await userModel.findOne({username:req.body.userName})
@@ -99,6 +102,7 @@ userRoute.post('/users/loc/select',async (req,res)=>{
     }
 })
 
+//POST METHOD TO EDIT LOCATION
 userRoute.post('/users/loc/edit',async (req,res)=>{
     try{
         const userData = await userModel.findOne({username: req.body.username})
@@ -109,7 +113,9 @@ userRoute.post('/users/loc/edit',async (req,res)=>{
                 userData.location[i].address = req.body.address
                 userData.location[i].latitude = req.body.latitude
                 userData.location[i].longitude = req.body.longitude
-                break
+                userData.location[i].isSelected = true
+            }else{
+                userData.location[i].isSelected = false
             }
         }
 
