@@ -12,6 +12,8 @@ import {
     Grid,
     Divider,
     Button,
+    Radio,
+    RadioGroup,
 } from '@mui/material';
 import {
     RemoveTwoTone as RemoveTwoToneIcon,
@@ -148,64 +150,95 @@ const OrderPage = () => {
             })
         }
     },[user])
+
+    const bulk = false;  // this should be replace by the user option (Single or Bulk)
     
+    const [selectedCard, setSelectedCard] = useState('');
+
+    const handleCardChange = (event) => {
+      setSelectedCard(event.target.value);
+    };
 
     return (
         user && !isLoading &&
         <Container>
             <Typography mt={10}>Order Details</Typography>
-            {orders.map((item, index) => (
-                <Card key={item.id} sx={{ mb: 2, mt: 2 }}>
-                    <CardContent
-                        sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'space-between',
-                        }}
-                    >
-                        <Box>
-                            <Typography variant='subtitle2'>
-                                {item.name}
-                            </Typography>
-                            {item.description && (
-                                <Typography color='textSecondary' fontSize='.75rem'>
-                                    {item.description}
-                                </Typography>
-                            )}
-                        </Box>
-                        <Box
+
+            {bulk ? (
+                orders.map((item, index) => (
+                    <Card key={item.id} sx={{ mb: 2, mt: 2 }}>
+                        <CardContent
                             sx={{
                                 display: 'flex',
                                 alignItems: 'center',
-                                justifyContent: 'center',
+                                justifyContent: 'space-between',
                             }}
                         >
-                            <IconButton 
-                                onClick={() => handleDecrement(index)}
+                            <Box>
+                                <Typography variant='subtitle2'>
+                                    {item.name}
+                                </Typography>
+                                {item.description && (
+                                    <Typography color='textSecondary' fontSize='.75rem'>
+                                        {item.description}
+                                    </Typography>
+                                )}
+                            </Box>
+                            <Box
                                 sx={{
-                                    color: item.qty === 0 ? 'textSecondary' : '#099DBD',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
                                 }}
                             >
-                                <RemoveTwoToneIcon />
-                            </IconButton>
-                            <Typography
-                                fontWeight={600}
-                                color={item.qty === 0 ? 'textSecondary' : 'inherit'}
-                            >
-                                {item.qty}
-                            </Typography>
-                            <IconButton 
-                                onClick={() => handleIncrement(index)}
-                                sx={{ color: '#099DBD' }}
-                            >
-                                <AddTwoToneIcon />
-                            </IconButton>
-                        </Box>
-                    </CardContent>
-                </Card>
-            ))}
+                                <IconButton 
+                                    onClick={() => handleDecrement(index)}
+                                    sx={{
+                                        color: item.qty === 0 ? 'textSecondary' : '#099DBD',
+                                    }}
+                                >
+                                    <RemoveTwoToneIcon />
+                                </IconButton>
+                                <Typography
+                                    fontWeight={600}
+                                    color={item.qty === 0 ? 'textSecondary' : 'inherit'}
+                                >
+                                    {item.qty}
+                                </Typography>
+                                <IconButton 
+                                    onClick={() => handleIncrement(index)}
+                                    sx={{ color: '#099DBD' }}
+                                >
+                                    <AddTwoToneIcon />
+                                </IconButton>
+                            </Box>
+                        </CardContent>
+                    </Card>
+                ))
+            ) : (
+                <Box sx={{ mt: 2 }}>
+                    <Typography variant='subtitle2'>Gallon Type</Typography>
+                    <FormGroup sx={{ ml: 2 }}>
+                        <FormControlLabel
+                        value="slim"
+                        control={<Radio />}
+                        label="Slim"
+                        checked={selectedCard === 'slim'}
+                        onChange={handleCardChange}
+                        />
+                
+                        <FormControlLabel
+                        value="round"
+                        control={<Radio />}
+                        label="Round"
+                        checked={selectedCard === 'round'}
+                        onChange={handleCardChange}
+                        />
+                    </FormGroup>
+                </Box>
+            )}
 
-            <FormGroup>
+            <FormGroup sx={{ mt: 2 }}>
                 <FormControlLabel
                     sx={{ color: '#3B3B3B' }}
                     control={
