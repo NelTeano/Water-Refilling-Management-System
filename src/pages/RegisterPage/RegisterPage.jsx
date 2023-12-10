@@ -2,13 +2,14 @@ import { useAuth0 } from "@auth0/auth0-react"
 import axios from "axios"
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import ReactMapGL, { Marker, Popup } from "react-map-gl";
+import ReactMapGL, { Marker } from "react-map-gl";
 import { FaLocationDot } from "react-icons/fa6";
 import "mapbox-gl/dist/mapbox-gl.css";
+import { Box, Button, Container, TextField, Typography } from "@mui/material";
 
 const token = import.meta.env.VITE_MAPBOX_TOKEN;
 
-export const RegisterPage = () => {
+const RegisterPage = () => {
     const [name, setName] = useState("")
     const [address, setAddress] = useState("")
     const [phone, setPhone] = useState("")
@@ -74,14 +75,32 @@ export const RegisterPage = () => {
     }
     
     return(
-        <div className="register">
-            <h3>Complete your profile</h3>
+        <Container className="register">
+            <Typography variant="h6" textAlign="center" mt={4} color="#5B7C8E">Complete your profile</Typography>
             <form onSubmit={handleSubmit}>
-                <input type="text" placeholder="Name" onChange={nameHandler}/><br />
-                <input type="text" placeholder="Phone Number" onChange={phoneHandler}/><br />
-                <input type="text" placeholder="Address" onChange={addressHandler}/><br />
+                <TextField 
+                    type="text" 
+                    label="Name" 
+                    size="small" 
+                    sx={{ width: '100%', mt: 2 }} 
+                    onChange={nameHandler}
+                />
+                <TextField 
+                    type="text" 
+                    label="Phone Number" 
+                    size="small" 
+                    sx={{ width: '100%', mt: 2 }} 
+                    onChange={phoneHandler}
+                />
+                <TextField 
+                    type="text" 
+                    label="Address" 
+                    size="small" 
+                    sx={{ width: '100%', mt: 2 }} 
+                    onChange={addressHandler}
+                />
                 
-                <div style={{ width: "50vw", height: "50vh" }}>
+                <div style={{ width: "100%", height: "50vh", marginTop: '2em' }}>
                     <ReactMapGL
                         {...viewport}
                         mapboxAccessToken={token}
@@ -121,8 +140,24 @@ export const RegisterPage = () => {
                         </Marker>
                     </ReactMapGL>
                 </div>
-            <input type="submit" />
+                <Box sx={{ float: 'right', mt: 2 }}>
+                    <Button 
+                        type="submit" 
+                        variant="outlined"
+                        sx={{ mr: 1.5 }}
+                    >
+                        Cancel
+                    </Button>
+                    <Button 
+                        type="submit" 
+                        variant="contained"
+                    >
+                        Submit
+                    </Button>
+                </Box>
             </form>
-        </div>
+        </Container>
     )
 }
+
+export default RegisterPage;

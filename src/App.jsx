@@ -6,10 +6,10 @@ import Home from './pages/Home'
 import DashboardPage from './pages/DashboardPage';
 import LocationPage from './pages/LocationPage';
 import OrderPage from './pages/OrderPage';
+import RegisterPage from './pages/RegisterPage';
 
 // STYLES
 import './App.css'
-import { RegisterPage } from './pages/RegisterPage/RegisterPage';
 
 function App() {
 
