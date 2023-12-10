@@ -76,86 +76,88 @@ const RegisterPage = () => {
     
     return(
         <Container className="register">
-            <Typography variant="h6" textAlign="center" mt={4} color="#5B7C8E">Complete your profile</Typography>
-            <form onSubmit={handleSubmit}>
-                <TextField 
-                    type="text" 
-                    label="Name" 
-                    size="small" 
-                    sx={{ width: '100%', mt: 2 }} 
-                    onChange={nameHandler}
-                />
-                <TextField 
-                    type="text" 
-                    label="Phone Number" 
-                    size="small" 
-                    sx={{ width: '100%', mt: 2 }} 
-                    onChange={phoneHandler}
-                />
-                <TextField 
-                    type="text" 
-                    label="Address" 
-                    size="small" 
-                    sx={{ width: '100%', mt: 2 }} 
-                    onChange={addressHandler}
-                />
-                
-                <div style={{ width: "100%", height: "50vh", marginTop: '2em' }}>
-                    <ReactMapGL
-                        {...viewport}
-                        mapboxAccessToken={token}
-                        width="100%"
-                        height="100%"
-                        mapStyle="mapbox://styles/mapbox/streets-v12"
-                        interactive={true}
-                        onDrag={(e) => {
-                            setViewport({
-                            longitude: e.viewState.longitude,
-                            latitude: e.viewState.latitude,
-                            });
-                        }}
-                    >
-                        <Marker
-                            latitude={latitude}
-                            longitude={longitude}
-                            offsetLeft={-3.5 * viewport.zoom}
-                            offsetRight={-7 * viewport.zoom}
-                            draggable={true}
-                            onDragEnd={(e) => {
-                            setLatitude(e.lngLat.lat);
-                            setLongitude(e.lngLat.lng);
-                            console.log(e.lngLat.lat);
-                            console.log(e.lngLat.lng);
+            <Container>
+                <Typography variant="h6" textAlign="center" mt={4} color="#5B7C8E">Complete your profile</Typography>
+                <form onSubmit={handleSubmit}>
+                    <TextField 
+                        type="text" 
+                        label="Name" 
+                        size="small" 
+                        sx={{ width: '100%', mt: 2 }} 
+                        onChange={nameHandler}
+                    />
+                    <TextField 
+                        type="text" 
+                        label="Phone Number" 
+                        size="small" 
+                        sx={{ width: '100%', mt: 2 }} 
+                        onChange={phoneHandler}
+                    />
+                    <TextField 
+                        type="text" 
+                        label="Address" 
+                        size="small" 
+                        sx={{ width: '100%', mt: 2 }} 
+                        onChange={addressHandler}
+                    />
+                    
+                    <div style={{ width: "100%", height: "50vh", marginTop: '2em' }}>
+                        <ReactMapGL
+                            {...viewport}
+                            mapboxAccessToken={token}
+                            width="100%"
+                            height="100%"
+                            mapStyle="mapbox://styles/mapbox/streets-v12"
+                            interactive={true}
+                            onDrag={(e) => {
+                                setViewport({
+                                longitude: e.viewState.longitude,
+                                latitude: e.viewState.latitude,
+                                });
                             }}
                         >
-                            <div>
-                                <FaLocationDot
-                                    style={{
-                                    height: "40px",
-                                    width: "auto",
-                                    color: "red",
-                                    }}
-                                />
-                            </div>
-                        </Marker>
-                    </ReactMapGL>
-                </div>
-                <Box sx={{ float: 'right', mt: 2 }}>
-                    <Button 
-                        type="submit" 
-                        variant="outlined"
-                        sx={{ mr: 1.5 }}
-                    >
-                        Cancel
-                    </Button>
-                    <Button 
-                        type="submit" 
-                        variant="contained"
-                    >
-                        Submit
-                    </Button>
-                </Box>
-            </form>
+                            <Marker
+                                latitude={latitude}
+                                longitude={longitude}
+                                offsetLeft={-3.5 * viewport.zoom}
+                                offsetRight={-7 * viewport.zoom}
+                                draggable={true}
+                                onDragEnd={(e) => {
+                                setLatitude(e.lngLat.lat);
+                                setLongitude(e.lngLat.lng);
+                                console.log(e.lngLat.lat);
+                                console.log(e.lngLat.lng);
+                                }}
+                            >
+                                <div>
+                                    <FaLocationDot
+                                        style={{
+                                        height: "40px",
+                                        width: "auto",
+                                        color: "red",
+                                        }}
+                                    />
+                                </div>
+                            </Marker>
+                        </ReactMapGL>
+                    </div>
+                    <Box sx={{ float: 'right', mt: 2 }}>
+                        <Button 
+                            type="submit" 
+                            variant="outlined"
+                            sx={{ mr: 1.5 }}
+                        >
+                            Cancel
+                        </Button>
+                        <Button 
+                            type="submit" 
+                            variant="contained"
+                        >
+                            Submit
+                        </Button>
+                    </Box>
+                </form>
+            </Container>
         </Container>
     )
 }
