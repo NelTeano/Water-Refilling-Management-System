@@ -176,7 +176,7 @@ const LocationDetail = ({ closeLocationDetail, isAdd, location }) => {
                 onClick={handleSubmit}
                 sx={{ ml: 1 }}
             >
-                {isAdd ? "Add" : "Edit"}
+                {isAdd ? "Add" : "Save"}
             </Button>
         </Box>
        

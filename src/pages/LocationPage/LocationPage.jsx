@@ -159,10 +159,19 @@ const LocationPage = () => {
                                     })}
                                 </RadioGroup>
                             </FormControl>
+                        </Box>
+                        <Box sx={{ float: 'right', mt: 6 }}>
+                            <Button 
+                                size='small'
+                                variant='text'
+                                onClick={handleSubmit}
+                            >
+                                Cancel
+                            </Button>
                             <Button 
                                 size='small'
                                 variant='contained'
-                                sx={{ ml: 1 }}
+                                sx={{ ml: 2 }}
                                 onClick={handleSubmit}
                             >
                                 Submit
