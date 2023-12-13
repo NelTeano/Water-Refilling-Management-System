@@ -80,6 +80,7 @@ const RegisterPage = () => {
                 <Typography variant="h6" textAlign="center" mt={4} color="#5B7C8E">Complete your profile</Typography>
                 <form onSubmit={handleSubmit}>
                     <TextField 
+                        required
                         type="text" 
                         label="Name" 
                         size="small" 
@@ -87,6 +88,7 @@ const RegisterPage = () => {
                         onChange={nameHandler}
                     />
                     <TextField 
+                        required
                         type="text" 
                         label="Phone Number" 
                         size="small" 
@@ -94,6 +96,7 @@ const RegisterPage = () => {
                         onChange={phoneHandler}
                     />
                     <TextField 
+                        required
                         type="text" 
                         label="Address" 
                         size="small" 

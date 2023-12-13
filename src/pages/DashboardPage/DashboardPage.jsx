@@ -10,6 +10,7 @@ import { OrderType, OrderStatus } from './components'
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 
 const DashboardPage = () => {
@@ -76,9 +77,14 @@ const DashboardPage = () => {
                                 justifyContent: 'space-between'
                             }}
                         >
-                            <Box>
-                                <Typography sx={{ fontSize: '.8rem', color: '#5B7C8E', fontWeight: 500 }}>{selectedLoc.locName}</Typography>
-                                <Typography sx={{ fontSize: '.7rem', color: '#91AAB8' }}>{selectedLoc.address}</Typography>
+                            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                                <Box mr={1}>
+                                    <LocationOnIcon sx={{ color: '#4690A7' }} />
+                                </Box>
+                                <Box>
+                                    <Typography sx={{ fontSize: '.8rem', color: '#5B7C8E', fontWeight: 600 }}>{selectedLoc.locName}</Typography>
+                                    <Typography sx={{ fontSize: '.7rem', color: '#91AAB8' }}>{selectedLoc.address}</Typography>
+                                </Box>
                             </Box>
                             <Box color='#5B7C8E'>
                                 <Button 

@@ -5,6 +5,12 @@ import {
     CardContent,
     Grid,
 } from '@mui/material'
+import {
+    Recommend as RecommendIcon,
+    HourglassBottom as HourglassBottomIcon,
+    Error as ErrorIcon,
+    CheckCircle as CheckCircleIcon,
+} from '@mui/icons-material';
 
 const OrderStatus = ({pending}) => {
     const sampleOrderStatus = {
@@ -21,16 +27,22 @@ const OrderStatus = ({pending}) => {
             <Grid item xs={6}>
                 <Card>
                     <CardContent>
-                        <Typography variant='h6'>{sampleOrderStatus.confirmed}</Typography>
-                        <Typography sx={{ color: 'GrayText', fontSize: '.80rem' }}>Confirmed</Typography>
+                        <Typography sx={{ color: 'GrayText', fontSize: '.80rem', display: 'flex', alignItems: 'center' }}>
+                            <RecommendIcon sx={{ color: '#4690A7', width: '.75em', height: '.75em', mr: .5 }} />
+                            Confirmed
+                        </Typography>
+                        <Typography variant='h5' sx={{ ml: 3 }}>{sampleOrderStatus.confirmed}</Typography> 
                     </CardContent>
                 </Card>
             </Grid>
             <Grid item xs={6}>
                 <Card>
                     <CardContent>
-                        <Typography variant='h6'>{sampleOrderStatus.pending}</Typography>
-                        <Typography sx={{ color: 'GrayText', fontSize: '.80rem' }}>Pending</Typography>
+                        <Typography sx={{ color: 'GrayText', fontSize: '.80rem', display: 'flex', alignItems: 'center' }}>
+                            <HourglassBottomIcon sx={{ color: '#EBA132', width: '.75em', height: '.75em', mr: .5 }} />
+                            Pending
+                        </Typography>
+                        <Typography variant='h5' sx={{ ml: 3 }}>{sampleOrderStatus.pending}</Typography>
                     </CardContent>
                 </Card>
             </Grid>
@@ -39,16 +51,22 @@ const OrderStatus = ({pending}) => {
             <Grid item xs={6}>
                 <Card>
                     <CardContent>
-                        <Typography variant='h6'>{sampleOrderStatus.rejected}</Typography>
-                        <Typography sx={{ color: 'GrayText', fontSize: '.80rem' }}>Rejected</Typography>
+                        <Typography sx={{ color: 'GrayText', fontSize: '.80rem', display: 'flex', alignItems: 'center' }}>
+                            <ErrorIcon sx={{ color: '#EB3232', width: '.75em', height: '.75em', mr: .5 }} />
+                            Rejected
+                        </Typography>
+                        <Typography variant='h5' sx={{ ml: 3 }}>{sampleOrderStatus.rejected}</Typography>
                     </CardContent>
                 </Card>
             </Grid>
             <Grid item xs={6}>
                 <Card>
                     <CardContent>
-                        <Typography variant='h6'>{sampleOrderStatus.completed}</Typography>
-                        <Typography sx={{ color: 'GrayText', fontSize: '.80rem' }}>Completed</Typography>
+                        <Typography sx={{ color: 'GrayText', fontSize: '.80rem', display: 'flex', alignItems: 'center' }}>
+                            <CheckCircleIcon sx={{ color: '#13D231', width: '.75em', height: '.75em', mr: .5 }} />
+                            Completed
+                        </Typography>
+                        <Typography variant='h5' sx={{ ml: 3 }}>{sampleOrderStatus.completed}</Typography>
                     </CardContent>
                 </Card>
             </Grid>
