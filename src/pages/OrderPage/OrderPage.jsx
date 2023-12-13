@@ -112,7 +112,7 @@ const OrderPage = () => {
             if (response.ok) {
                 const data = await response.json();
                 console.log("Order Successful" , data);
-                navigate(-1)
+                navigate(`/client-dashboard/order/${orderType}/receipt`)
             } else {
                 console.error('Server responded with an error:', response.statusText);
             }
