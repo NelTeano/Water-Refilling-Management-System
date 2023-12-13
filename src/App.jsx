@@ -33,7 +33,7 @@ function App() {
         element: LocationPage
       },
       {
-        pathname: "/client-dashboard/order",
+        pathname: "/client-dashboard/order/:orderType",
         element: OrderPage
       },
       {

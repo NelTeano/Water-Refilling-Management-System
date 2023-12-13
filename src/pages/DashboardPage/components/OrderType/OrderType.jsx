@@ -5,6 +5,7 @@ import {
     CardMedia,
     Typography,
     Box,
+    CardActionArea,
 } from '@mui/material';
 import bulkImg from '../../../../assets/images/bulk_img.jpg'
 import singleImg from '../../../../assets/images/single_img.jpg'
@@ -19,28 +20,32 @@ const OrderType = () => {
         <Grid container spacing={2} mt={.5}>
             <Grid item xs={6}>
                 <Card>
-                    <CardMedia
-                        sx={{ height: 140 }}
-                        image={singleImg}
-                       
-                        onClick = {()=>navigate('/client-dashboard/order')}
-                    />
-                    <CardContent>
-                        <Typography>Single Order</Typography>
-                    </CardContent>
+                    <CardActionArea>
+                        <CardMedia
+                            sx={{ height: 140 }}
+                            image={singleImg}
+                        
+                            onClick = {()=>navigate('/client-dashboard/order/single')}
+                        />
+                        <CardContent>
+                            <Typography>Single Order</Typography>
+                        </CardContent>
+                    </CardActionArea>
                 </Card>
             </Grid>
             <Grid item xs={6}>
                 <Card>
-                    <CardMedia
-                        sx={{ height: 140 }}
-                        image={bulkImg}
-                      
-                        onClick = {()=>navigate('/client-dashboard/order')}
-                    />
-                    <CardContent>
-                        <Typography>Bulk Order</Typography>
-                    </CardContent>
+                    <CardActionArea>
+                        <CardMedia
+                            sx={{ height: 140 }}
+                            image={bulkImg}
+                        
+                            onClick = {()=>navigate('/client-dashboard/order/bulk')}
+                        />
+                        <CardContent>
+                            <Typography>Bulk Order</Typography>
+                        </CardContent>
+                    </CardActionArea>
                 </Card>
             </Grid>
         </Grid>

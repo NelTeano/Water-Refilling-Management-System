@@ -3,6 +3,7 @@ import {
     Box,
     Card,
     CardContent,
+    CardMedia,
     Container,
     IconButton,
     Typography,
@@ -14,6 +15,7 @@ import {
     Button,
     Radio,
     RadioGroup,
+    CardActionArea,
 } from '@mui/material';
 import {
     RemoveTwoTone as RemoveTwoToneIcon,
@@ -22,12 +24,26 @@ import {
 import { useAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
+import { useParams } from 'react-router-dom';
+import bulkImg from '../../assets/images/bulk_img.jpg'
+import singleImg from '../../assets/images/single_img.jpg'
 
 const OrderPage = () => {
     const {user} = useAuth0()
     const navigate = useNavigate()
+    const { orderType } = useParams()
+    const [bulk, setBulk] = useState()
     const [location, setLocation] = useState()
     const [isLoading, setIsLoading] = useState(true)
+
+    useEffect(()=>{
+        if(orderType === "single"){
+            setBulk(false)
+        }else if(orderType === "bulk"){
+            setBulk(true)
+        }
+    },[orderType])
+
 
     // SETTING UP THE VALUES ORDERS OF ROUND AND SLIM
     const [orders, setOrders] = useState([
@@ -150,14 +166,19 @@ const OrderPage = () => {
             })
         }
     },[user])
+  
+    const [typeSlim, setTypeSlim] = useState();
+    const [typeRound, setTypeRound] = useState();
 
-    const bulk = false;  // this should be replace by the user option (Single or Bulk)
-    
-    const [selectedCard, setSelectedCard] = useState('');
+    const selectSlim = () => {
+        setTypeSlim(true);
+        setTypeRound(false);
+    }
 
-    const handleCardChange = (event) => {
-      setSelectedCard(event.target.value);
-    };
+    const selectRound = () => {
+        setTypeRound(true);
+        setTypeSlim(false);
+    }
 
     return (
         user && !isLoading &&
@@ -218,7 +239,7 @@ const OrderPage = () => {
             ) : (
                 <Box sx={{ mt: 2 }}>
                     <Typography variant='subtitle2'>Gallon Type</Typography>
-                    <FormGroup sx={{ ml: 2 }}>
+                    {/* <FormGroup sx={{ ml: 2 }}>
                         <FormControlLabel
                         value="slim"
                         control={<Radio />}
@@ -234,7 +255,36 @@ const OrderPage = () => {
                         checked={selectedCard === 'round'}
                         onChange={handleCardChange}
                         />
-                    </FormGroup>
+                    </FormGroup> */}
+                    
+                    <Grid container spacing={2} mt={.5}>
+                        <Grid item xs={6}>
+                            <Card sx={{ background: typeSlim ? '#C0F0FF' : '#FFF' }}>
+                                <CardActionArea onClick={selectSlim}>
+                                    <CardMedia
+                                        sx={{ height: 140,  }}
+                                        image={singleImg}
+                                    />
+                                    <CardContent>
+                                        <Typography>Slim</Typography>
+                                    </CardContent>
+                                </CardActionArea>
+                            </Card>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Card sx={{ background: typeRound ? '#C0F0FF' : '#FFF' }}>
+                                <CardActionArea onClick={selectRound}>
+                                    <CardMedia
+                                        sx={{ height: 140 }}
+                                        image={bulkImg}
+                                    />
+                                    <CardContent>
+                                        <Typography>Round</Typography>
+                                    </CardContent>
+                                </CardActionArea>
+                            </Card>
+                        </Grid>
+                    </Grid>
                 </Box>
             )}
 
