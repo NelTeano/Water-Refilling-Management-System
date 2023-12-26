@@ -38,7 +38,7 @@ function App() {
         element: OrderPage
       },
       {
-        pathname: "/client-dashboard/order/receipt",
+        pathname: "/receipt",
         element: ReceiptPage
       },
       {
