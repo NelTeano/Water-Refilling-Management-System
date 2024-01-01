@@ -8,6 +8,7 @@ import LocationPage from './pages/LocationPage';
 import OrderPage from './pages/OrderPage';
 import RegisterPage from './pages/RegisterPage';
 import ReceiptPage from './pages/ReceiptPage';
+import OrderStatusPage from './pages/OrderStatusPage';
 
 // STYLES
 import './App.css'
@@ -32,6 +33,10 @@ function App() {
       {
         pathname: "/client-dashboard/location",
         element: LocationPage
+      },
+      {
+        pathname: "/client-dashboard/order-status",
+        element: OrderStatusPage
       },
       {
         pathname: "/client-dashboard/order/:orderType",
