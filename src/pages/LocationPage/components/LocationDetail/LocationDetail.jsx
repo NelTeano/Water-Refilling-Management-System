@@ -48,7 +48,7 @@ const LocationDetail = ({ closeLocationDetail, isAdd, location }) => {
         setAddress(e.target.value)
       }
 
-      const handleSubmit = () => {
+      const handleSubmit = async () => {
         if(isAdd){
             const data = {
                 userName: user.email,
@@ -57,8 +57,10 @@ const LocationDetail = ({ closeLocationDetail, isAdd, location }) => {
                 latitude: latitude,
                 longitude: longitude
             }
-            axios.post('http://localhost:5174/api/users/loc/add', data)
-            .then((res)=>console.log(res))
+            const postData = await axios.post('http://localhost:5174/api/users/loc/add', data)
+            if(postData.data){
+                navigate("/client-dashboard")
+            }
         }else{
             const data = {
                 username: user.email,
@@ -90,8 +92,11 @@ const LocationDetail = ({ closeLocationDetail, isAdd, location }) => {
           (error) => console.log(error),
           { enableHighAccuracy: true }
         );
-        console.log(location.address)
       }, []);
+
+      useEffect(()=>{
+        console.log(address)
+      },[address])
 
   return (
     <Container>
@@ -106,7 +111,7 @@ const LocationDetail = ({ closeLocationDetail, isAdd, location }) => {
             size="small"
             sx={{ mb: 2, width: '100%' }}
             onChange={locNameChange}
-            defaultValue={location.locName}
+            defaultValue={isAdd ? "" : location.locName}
         />
 
         <Autocomplete
