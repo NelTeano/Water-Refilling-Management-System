@@ -65,36 +65,29 @@ export default function Home() {
                         <Box sx={{ display: { xs: 'none', md: 'block' }, width: '50%', mr: '2em' }}>
                             <img src={PeopleDrinkingWater} width={'100%'} />
                         </Box>
-                        <Box sx={{ display: 'flex', gap: '30px', flexDirection: 'column' }}>
-                            <Typography variant='h3'>
+                        <Box sx={{ display: 'flex', flexDirection: 'column', width: {xs: '100%', md: '70%'} }}>
+                            <Typography variant='h1'>
                                 Get Your Water Delivery at Your Doorstep
                             </Typography> 
                             <Typography variant='h6'>
                                 Visit our Website and get your purified water delievered fast.<br></br> Click the button below
                             </Typography> 
-                            <Box >
+                            <Box mt={2}>
                                 <Button 
+                                    variant='contained'
+                                    size='large'
                                     sx={{
-                                        bgcolor: '#34ACAC',
-                                        color: 'white',
-                                        borderRadius: '30px',
-                                        border: 'none',
-                                        padding: '10px 30px 10px 30px',
-                                        fontWeight: '700',
                                         mr: '30px'
                                     }}
                                 >
                                     Order Now
                                 </Button>
-                                <Button 
-                                    sx={{bgcolor: 'transparent',
-                                    color: 'black',
-                                    borderRadius: '30px',
-                                    border: 'solid black 1px',
-                                    fontWeight: '700',
-                                    padding: '10px 30px 10px 30px'
-                                    }}
-                                >How it&apos;s Work</Button>
+                                <Button
+                                    variant='outlined'
+                                    size='large'
+                                >
+                                    How it&apos;s Work
+                                </Button>
                             </Box>
                         </Box>
                     </Box>
@@ -102,7 +95,7 @@ export default function Home() {
             </Box>
             <Container>
                     <Box mt={5} mb={5}>
-                        <Typography variant='h4' sx={{ fontWeight: 500, textAlign: 'center' }}>
+                        <Typography variant='h2' sx={{ textAlign: 'center' }}>
                             Our Serve just for you
                         </Typography>
                         <Box 
@@ -119,16 +112,7 @@ export default function Home() {
                             {weServe.map((data, index) => (
                                 <Box key={index}>
                                     <img src={data.img} height={'120px'} width={'120px'} alt={data.title} />
-                                    <Typography 
-                                        sx={{
-                                            fontSize: "22px",
-                                            fontStyle: "normal",
-                                            fontWeight: "700",
-                                            lineHeight: "normal",
-                                            mb: '20px',
-                                            mt: '30px'
-                                        }}
-                                    >
+                                    <Typography variant='h4' mt={1.5} mb={1}>
                                         {data.title}
                                     </Typography>
                                     <Typography

@@ -152,11 +152,11 @@ export const Header = () => {
                         }}>
                         <Toolbar>
                             <Typography 
-                                variant="h5" 
+                                variant="h3" 
                                 component="div" 
-                                sx={{ flexGrow: 1, color: '#34ACAC', fontWeight:'700' }}
+                                sx={{ flexGrow: 1, color: '#2563EB', fontWeight:'700' }}
                             >
-                                HydroMaze
+                                Hydro<span style={{ color:'#60A5FA' }}>Maze</span>
                             </Typography>
                         </Toolbar>
 
