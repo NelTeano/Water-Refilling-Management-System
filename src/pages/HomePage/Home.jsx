@@ -1,32 +1,18 @@
-import React, { useState } from 'react';
-
 // COMPONENTS
 import { Header } from '../../components/Header.jsx';
 import { Footer } from '../../components/Footer.jsx';
-import { Link } from 'react-router-dom';
 
 import {
     Box,
-    AppBar,
-    Toolbar,
-    IconButton,
     Typography,
-    Drawer,
-    List,
-    ListItem,
-    ListItemButton,
-    ListItemText,
-    Divider,
-    ListItemIcon,
     Container,
-    Breadcrumbs,
     Button,
 } from '@mui/material';
 
 
 // IMAGES
-import PeopleDrinkingWater from '../../assets/images/PeopleDrinking.jpg'
-import CellphoneOrderPrototype from '../../assets/images/CellphoneOrder-Prototype.png'
+import PeopleDrinkingWater from '../../assets/images/PeopleDrinking-removebg-preview.png'
+import Background from '../../assets/images/background.png'
 
 import orderLogo from '../../assets/images/orderLogo.png'
 import deliveryLogo from '../../assets/images/deliveryLogo.png'
@@ -34,9 +20,6 @@ import qualityLogo from '../../assets/images/courierLogo.png'
 
 // STYLES
 import './homePage.css'
-
-import AuthButton from '../../components/AuthButton.jsx'
-
 
 export default function Home() {
     
@@ -62,45 +45,47 @@ export default function Home() {
     return (
         <>
             <Header/>
-                <Container maxWidth={false} disableGutters >
+            <Box 
+                sx={{ 
+                    backgroundImage: `url(${Background})`,
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: "cover", 
+                }}
+            >
+                <Container>
                     <Box 
                         sx={{
-                        display: 'flex',
-                        alignItems: 'center', 
-                        justifyContent: 'space-around',
-                        bgcolor: 'white',
-                        height: '500px',
-                        width: '100%',
-                    }}>
-                        <Box sx={{ display: { xs: 'none', md: 'block' } }}>
-                            <img src={PeopleDrinkingWater} height={'400px'} width={'400px'}></img>
+                            display: 'flex',
+                            alignItems: 'center', 
+                            justifyContent: 'space-between',
+                            width: '100%',
+                            height: '100vh'
+                        }}
+                    >
+                        <Box sx={{ display: { xs: 'none', md: 'block' }, width: '50%', mr: '2em' }}>
+                            <img src={PeopleDrinkingWater} width={'100%'} />
                         </Box>
-                        <Box sx={{ display: 'flex', gap: '30px', flexDirection: 'column'}}>
-                            <Typography 
-                                sx={{
-                                    fontSize: '40px'
-                                }}
-                            >
-                                Get Your Water<br></br> Delivery at Your<br></br>Doorstep
+                        <Box sx={{ display: 'flex', gap: '30px', flexDirection: 'column' }}>
+                            <Typography variant='h3'>
+                                Get Your Water Delivery at Your Doorstep
                             </Typography> 
-                            <Typography 
-                                sx={{
-                                    fontSize: '20px'
-                                }}
-                            >
+                            <Typography variant='h6'>
                                 Visit our Website and get your purified water delievered fast.<br></br> Click the button below
                             </Typography> 
                             <Box >
                                 <Button 
-                                    sx={{bgcolor: '#34ACAC',
-                                    color: 'white',
-                                    borderRadius: '30px',
-                                    border: 'none',
-                                    padding: '10px 30px 10px 30px',
-                                    fontWeight: '700',
-                                    mr: '30px'
+                                    sx={{
+                                        bgcolor: '#34ACAC',
+                                        color: 'white',
+                                        borderRadius: '30px',
+                                        border: 'none',
+                                        padding: '10px 30px 10px 30px',
+                                        fontWeight: '700',
+                                        mr: '30px'
                                     }}
-                                >Order Now</Button>
+                                >
+                                    Order Now
+                                </Button>
                                 <Button 
                                     sx={{bgcolor: 'transparent',
                                     color: 'black',
@@ -113,37 +98,23 @@ export default function Home() {
                             </Box>
                         </Box>
                     </Box>
-                    <Box  
-                        sx={{
-                        display: 'flex',
-                        alignItems: 'center', 
-                        gap: '50px',
-                        flexDirection: 'column',
-                        bgcolor: 'white',
-                        height: '500px',
-                        }} 
-                    >
-                        <Typography 
-                            sx={{
-                                textAlign: "center",
-                                fontSize: "45px",
-                                fontStyle: "normal",
-                                fontWeight: "700",
-                                lineHeight: "56px"
-                            }}
-                        >
+                </Container>
+            </Box>
+            <Container>
+                    <Box mt={5} mb={5}>
+                        <Typography variant='h4' sx={{ fontWeight: 500, textAlign: 'center' }}>
                             Our Serve just for you
                         </Typography>
                         <Box 
-                            
                             sx={{
                                 display: 'flex',
                                 flexDirection: 'row',
                                 justifyContent:  { xs: 'center', md: 'space-between' },
-                                alignItems: { xs: 'center', md: 'center' },
+                                alignItems: 'center',
                                 textAlign: 'center',
                                 gap: '100px',
                                 flexWrap: 'wrap',
+                                mt: 5,
                             }}>
                             {weServe.map((data, index) => (
                                 <Box key={index}>
@@ -174,7 +145,7 @@ export default function Home() {
                             ))}
                         </Box>
                     </Box>
-                </Container>
+            </Container>
             <Footer />
         </>
     )
