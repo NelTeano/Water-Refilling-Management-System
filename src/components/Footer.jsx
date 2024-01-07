@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom"
-import '../styles/footer.css'
+
 
 export const Footer = () => {
     return(
         <footer>
-            <div className="footer-wrapper">
+            {/* <div className="footer-wrapper">
                 <div className="footer-logo"><h1>Hydro<span>Maze</span></h1></div>
                 <div className="footer-links">
                     <div><Link>About Us</Link></div>
@@ -14,7 +14,7 @@ export const Footer = () => {
                 </div>
             </div>
             <hr />
-            <p>©2023 HydroMaze. All rights reserved.</p>
+            <p>©2023 HydroMaze. All rights reserved.</p> */}
         </footer>
     )
 }
