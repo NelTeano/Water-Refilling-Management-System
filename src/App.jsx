@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom'
 
 // PAGES
 import HeaderAuth from './components/Auth'
-import Home from './pages/Home'
+import Home from './pages/HomePage/Home'
 import DashboardPage from './pages/DashboardPage';
 import LocationPage from './pages/LocationPage';
 import OrderPage from './pages/OrderPage';
