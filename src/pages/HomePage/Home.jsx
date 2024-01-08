@@ -27,7 +27,8 @@ import {
 
 // IMAGES
 import PeopleDrinkingWater from '../../assets/images/PeopleDrinking.jpg'
-import CellphoneOrderPrototype from '../../assets/images/CellphoneOrder-Prototype.png'
+import PhoneOrderPrototype from '../../assets/images/orderPhone.png'
+import PhoneTrackPrototype from '../../assets/images/trackPhone.png'
 
 import orderLogo from '../../assets/images/orderLogo.png'
 import deliveryLogo from '../../assets/images/deliveryLogo.png'
@@ -64,8 +65,9 @@ export default function Home() {
         margin-top: 200px;
         z-index: 2;
 
-        @media screen and (max-width: 600px) {
-            height: 500px;
+
+        @media screen and (max-width: 900px) {
+            height: 320px;
             width: 200px;
             margin-top: 0px;
         }
@@ -134,7 +136,7 @@ export default function Home() {
                         gap: '50px',
                         flexDirection: 'column',
                         bgcolor: 'white',
-                        height: {xs: '1100px', md: '500px'},
+                        height: {xs: '800px', md: '500px'},
                         }} 
                     >
                         <Typography 
@@ -193,10 +195,12 @@ export default function Home() {
                         display: 'flex',
                         justifyContent: {xs: 'center', md: 'space-evenly'},
                         alignItems: 'center',
-                        flexWrap: 'wrap', 
-                        flexDirection: 'row',
+                        // flexWrap: 'wrap', 
+                        flexDirection: {xs: 'column-reverse',md: 'column-reverse', lg: 'row'},
+                        gap: {xs: '40px'},
                         bgcolor: '#F8F8FA',
-                        height: {xs: '1600px', md: '839px'},
+                        height: {xs: '800px',sm: '900px', md: '1200px',lg: '800px', xl: '800px'},
+                        mt: {xs: 40, md: 20}
                         }} 
                     >
                         <Box>
@@ -237,13 +241,15 @@ export default function Home() {
                                 }}
                             ></div>
                             </Box>
-                            <Img src={CellphoneOrderPrototype} height={'700px'} width={'400px'} />
+                            <Img src={PhoneOrderPrototype} height={'700px'} width={'400px'} />
                         </Box>
                         <Box 
                             sx={{
                                 display: 'flex',
                                 gap: '40px',
                                 flexDirection: 'column',
+                                alignItems: {xs: 'center'},
+                                textAlign: {xs: 'center'},
                                 position: 'relative',
                                 }}
                             >
@@ -259,7 +265,7 @@ export default function Home() {
                             </Typography>
                             <Typography
                                 sx={{
-                                    fontSize: {xs: '10px',md: '16px'},
+                                    fontSize: {xs: '15px',md: '19px'},
                                     fontStyle: 'normal',
                                     fontWeight: '400',
                                     lineWeight: '26px',
@@ -284,7 +290,135 @@ export default function Home() {
                             </Button>
                         </Box>
                     </Box>
+
                     <Box 
+                        sx={{
+                        display: 'flex',
+                        position: 'relative',
+                        justifyContent: {xs: 'center', md: 'space-evenly'},
+                        alignItems: 'center',
+                        // flexWrap: 'wrap', 
+                        flexDirection: {xs: 'column-reverse',md: 'column-reverse', lg: 'row', xl:'row-reverse'},
+                        gap: {xs: '40px'},
+                        bgcolor: '#F8F8FA',
+                        height: {xs: '800px',sm: '900px', md: '1200px',lg: '1200px', xl: '1200px'},
+                        mt: {xs: 30, md: 30,}
+                        }} 
+                    >
+                        <Box>
+                            <Box sx={{display: {xs: 'none', md: 'block'}}}>
+                            <div 
+                                style={{
+                                    position: 'absolute',
+                                    width: '493.566px',
+                                    height:' 710.475px',
+                                    transform: 'rotate(-45deg)',
+                                    borderRadius: '710.475px',
+                                    border: '1px solid #34ACAC',
+                                    zIndex: 1
+                                }}
+                            ></div>
+                            <div 
+                                style={{
+                                    position: 'absolute',
+                                    marginTop: '40px',
+                                    width: '493.566px',
+                                    height:' 710.475px',
+                                    transform: 'rotate(-45deg)',
+                                    borderRadius: '710.475px',
+                                    border: '1px solid #34ACAC',
+                                    zIndex: 1
+                                }}
+                            ></div>
+                            <div 
+                                style={{
+                                    position: 'absolute',
+                                    marginTop: '80px',
+                                    width: '493.566px',
+                                    height:' 710.475px',
+                                    transform: 'rotate(-45deg)',
+                                    borderRadius: '710.475px',
+                                    border: '1px solid #34ACAC',
+                                    zIndex: 1
+                                }}
+                            ></div>
+                            </Box>
+                            <Img src={PhoneTrackPrototype} height={'700px'} width={'400px'} />
+                        </Box>
+                        <Box 
+                            sx={{
+                                display: 'flex',
+                                gap: '40px',
+                                flexDirection: 'column',
+                                alignItems: {xs: 'center'},
+                                textAlign: {xs: 'center'},
+                                position: 'relative',
+                                }}
+                            >
+                            <Typography 
+                                sx={{ 
+                                    fontSize: { xs: '30px', md: '45px' },
+                                    fontStyle: 'normal',
+                                    fontWeight: '700',
+                                    lineHeight: '56px'
+                                }}
+                            >
+                                Real time tracking of your<br></br> Water
+                            </Typography>
+                            <Typography
+                                sx={{
+                                    fontSize: {xs: '15px',md: '19px'},
+                                    fontStyle: 'normal',
+                                    fontWeight: '400',
+                                    lineWeight: '26px',
+                                }}
+                            >
+                                Our Client Dashboard has tracking order feauture<br></br> so that you know when your purified water arrive in your households.
+                            </Typography>
+                            <Button 
+                                    sx={{bgcolor: '#34ACAC',
+                                    color: 'white',
+                                    borderRadius: '30px',
+                                    border: 'none',
+                                    padding: '10px 30px 10px 30px',
+                                    fontWeight: '700',
+                                    width: '180px',
+                                    mt: '20px',
+                                    position: 'relative',
+                                    zIndex: 3
+                                    }}
+                                >
+                                    Start Tracking
+                            </Button>
+                        </Box>
+                    </Box>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    {/* <Box 
                         sx={{
                         display: 'flex',
                         alignItems: 'center', 
@@ -297,7 +431,7 @@ export default function Home() {
                         }} 
                     >
                         asd
-                    </Box>
+                    </Box> */}
                 </Container>
             <Footer />
         </>
