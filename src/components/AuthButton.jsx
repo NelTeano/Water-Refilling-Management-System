@@ -1,6 +1,6 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useMediaQuery } from '@mui/material';
-
+import { Link } from "react-router-dom";
 export default function Authbutton() {
 
     const { loginWithRedirect, logout,  isAuthenticated } = useAuth0();
@@ -25,12 +25,14 @@ export default function Authbutton() {
     return (
         <>
             { isAuthenticated ? 
+            <Link to={'/client-dashboard'}>
                 <button 
                     style={isMobile ? {display: 'none'} : buttonStyle  }
-                    onClick={() => logout()} // ACTIVATE CALLBACK LOGOUT THE ACCOUNT AND REDIRECT
                 >
-                    Sign Out
-                </button> :
+                    Go to Dashboard
+                </button>
+            </Link>
+                :
                 <button 
                     style={isMobile ? {display: 'none'} : buttonStyle  }
                     onClick={() => loginWithRedirect()} // ACTIVATE CALLBACK LOGIN REDIRECTED TO AUTH0 LOGINPAGE
