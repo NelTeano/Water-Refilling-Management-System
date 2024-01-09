@@ -21,6 +21,21 @@ const orderSchema = mongoose.Schema(
             type: String,
             required: true
         },
+        location: {
+            longitude:{
+                type: Number,
+                required: true,
+            },
+            latitude: {
+                type: Number,
+                required: true,
+            },
+            address: {
+                type: String,
+                required: true
+            }
+
+        }
     },
     { timestamps: true }
 )

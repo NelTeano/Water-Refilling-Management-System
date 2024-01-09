@@ -114,7 +114,7 @@ const OrderStatusPage = () => {
                                         <TimelineConnector />
                                     </TimelineSeparator>
                                     <TimelineContent sx={{ py: '12px', px: 2 }}>
-                                        <Typography variant="h6" fontSize='1.1rem' component="span">
+                                        <Typography variant="h6" fontSize='1.1rem' component="span" color={'#0288d1'}>
                                             Order Picked-up.
                                         </Typography>
                                         <Typography variant="subtitle2">Rider has picked up your order.</Typography>
