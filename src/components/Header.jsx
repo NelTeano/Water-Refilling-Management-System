@@ -110,7 +110,7 @@ export const Header = () => {
                             <ListItemIcon>
                                 {renderIcon(<LogoutOutlined />)}
                             </ListItemIcon>
-                            <ListItemText primary="Logout" />
+                                <ListItemText sx={{textDecoration: 'underline'}} primary="Logout" />
                             </ListItemButton>
                         </ListItem>
                     </List>
@@ -149,7 +149,8 @@ export const Header = () => {
                 alignItems: 'center',
                 justifyContent: 'space-around', 
                 flexDirection:'row',
-            }}>
+            }}
+            >
             <Toolbar>
             <Typography 
                 variant="h5" 

@@ -21,11 +21,14 @@ import {
   ReceiptLongTwoTone as ReceiptLongTwoToneIcon,
   PendingActionsTwoTone as PendingActionsTwoToneIcon,
   HomeTwoTone as HomeTwoToneIcon,
+  LogoutOutlined as LogoutOutlined
 } from '@mui/icons-material'; 
 import { cloneElement } from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const AuthHeader = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { logout } = useAuth0();
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -93,6 +96,14 @@ const AuthHeader = () => {
             </ListItemButton>
           </ListItem>
         ))}
+        <ListItem disablePadding>
+          <ListItemButton onClick={()=> logout()}>
+          <ListItemIcon>
+              {renderIcon(<LogoutOutlined />)}
+          </ListItemIcon>
+          <ListItemText sx={{textDecoration: 'underline'}} primary="Logout" />
+          </ListItemButton>
+        </ListItem>
       </List>
     </Box>
   );

@@ -1,30 +1,17 @@
-import React, { useState } from 'react';
+
 
 // COMPONENTS
 import { Header } from '../../components/Header.jsx';
 import { Footer } from '../../components/Footer.jsx';
 import styled from '@emotion/styled';
-import { Link } from 'react-router-dom';
-import AuthButton from '../../components/AuthButton.jsx'
+import {  useNavigate } from 'react-router-dom';
 
 import {
     Box,
     Card,
-    CardActions, 
     CardContent,
-    AppBar,
-    Toolbar,
-    IconButton,
     Typography,
-    Drawer,
-    List,
-    ListItem,
-    ListItemButton,
-    ListItemText,
-    Divider,
-    ListItemIcon,
     Container,
-    Breadcrumbs,
     Button,
     Avatar
 } from '@mui/material';
@@ -47,6 +34,7 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 
 export default function Home() {
     
+    const navigate = useNavigate();
 
     const weServe = [
         {
@@ -82,7 +70,7 @@ export default function Home() {
         },
         {
             img: 'https://scontent.fmnl7-1.fna.fbcdn.net/v/t1.15752-9/403604104_7097711840250491_8070029901405509204_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeGhUJecRDd2nto7_2r2cxi4tf2aAt-HV2y1_ZoC34dXbAuw9oiT7aVZl6AoQXao95_sXwQJkUsxKRdP9bY-N_y5&_nc_ohc=JrIXiOqaMRAAX95dzI8&_nc_oc=AQlhX2ELGHKupC0ya3m1veFuHlzDpulnLB4mMXGFYJzLvb1E-2OkFkl0W1dMXzp_GV0&_nc_ht=scontent.fmnl7-1.fna&oh=03_AdSnl_JPfMx1QMU_RpU-OPObEIhglW-xUPE99iP03mD9Ag&oe=65C34CEA',
-            name: 'Jasper Lance Garret Alegre',
+            name: 'Jasper Alegre',
             desc: `The best quality of Water for you The best quality of Water for you`,
             starRating: 4,
         },
@@ -109,11 +97,11 @@ export default function Home() {
     const PosterImage = styled.img`
         height: 400px;
         width: 400px;
-        border-radius: 30px;
+        border-radius: 15px;
 
-        @media screen and (max-width: 900px) {
-            height: 320px;
-            width: 200px;
+        @media screen and (max-width: 768px) {
+            height: 200px;
+            width: 90%;
             margin-top: 0px;
         }
     `;
@@ -157,7 +145,7 @@ export default function Home() {
                                     color: 'white',
                                     borderRadius: '30px',
                                     border: 'none',
-                                    padding: '10px 30px 10px 30px',
+                                    padding: { xs: '10px 15px 10px 15px', md: '10px 30px 10px 30px' },
                                     fontWeight: '700',
                                     mr: '30px'
                                     }}
@@ -168,12 +156,15 @@ export default function Home() {
                                     borderRadius: '30px',
                                     border: 'solid black 1px',
                                     fontWeight: '700',
-                                    padding: { xs: '10px 20px 10px 20px', md: '10px 30px 10px 30px' }
+                                    padding: { xs: '10px 15px 10px 15px', md: '10px 30px 10px 30px' }
                                     }}
+
+                                    onClick={()=>{ navigate('/register')}}
                                 >How it&apos;s Work</Button>
                             </Box>
                         </Box>
                     </Box>
+                    
                     <Box  
                         sx={{
                         display: 'flex',
@@ -235,6 +226,7 @@ export default function Home() {
                             ))}
                         </Box>
                     </Box>
+
                     <Box 
                         sx={{
                         display: 'flex',
@@ -447,13 +439,11 @@ export default function Home() {
                         gap: '50px',
                         flexDirection: {xs: 'column', md: 'row'},
                         bgcolor: '#F8F8FA',
-                        height: { xl: '500px', md: '800px'},
+                        height: { xl: '700px', md: '800px'},
                         zIndex: 3,
+                        padding: {xs: '30px 0px 30px 0px'}
                         }} 
                     >
-                        <Box>
-                            <PosterImage  src={Poster} ></PosterImage>
-                        </Box>
                         <Box>
                             <Box 
                                 sx={{
@@ -468,7 +458,8 @@ export default function Home() {
                                             fontSize: { xs: '30px', md: '35px' },
                                             fontStyle: 'normal',
                                             fontWeight: '700',
-                                            lineHeight: '56px'
+                                            lineHeight: '56px',
+                                            textAlign: { xs: 'center', md: 'none' }
                                         }}
                                     >
                                         Reviews of Customers About<br></br> Our Product Quality 
@@ -512,23 +503,60 @@ export default function Home() {
                         </Box>
                     </Box>
 
-                    {/* <Box 
+                    <Box 
                         sx={{
                         display: 'flex',
                         alignItems: 'center', 
+                        justifyContent: {xs: 'center', md: 'space-around'},
                         position: 'relative',
                         gap: '50px',
-                        flexDirection: 'column',
-                        bgcolor: 'blue',
-                        height: '500px',
+                        flexDirection: 'row',
+                        bgcolor: 'white',
+                        height: { xs: '1200px', md: '900px',},
+                        mb:{xs: 15},
                         zIndex: 3,
+                        color: '#1B1C20',
+                        flexWrap: 'wrap',
+                        padding: {xs: '30px 0px 30px 0px'},
+                        textAlign: {xs: 'center'}
                         }} 
                     >
-                        NEXT 
-                    </Box> */}
-
+                        <Box>
+                            <PosterImage  src={Poster} ></PosterImage>
+                        </Box>
+                        <Box sx={{display: 'flex', flexDirection: 'column', gap: '30px'}}>   
+                            <Box>
+                                <Typography sx={{fontWeight: '700', fontSize:{xs: '17px',md:'20px'}}}>Hydrolab Approved</Typography>
+                                <Typography sx={{lineHeight: '26px', fontWeight: '400', fontSize:{xs: '15px',md:'18px'}}}>
+                                    At HydroMaze, our purified water is not just a claim but a certified assurance.<br></br>
+                                    We proudly announce that our water has been approved by the prestigious Hydrolab Company,<br></br>
+                                    a renowned authority in water quality assessment. This endorsement speaks volumes<br></br> 
+                                    about the high standards we maintain in ensuring the cleanliness and safety of our water.
+                                </Typography>
+                            </Box>
+                            <Box>
+                                <Typography sx={{fontWeight: '700', fontSize:{xs: '17px',md:'20px'}}}>Rigorous Testing</Typography>
+                                <Typography sx={{lineHeight: '26px', fontWeight: '400', fontSize:{xs: '15px',md:'18px'}}}>
+                                    Your safety is our top priority, and we leave no stone unturned in upholding the highest quality standards.<br></br>
+                                    Our water undergoes thorough testing twice a month, conducted by a reputable independent company.<br></br>
+                                    This regular and stringent testing guarantees that our water consistently<br></br>
+                                    meets the highest hygiene and safety benchmarks.
+                                </Typography>
+                            </Box>
+                            <Box>
+                                <Typography sx={{fontWeight: '700', fontSize:{xs: '17px',md:'20px'}}}>State-of-the-Art Filtration Mechanism</Typography>
+                                <Typography sx={{lineHeight: '26px', fontWeight: '400', fontSize:{xs: '15px',md:'18px'}}}>
+                                    What sets our water apart is the cutting-edge technology embedded in our purification process.<br></br>
+                                    Our advanced water purification machine boasts a five-stage filtration mechanism <br></br>
+                                    that meticulously removes impurities, contaminants, and unwanted particles.<br></br>
+                                    From sediment filtration to activated carbon purification, <br></br>
+                                    every step is designed to ensure that only the purest water reaches your glass.<br></br>
+                                </Typography>
+                            </Box>
+                        </Box>
+                    </Box>
+                    <Footer />
                 </Container>
-            <Footer />
         </>
     )
 }
