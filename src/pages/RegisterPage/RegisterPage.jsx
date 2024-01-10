@@ -20,8 +20,8 @@ const RegisterPage = () => {
         latitude: 0,
         zoom: 15,
     });
-    const [hasLocation, setHasLocation] = useState('');
-    const { user } = useAuth0();
+    const [hasLocation, setHasLocation] = useState([]);
+    const { user, isAuthenticated, isLoading } = useAuth0();
     const navigate = useNavigate()
 
 
@@ -44,23 +44,54 @@ const RegisterPage = () => {
 
     }, []);
 
+    // useEffect(()=>{
+    //     const checkUserLocation = async () => {
+    //         try {
+    //             if (user && user?.email && isAuthenticated) {
+    //                 const response = await fetch(
+    //                     `http://localhost:5174/api/users/${user.email}`
+    //                 );
+        
+    //                 if (!response.ok) {
+    //                     throw new Error(`HTTP error! Status: ${response.status}`);
+    //                 }
+        
+    //                 const result = await response.json();
+    //                 setHasLocation(result);
+    //                 console.log(hasLocation)
+    //             } 
+    //             // else {
+    //             //     console.error("User or user email is undefined.");
+    //             // }
+    //         } catch (error) {
+    //             console.error("Error fetching data:", error);
+    //         }
+    //     }
+
+    //    checkUserLocation();
+
+
+    //     if(hasLocation ){
+    //         navigate('/client-dashboard');
+    //     }
+
+    //     console.log(user.email)
+        
+    // },[user, user?.email])
+
+
     useEffect(()=>{
+
         const checkUserLocation = async () => {
+            
             try {
-                if (user && user.email) {
-                    const response = await fetch(
-                        `http://localhost:5174/api/users/${user.email}`
-                    );
-        
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! Status: ${response.status}`);
-                    }
-        
+                if(isAuthenticated && user && user?.email){
+                    const response = await fetch(`http://localhost:5174/api/users/${user.email}`);
                     const result = await response.json();
-                    setHasLocation(result);
-                    console.log(hasLocation)
-                } else {
-                    console.error("User or user email is undefined.");
+
+                    if(result){
+                        navigate('/client-dashboard');
+                    }
                 }
             } catch (error) {
                 console.error("Error fetching data:", error);
@@ -69,12 +100,8 @@ const RegisterPage = () => {
 
         checkUserLocation();
 
-        if(hasLocation){
-            navigate('/client-dashboard');
-        }
-        
-    },[user])
 
+    },[user,user?.email,isAuthenticated])
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -110,6 +137,8 @@ const RegisterPage = () => {
     }
     
     return(
+
+        isAuthenticated &&
         <Container className="register">
             <Container>
                 <Typography variant="h6" textAlign="center" mt={4} color="#5B7C8E">Complete your profile</Typography>
