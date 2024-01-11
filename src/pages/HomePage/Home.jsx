@@ -1,4 +1,4 @@
-
+import { useAuth0 } from '@auth0/auth0-react';
 
 // COMPONENTS
 import { Header } from '../../components/Header.jsx';
@@ -35,6 +35,7 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 export default function Home() {
     
     const navigate = useNavigate();
+    const { isAuthenticated, logout, loginWithRedirect } = useAuth0();
 
     const weServe = [
         {
@@ -147,8 +148,16 @@ export default function Home() {
                                     border: 'none',
                                     padding: { xs: '10px 15px 10px 15px', md: '10px 30px 10px 30px' },
                                     fontWeight: '700',
-                                    mr: '30px'
-                                    }}
+                                    mr: '30px',
+                                }}
+
+                                onClick={()=>{
+                                    if(isAuthenticated){
+                                        navigate('/register');
+                                    }else{
+                                        loginWithRedirect();
+                                    }
+                                }}
                                 >Order Now</Button>
                                 <Button 
                                     sx={{bgcolor: 'transparent',
@@ -159,8 +168,15 @@ export default function Home() {
                                     padding: { xs: '10px 15px 10px 15px', md: '10px 30px 10px 30px' }
                                     }}
 
-                                    onClick={()=>{ navigate('/register')}}
-                                >How it&apos;s Work</Button>
+                                    onClick={()=>{ 
+
+                                        const scrollPosition = window.innerWidth < 768 ? 1900 : 1700;
+
+                                            window.scrollTo({
+                                            top: scrollPosition,
+                                            behavior: 'smooth'
+                                        });}}
+                                >How it Works</Button>
                             </Box>
                         </Box>
                     </Box>
@@ -322,6 +338,13 @@ export default function Home() {
                                     position: 'relative',
                                     zIndex: 3
                                     }}
+                                    onClick={()=>{
+                                        if(isAuthenticated){
+                                            navigate('/register');
+                                        }else{
+                                            loginWithRedirect();
+                                        }
+                                    }}
                                 >
                                     Order Now
                             </Button>
@@ -423,6 +446,13 @@ export default function Home() {
                                     mt: '20px',
                                     position: 'relative',
                                     zIndex: 3
+                                    }}
+                                    onClick={()=>{
+                                        if(isAuthenticated){
+                                            navigate('/register');
+                                        }else{
+                                            loginWithRedirect();
+                                        }
                                     }}
                                 >
                                     Start Tracking

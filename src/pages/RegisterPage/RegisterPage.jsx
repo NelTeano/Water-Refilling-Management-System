@@ -211,13 +211,6 @@ const RegisterPage = () => {
                     <Box sx={{ float: 'right', mt: 2 }}>
                         <Button 
                             type="submit" 
-                            variant="outlined"
-                            sx={{ mr: 1.5 }}
-                        >
-                            Cancel
-                        </Button>
-                        <Button 
-                            type="submit" 
                             variant="contained"
                         >
                             Submit
