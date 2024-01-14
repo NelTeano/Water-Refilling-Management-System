@@ -319,14 +319,14 @@ export default function Home() {
                                         display: 'flex',
                                         flexDirection: 'row',
                                         justifyContent: 'center',
-                                        alignItems: 'center',
+                                        alignItems: 'flex-start',
                                         gap: '20px',
                                         flexWrap: 'wrap',
                                     }}
                                 >
                                     
                                         {reviews.map((data, index)=> (
-                                            <Card key={index} sx={{ maxWidth: 250, }}>
+                                            <Card key={index} sx={{ maxWidth: 250, height: '100%' }}>
                                                 <CardContent>
                                                     <CardContent sx={{display: 'flex', justifyContent: 'flex-start', alignItems: 'center', gap: '10px'}}>
                                                         <Avatar alt="Remy Sharp" src={data.img} />
@@ -334,10 +334,11 @@ export default function Home() {
                                                         {data.name}
                                                         </Typography>
                                                     </CardContent>
-
-                                                    <Typography variant="body2">
-                                                    {data.desc} 
-                                                    </Typography>
+                                                    <CardContent>
+                                                        <Typography variant="body2">
+                                                        {data.desc} 
+                                                        </Typography>
+                                                    </CardContent>
                                                     <CardContent sx={{display:'flex', justifyContent: 'flex-end', mt: 2}}>
                                                         {Array.from({ length: 5 }, (_, i) => (
                                                             i < data.starRating ? <StarIcon key={i} /> : <StarBorderIcon key={i} />
