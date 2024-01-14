@@ -12,7 +12,7 @@ export default function Authbutton() {
 
     return (
         <>
-            { isAuthenticated ? 
+            { isAuthenticated ? (
                 <Button 
                     variant="contained"
                     size="outlined"
@@ -20,7 +20,8 @@ export default function Authbutton() {
                     onClick={() => logout()} // ACTIVATE CALLBACK LOGOUT THE ACCOUNT AND REDIRECT
                 >
                     Sign Out
-                </Button> :
+                </Button>
+            ) : (
                 <Button 
                     variant="outlined"
                     size="large"
@@ -29,7 +30,7 @@ export default function Authbutton() {
                 >
                     Sign In
                 </Button>
-            }
+            )}
         </>
     )
 }

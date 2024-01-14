@@ -123,8 +123,7 @@ const RegisterPage = () => {
                                 onChange={addressHandler}
                             />
                             <Box sx={{ float: 'right', mt: 2 }}>
-                                <Button 
-                                    type="submit" 
+                                <Button
                                     variant="outlined"
                                     sx={{ mr: 1.5 }}
                                 >
