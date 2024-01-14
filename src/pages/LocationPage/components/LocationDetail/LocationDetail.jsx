@@ -128,7 +128,7 @@ const LocationDetail = ({ closeLocationDetail, isAdd, location }) => {
             </li>
             )}
         />
-        <div style={{ width: "83vw", height: "400px", marginTop:"30px"}}>
+        <div style={{ width: "100%", height: "400px", marginTop:"30px"}}>
             <ReactMapGL
                 {...viewport}
                 mapboxAccessToken={token}
