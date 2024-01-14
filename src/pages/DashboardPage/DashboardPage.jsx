@@ -64,7 +64,7 @@ const DashboardPage = () => {
     return (
         <>
             {
-                isAuthenticated && !isLoading ? (
+                isAuthenticated && !isLoading && 
                     <>
                         {/* Current Location */}
                         <Container 
@@ -110,17 +110,17 @@ const DashboardPage = () => {
                             <OrderStatus pending={pending}/>
                         </Container>
                     </>
-                ) : (
-                    <div style={{
-                            width:"100vw",
-                            height:"70vh",
-                            display:'flex',
-                            justifyContent:'center',
-                            alignItems:"center"
-                        }}>
-                        <CircularProgress />
-                    </div>
-                )
+                // ) : (
+                //     <div style={{
+                //             width:"100vw",
+                //             height:"70vh",
+                //             display:'flex',
+                //             justifyContent:'center',
+                //             alignItems:"center"
+                //         }}>
+                //         <CircularProgress />
+                //     </div>
+                // )
             }
         </>
     )
