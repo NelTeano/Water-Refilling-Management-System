@@ -16,6 +16,7 @@ export default function Authbutton() {
             <Link to={'/client-dashboard'}>
                 <Button 
                     style={isMobile ? {display: 'none'} : buttonStyle  }
+                    variant="outlined"
                 >
                     Go to Dashboard
                 </Button>
@@ -23,6 +24,7 @@ export default function Authbutton() {
                 :
                 <Button 
                     style={isMobile ? {display: 'none'} : buttonStyle  }
+                    variant="outlined"
                     onClick={() => loginWithRedirect()} // ACTIVATE CALLBACK LOGIN REDIRECTED TO AUTH0 LOGINPAGE
                 >
                     Sign In

@@ -80,28 +80,28 @@ const RegisterPage = () => {
     // },[user, user?.email])
 
 
-    useEffect(()=>{
+    // useEffect(()=>{
 
-        const checkUserLocation = async () => {
+    //     const checkUserLocation = async () => {
             
-            try {
-                if(isAuthenticated && user && user?.email){
-                    const response = await fetch(`http://localhost:5174/api/users/${user.email}`);
-                    const result = await response.json();
+    //         try {
+    //             if(isAuthenticated && user && user?.email){
+    //                 const response = await fetch(`http://localhost:5174/api/users/${user.email}`);
+    //                 const result = await response.json();
 
-                    if(result){
-                        navigate('/client-dashboard');
-                    }
-                }
-            } catch (error) {
-                console.error("Error fetching data:", error);
-            }
-        }
+    //                 if(result){
+    //                     navigate('/client-dashboard');
+    //                 }
+    //             }
+    //         } catch (error) {
+    //             console.error("Error fetching data:", error);
+    //         }
+    //     }
 
-        checkUserLocation();
+    //     checkUserLocation();
 
 
-    },[user,user?.email,isAuthenticated])
+    // },[user,user?.email,isAuthenticated])
 
     const handleSubmit = (e) => {
         e.preventDefault()

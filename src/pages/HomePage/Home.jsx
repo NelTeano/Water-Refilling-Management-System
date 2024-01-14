@@ -84,32 +84,7 @@ export default function Home() {
             desc: 'You only order through the app You only order through the app',
             starRating: 3,
         },
-    ];
-
-    const Img = styled.img`
-        margin-top: 200px;
-        z-index: 2;
-        position: relative;
-
-        @media screen and (max-width: 900px) {
-            height: 320px;
-            width: 200px;
-            margin-top: 0px;
-        }
-        `;
-
-    const PosterImage = styled.img`
-        height: 400px;
-        width: 400px;
-        border-radius: 15px;
-
-        @media screen and (max-width: 768px) {
-            height: 200px;
-            width: 90%;
-            margin-top: 0px;
-        }
-    `;
-        
+    ];      
 
     return (
         <>
@@ -126,12 +101,15 @@ export default function Home() {
                         sx={{
                             display: 'flex',
                             alignItems: 'center', 
-                            justifyContent: 'space-between',
+                            flexDirection: { xs: 'column', md: 'row' },
+                            justifyContent: { md: 'space-between' },
                             width: '100%',
-                            height: '100vh'
+                            height: '100vh',
+                            pt: { xs: '10em' },
+                            gap: '1em'
                         }}
                     >
-                        <Box sx={{ display: { xs: 'none', md: 'block' }, width: '50%', mr: '2em' }}>
+                        <Box sx={{ width: { xs: '100%', md: '50%' }, mr: '2em' }}>
                             <img src={PeopleDrinkingWater} width={'100%'} />
                         </Box>
                         <Box sx={{ display: 'flex', flexDirection: 'column', width: {xs: '100%', md: '70%'} }}>
@@ -144,6 +122,7 @@ export default function Home() {
                             <Box mt={2} sx={{ display: 'flex', gap: '1em' }}>
                                 <Button 
                                     variant='contained'
+                                    sx={{ borderRadius: '30px' }}
                                     size='large'
                                     onClick={()=>{
                                         if(isAuthenticated){
@@ -157,6 +136,7 @@ export default function Home() {
                                 </Button>
                                 <Button
                                     variant='outlined'
+                                    sx={{ borderRadius: '30px' }}
                                     size='large'
                                     onClick={()=>{ 
 
@@ -174,8 +154,9 @@ export default function Home() {
                     </Box>
                 </Container>
             </Box>
-            <Container>
-                    <Box mt={5} mb={5}>
+            <Box sx={{ background: '#273452', pt: 7, pb: 7, color: '#FFF' }}>
+                <Container>
+                    <Box mb={5}>
                         <Typography variant='h2' sx={{ textAlign: 'center' }}>
                             Our Serve just for you
                         </Typography>
@@ -210,236 +191,113 @@ export default function Home() {
                             ))}
                         </Box>
                     </Box>
-
-                    <Box 
-                        sx={{
+                </Container>
+            </Box>
+            <Box sx={{ bgcolor: '#FFF', pt: 10, pb: 10 }}>
+                <Container>
+                    <Box sx={{
                         display: 'flex',
                         justifyContent: {xs: 'center', md: 'space-evenly'},
                         alignItems: 'center',
                         flexDirection: {xs: 'column-reverse',md: 'column-reverse', lg: 'row'},
                         gap: {xs: '40px'},
-                        bgcolor: '#F8F8FA',
-                        height: {xs: '800px',sm: '900px', md: '1200px',lg: '1200px', xl: '1200px'},
-                        mt: {xs: 40, md: 20, lg: 20},
-                        padding:'100px 0px 100px 0px'
-                        }} 
-                    >
-                        <Box>
-                            <Box sx={{display: {xs: 'none', md: 'block'}}}>
-                            <div 
-                                style={{
-                                    position: 'absolute',
-                                    width: '493.566px',
-                                    height:' 710.475px',
-                                    transform: 'rotate(-45deg)',
-                                    borderRadius: '710.475px',
-                                    border: '1px solid rgba(0, 0, 0, 0.10)',
-                                    zIndex: 1
-                                }}
-                            ></div>
-                            <div 
-                                style={{
-                                    position: 'absolute',
-                                    marginTop: '40px',
-                                    width: '493.566px',
-                                    height:' 710.475px',
-                                    transform: 'rotate(-45deg)',
-                                    borderRadius: '710.475px',
-                                    border: '1px solid rgba(0, 0, 0, 0.10)',
-                                    zIndex: 1
-                                }}
-                            ></div>
-                            <div 
-                                style={{
-                                    position: 'absolute',
-                                    marginTop: '80px',
-                                    width: '493.566px',
-                                    height:' 710.475px',
-                                    transform: 'rotate(-45deg)',
-                                    borderRadius: '710.475px',
-                                    border: '1px solid rgba(0, 0, 0, 0.10)',
-                                    zIndex: 1
-                                }}
-                            ></div>
-                            </Box>
-                            <Img src={PhoneOrderPrototype} height={'700px'} width={'400px'} />
+                        bgcolor: '#FFF',
+                    }}>
+                        <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+                            <img src={PhoneOrderPrototype} style={{ height: '100%', maxHeight: '600px' }} />
                         </Box>
                         <Box 
                             sx={{
                                 display: 'flex',
-                                gap: '40px',
+                                gap: '1em',
                                 flexDirection: 'column',
-                                alignItems: {xs: 'center'},
-                                textAlign: {xs: 'center'},
+                                alignItems: {xs: 'center', md: 'start'},
+                                textAlign: {xs: 'center', md: 'left'},
                                 position: 'relative',
-                                }}
+                            }}
                             >
-                            <Typography 
-                                sx={{ 
-                                    fontSize: { xs: '30px', md: '45px' },
-                                    fontStyle: 'normal',
-                                    fontWeight: '700',
-                                    lineHeight: '56px'
-                                }}
-                            >
-                                Choose Your Type of Galloon<br></br> and Order Your Water
+                            <Typography variant='h2'>
+                                Choose Your Type of Galloon and Order Your Water
                             </Typography>
-                            <Typography
-                                sx={{
-                                    fontSize: {xs: '15px',md: '19px'},
-                                    fontStyle: 'normal',
-                                    fontWeight: '400',
-                                    lineWeight: '26px',
-                                }}
-                            >
-                                Shop with us for your purified water<br></br> to have a clean safe water that your family drinks
+                            <Typography variant='body1'>
+                                Shop with us for your purified water to have a clean safe water that your family drinks
                             </Typography>
                             <Button 
-                                    sx={{bgcolor: '#34ACAC',
-                                    color: 'white',
-                                    borderRadius: '30px',
-                                    border: 'none',
-                                    padding: '10px 30px 10px 30px',
-                                    fontWeight: '700',
-                                    width: '180px',
-                                    mt: '20px',
-                                    position: 'relative',
-                                    zIndex: 3
-                                    }}
-                                    onClick={()=>{
-                                        if(isAuthenticated){
-                                            navigate('/register');
-                                        }else{
-                                            loginWithRedirect();
-                                        }
-                                    }}
-                                >
-                                    Order Now
+                                variant='contained'
+                                size='large'
+                                sx={{ borderRadius: '30px' }}
+                                onClick={()=>{
+                                    if(isAuthenticated){
+                                        navigate('/register');
+                                    }else{
+                                        loginWithRedirect();
+                                    }
+                                }}
+                            >
+                                Order Now
                             </Button>
                         </Box>
                     </Box>
-
-                    <Box 
-                        sx={{
+                </Container>
+            </Box>
+            <Box sx={{ pt: 10, pb: 10 }}>
+                <Container>
+                    <Box sx={{
                         display: 'flex',
-                        position: 'relative',
                         justifyContent: {xs: 'center', md: 'space-evenly'},
-                        alignItems: 'center', 
-                        flexDirection: {xs: 'column-reverse',md: 'column-reverse', lg: 'row', xl:'row-reverse'},
+                        alignItems: 'center',
+                        flexDirection: {xs: 'column-reverse',md: 'column-reverse', lg: 'row'},
                         gap: {xs: '40px'},
-                        bgcolor: 'white',
-                        height: {xs: '800px',sm: '900px', md: '1200px',lg: '1200px', xl: '1200px'},
-                        padding:'100px 0px 100px 0px',
-                        zIndex: 10
-                        }} 
-                    >
-                        <Box>
-                            <Box sx={{display: {xs: 'none', md: 'block'}}}>
-                            <div 
-                                style={{
-                                    position: 'absolute',
-                                    width: '493.566px',
-                                    height:' 710.475px',
-                                    transform: 'rotate(-45deg)',
-                                    borderRadius: '710.475px',
-                                    border: '1px solid #34ACAC',
-                                    zIndex: 1
-                                }}
-                            ></div>
-                            <div 
-                                style={{
-                                    position: 'absolute',
-                                    marginTop: '40px',
-                                    width: '493.566px',
-                                    height:' 710.475px',
-                                    transform: 'rotate(-45deg)',
-                                    borderRadius: '710.475px',
-                                    border: '1px solid #34ACAC',
-                                    zIndex: 1
-                                }}
-                            ></div>
-                            <div 
-                                style={{
-                                    position: 'absolute',
-                                    marginTop: '80px',
-                                    width: '493.566px',
-                                    height:' 710.475px',
-                                    transform: 'rotate(-45deg)',
-                                    borderRadius: '710.475px',
-                                    border: '1px solid #34ACAC',
-                                    zIndex: 1
-                                }}
-                            ></div>
-                            </Box>
-                            <Img src={PhoneTrackPrototype} height={'700px'} width={'400px'} />
-                        </Box>
+                    }}>
                         <Box 
                             sx={{
                                 display: 'flex',
-                                gap: '40px',
+                                gap: '1em',
                                 flexDirection: 'column',
-                                alignItems: {xs: 'center'},
-                                textAlign: {xs: 'center'},
+                                alignItems: {xs: 'center', md: 'start'},
+                                textAlign: {xs: 'center', md: 'left'},
                                 position: 'relative',
-                                }}
+                            }}
                             >
-                            <Typography 
-                                sx={{ 
-                                    fontSize: { xs: '30px', md: '45px' },
-                                    fontStyle: 'normal',
-                                    fontWeight: '700',
-                                    lineHeight: '56px'
-                                }}
-                            >
-                                Real time tracking of your<br></br> Water
+                            <Typography variant='h2'>
+                                Real time tracking of your Water
                             </Typography>
-                            <Typography
-                                sx={{
-                                    fontSize: {xs: '15px',md: '19px'},
-                                    fontStyle: 'normal',
-                                    fontWeight: '400',
-                                    lineWeight: '26px',
-                                }}
-                            >
+                            <Typography variant='body1'>
                                 Our Client Dashboard has tracking order feauture<br></br> so that you know when your purified water arrive in your households
                             </Typography>
                             <Button 
-                                    sx={{bgcolor: '#34ACAC',
-                                    color: 'white',
-                                    borderRadius: '30px',
-                                    border: 'none',
-                                    padding: '10px 30px 10px 30px',
-                                    fontWeight: '700',
-                                    width: '180px',
-                                    mt: '20px',
-                                    position: 'relative',
-                                    zIndex: 3
-                                    }}
-                                    onClick={()=>{
-                                        if(isAuthenticated){
-                                            navigate('/register');
-                                        }else{
-                                            loginWithRedirect();
-                                        }
-                                    }}
-                                >
-                                    Start Tracking
+                                variant='contained'
+                                size='large'
+                                sx={{ borderRadius: '30px' }}
+                                onClick={()=>{
+                                    if(isAuthenticated){
+                                        navigate('/register');
+                                    }else{
+                                        loginWithRedirect();
+                                    }
+                                }}
+                            >
+                                Start Tracking
                             </Button>
                         </Box>
+                        <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+                            <img src={PhoneOrderPrototype} style={{ height: '100%', maxHeight: '600px' }} />
+                        </Box>
                     </Box>
-
+                </Container>
+            </Box>
+            <Box sx={{ background: '#ecf4ff', pt: 7, pb: 7 }}>
+                <Container>
                     <Box 
                         sx={{
-                        display: 'flex',
-                        alignItems: 'center', 
-                        justifyContent: {xs: 'center', md: 'space-around'},
-                        position: 'relative',
-                        gap: '50px',
-                        flexDirection: {xs: 'column', md: 'row'},
-                        bgcolor: '#F8F8FA',
-                        height: { xl: '700px', md: '800px'},
-                        zIndex: 3,
-                        padding: {xs: '30px 0px 30px 0px'}
+                            display: 'flex',
+                            alignItems: 'center', 
+                            justifyContent: {xs: 'center', md: 'space-around'},
+                            position: 'relative',
+                            gap: '50px',
+                            flexDirection: {xs: 'column', md: 'row'},
+                            zIndex: 3,
+                            padding: {xs: '30px 0px 30px 0px'}
                         }} 
                     >
                         <Box>
@@ -452,15 +310,10 @@ export default function Home() {
                             >
                                 <Box>
                                     <Typography 
-                                        sx={{
-                                            fontSize: { xs: '30px', md: '35px' },
-                                            fontStyle: 'normal',
-                                            fontWeight: '700',
-                                            lineHeight: '56px',
-                                            textAlign: { xs: 'center', md: 'none' }
-                                        }}
+                                        variant='h3'
+                                        sx={{ textAlign: { xs: 'center', md: 'none' } }}
                                     >
-                                        Reviews of Customers About<br></br> Our Product Quality 
+                                        Reviews of Customers About Our Product Quality 
                                     </Typography>
                                 </Box>
                                 <Box
@@ -500,61 +353,56 @@ export default function Home() {
                             </Box>
                         </Box>
                     </Box>
-
+                </Container>
+            </Box>
+            <Box sx={{ background: '#FFF', pt: 7, pb: 7 }}>
+                <Container>
                     <Box 
                         sx={{
-                        display: 'flex',
-                        alignItems: 'center', 
-                        justifyContent: {xs: 'center', md: 'space-around'},
-                        position: 'relative',
-                        gap: '50px',
-                        flexDirection: 'row',
-                        bgcolor: 'white',
-                        height: { xs: '1200px', md: '900px',},
-                        mb:{xs: 15},
-                        zIndex: 3,
-                        color: '#1B1C20',
-                        flexWrap: 'wrap',
-                        padding: {xs: '30px 0px 30px 0px'},
-                        textAlign: {xs: 'center'}
+                            display: 'flex',
+                            flexDirection: { xs: 'column', md: 'row' },
+                            justifyContent: { xs: 'center', md: 'space-around' },
+                            position: 'relative',
+                            gap: '50px',
                         }} 
                     >
-                        <Box>
-                            <PosterImage  src={Poster} ></PosterImage>
+                        <Box sx={{ width: { xs: '100%', md: '70%' } }}>
+                            <img src={Poster} style={{ height: '100%', borderRadius: '4px' }} />
                         </Box>
-                        <Box sx={{display: 'flex', flexDirection: 'column', gap: '30px'}}>   
+                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '30px', width: '100%' }}>
                             <Box>
-                                <Typography sx={{fontWeight: '700', fontSize:{xs: '17px',md:'20px'}}}>Hydrolab Approved</Typography>
-                                <Typography sx={{lineHeight: '26px', fontWeight: '400', fontSize:{xs: '15px',md:'18px'}}}>
-                                    At HydroMaze, our purified water is not just a claim but a certified assurance.<br></br>
-                                    We proudly announce that our water has been approved by the prestigious Hydrolab Company,<br></br>
-                                    a renowned authority in water quality assessment. This endorsement speaks volumes<br></br> 
+                                <Typography variant='h4'>Hydrolab Approved</Typography>
+                                <Typography variant='body2'>
+                                    At HydroMaze, our purified water is not just a claim but a certified assurance.
+                                    We proudly announce that our water has been approved by the prestigious Hydrolab Company,
+                                    a renowned authority in water quality assessment. This endorsement speaks volumes
                                     about the high standards we maintain in ensuring the cleanliness and safety of our water.
                                 </Typography>
                             </Box>
                             <Box>
-                                <Typography sx={{fontWeight: '700', fontSize:{xs: '17px',md:'20px'}}}>Rigorous Testing</Typography>
-                                <Typography sx={{lineHeight: '26px', fontWeight: '400', fontSize:{xs: '15px',md:'18px'}}}>
-                                    Your safety is our top priority, and we leave no stone unturned in upholding the highest quality standards.<br></br>
-                                    Our water undergoes thorough testing twice a month, conducted by a reputable independent company.<br></br>
-                                    This regular and stringent testing guarantees that our water consistently<br></br>
+                                <Typography variant='h4'>Rigorous Testing</Typography>
+                                <Typography variant='body2'>
+                                    Your safety is our top priority, and we leave no stone unturned in upholding the highest quality standards.
+                                    Our water undergoes thorough testing twice a month, conducted by a reputable independent company.
+                                    This regular and stringent testing guarantees that our water consistently
                                     meets the highest hygiene and safety benchmarks.
                                 </Typography>
                             </Box>
                             <Box>
-                                <Typography sx={{fontWeight: '700', fontSize:{xs: '17px',md:'20px'}}}>State-of-the-Art Filtration Mechanism</Typography>
-                                <Typography sx={{lineHeight: '26px', fontWeight: '400', fontSize:{xs: '15px',md:'18px'}}}>
-                                    What sets our water apart is the cutting-edge technology embedded in our purification process.<br></br>
-                                    Our advanced water purification machine boasts a five-stage filtration mechanism <br></br>
-                                    that meticulously removes impurities, contaminants, and unwanted particles.<br></br>
-                                    From sediment filtration to activated carbon purification, <br></br>
-                                    every step is designed to ensure that only the purest water reaches your glass.<br></br>
+                                <Typography variant='h4'>State-of-the-Art Filtration Mechanism</Typography>
+                                <Typography variant='body2'>
+                                    What sets our water apart is the cutting-edge technology embedded in our purification process.
+                                    Our advanced water purification machine boasts a five-stage filtration mechanism
+                                    that meticulously removes impurities, contaminants, and unwanted particles.
+                                    From sediment filtration to activated carbon purification,
+                                    every step is designed to ensure that only the purest water reaches your glass.
                                 </Typography>
                             </Box>
                         </Box>
                     </Box>
-                    <Footer />
                 </Container>
+            </Box>
+            <Footer />
         </>
     )
 }
