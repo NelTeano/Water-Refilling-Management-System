@@ -161,7 +161,6 @@ const RegisterPage = () => {
 
                     }}>
                         <Box sx={{ width: '100%' }}>
-                            <Typography variant="body2">Let&apos;s make your journey with us personalized and tailored to your preferences!</Typography>
                             <TextField 
                                 required
                                 type="text" 
