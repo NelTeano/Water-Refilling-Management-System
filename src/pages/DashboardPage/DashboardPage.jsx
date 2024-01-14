@@ -69,6 +69,7 @@ const DashboardPage = () => {
                         {/* Current Location */}
                         <Box sx={{ background: '#EEFCFF' }}>
                             <Container 
+                                maxWidth='md'
                                 sx={{ 
                                     pt: 1, 
                                     pb: 1, 
@@ -91,7 +92,7 @@ const DashboardPage = () => {
                                         variant="text"
                                         color="inherit"
                                         size="small"
-                                        sx={{ fontSize: '.7rem' }}
+                                        sx={{ fontSize: '.85rem' }}
                                         onClick={()=>navigate('/client-dashboard/location')}
                                     >
                                         Edit
@@ -101,8 +102,8 @@ const DashboardPage = () => {
                         </Box>
 
                         {/* Dashboard Contents */}
-                        <Container sx={{ mt: 2 }}>
-                            <Typography fontWeight={500} variant="h5" color="#272727">
+                        <Container sx={{ mt: 2 }} maxWidth='md'>
+                            <Typography variant="h4" color="#272727">
                                 Welcome {user.given_name}!
                             </Typography>
 

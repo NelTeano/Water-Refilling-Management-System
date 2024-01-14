@@ -17,6 +17,7 @@ const OrderType = () => {
 
   return (
     <Box mt={2}>
+        <Typography color="textSecondary">Pick your order</Typography>
         <Grid container spacing={2} mt={.5}>
             <Grid item xs={6}>
                 <Card>
