@@ -91,7 +91,7 @@ const DashboardPage = () => {
                                         variant="text"
                                         color="inherit"
                                         size="small"
-                                        sx={{ fontSize: '.7rem' }}
+                                        sx={{ fontSize: '.85rem' }}
                                         onClick={()=>navigate('/client-dashboard/location')}
                                     >
                                         Edit
@@ -102,7 +102,7 @@ const DashboardPage = () => {
 
                         {/* Dashboard Contents */}
                         <Container sx={{ mt: 2 }}>
-                            <Typography fontWeight={500} variant="h5" color="#272727">
+                            <Typography variant="h4" color="#272727">
                                 Welcome {user.given_name}!
                             </Typography>
 

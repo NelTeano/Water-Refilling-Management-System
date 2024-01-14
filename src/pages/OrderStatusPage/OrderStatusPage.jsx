@@ -36,8 +36,8 @@ const OrderStatusPage = () => {
                 <Typography 
                     textAlign='center' 
                     variant="subtitle1" 
-                    color="#5B7C8E"
-                    fontWeight={500}
+                    color="#21495f"
+                    fontWeight={600}
                     sx={{ display: 'flex', justifyContent: 'center' }}
                 >
                     <GpsFixedTwoToneIcon sx={{ mr: .5 }} />
@@ -85,7 +85,7 @@ const OrderStatusPage = () => {
                                         <TimelineConnector />
                                     </TimelineSeparator>
                                     <TimelineContent sx={{ py: '12px', px: 2 }}>
-                                        <Typography variant="h6" fontSize='1.1rem' component="span" color='#0288d1'>
+                                        <Typography variant="h6" fontSize='1.1rem' component="span" color='#099DBD'>
                                             Order Placed.
                                         </Typography>
                                         <Typography variant="subtitle2">Your order has been accepted</Typography>
@@ -100,7 +100,7 @@ const OrderStatusPage = () => {
                                         <TimelineConnector />
                                     </TimelineSeparator>
                                     <TimelineContent sx={{ py: '12px', px: 2 }}>
-                                        <Typography variant="h6" fontSize='1.1rem' component="span" color='#0288d1'>
+                                        <Typography variant="h6" fontSize='1.1rem' component="span" color='#099DBD'>
                                             Preparing...
                                         </Typography>
                                         <Typography variant="subtitle2">Your order is being prepared</Typography>
@@ -114,7 +114,7 @@ const OrderStatusPage = () => {
                                         <TimelineConnector />
                                     </TimelineSeparator>
                                     <TimelineContent sx={{ py: '12px', px: 2 }}>
-                                        <Typography variant="h6" fontSize='1.1rem' component="span" color={'#0288d1'}>
+                                        <Typography variant="h6" fontSize='1.1rem' component="span">
                                             Order Picked-up.
                                         </Typography>
                                         <Typography variant="subtitle2">Rider has picked up your order.</Typography>

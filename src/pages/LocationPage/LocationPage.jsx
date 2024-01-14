@@ -133,7 +133,7 @@ const LocationPage = () => {
                                                         <Box mr={10}>
                                                             <Typography 
                                                                 variant="subtitle2" 
-                                                                sx={{ color: selectedValue === 'home' ? '#099DBD' : 'inherit' }}
+                                                                sx={{ color: selectedValue === 'home' ? '#2563EB' : 'inherit' }}
                                                             >
                                                                 {location.locName}
                                                             </Typography>
