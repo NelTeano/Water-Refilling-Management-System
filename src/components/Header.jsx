@@ -166,7 +166,6 @@ export const Header = () => {
                                 size="large"
                                 edge="start"
                                 aria-label="menu"
-                                sx={{ mr: 2 }}
                                 onClick={toggleMenu}
                             >
                                 <MenuIcon />

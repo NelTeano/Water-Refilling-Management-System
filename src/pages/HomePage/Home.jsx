@@ -72,13 +72,10 @@ export default function Home() {
                             <Typography variant='h6'>
                                 Visit our Website and get your purified water delievered fast.<br></br> Click the button below
                             </Typography> 
-                            <Box mt={2}>
+                            <Box mt={2} sx={{ display: 'flex', gap: '1em' }}>
                                 <Button 
                                     variant='contained'
                                     size='large'
-                                    sx={{
-                                        mr: '30px'
-                                    }}
                                 >
                                     Order Now
                                 </Button>
