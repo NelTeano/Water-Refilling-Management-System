@@ -3,7 +3,6 @@ import { useAuth0 } from '@auth0/auth0-react';
 // COMPONENTS
 import { Header } from '../../components/Header.jsx';
 import { Footer } from '../../components/Footer.jsx';
-import styled from '@emotion/styled';
 import {  useNavigate } from 'react-router-dom';
 
 import {
@@ -21,7 +20,6 @@ import {
 import PeopleDrinkingWater from '../../assets/images/PeopleDrinking-removebg-preview.png'
 import Background from '../../assets/images/background.png'
 import PhoneOrderPrototype from '../../assets/images/orderPhone.png'
-import PhoneTrackPrototype from '../../assets/images/trackPhone.png'
 import Poster from '../../assets/images/poster.jpg'
 
 import orderLogo from '../../assets/images/orderLogo.png'
@@ -246,7 +244,7 @@ export default function Home() {
                         display: 'flex',
                         justifyContent: {xs: 'center', md: 'space-evenly'},
                         alignItems: 'center',
-                        flexDirection: {xs: 'column-reverse',md: 'column-reverse', lg: 'row'},
+                        flexDirection: {xs: 'column', md: 'column-reverse', lg: 'row'},
                         gap: {xs: '40px'},
                     }}>
                         <Box 
@@ -263,7 +261,7 @@ export default function Home() {
                                 Real time tracking of your Water
                             </Typography>
                             <Typography variant='body1'>
-                                Our Client Dashboard has tracking order feauture<br></br> so that you know when your purified water arrive in your households
+                                Our Client Dashboard has tracking order feature so that you know when your purified water arrive in your households
                             </Typography>
                             <Button 
                                 variant='contained'
