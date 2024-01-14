@@ -44,7 +44,7 @@ const OrderStatusPage = () => {
                     Track your order
                 </Typography>
             </Box>
-            <Container>
+            <Container maxWidth='sm'>
                 <Box mt={3}>
                     <Typography textAlign='center' fontSize='.90rem'>
                         <span style={{ fontWeight: 600, color: '#099DBD' }}>

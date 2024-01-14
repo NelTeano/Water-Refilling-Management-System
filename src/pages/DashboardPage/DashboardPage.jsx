@@ -69,6 +69,7 @@ const DashboardPage = () => {
                         {/* Current Location */}
                         <Box sx={{ background: '#EEFCFF' }}>
                             <Container 
+                                maxWidth='md'
                                 sx={{ 
                                     pt: 1, 
                                     pb: 1, 
@@ -101,7 +102,7 @@ const DashboardPage = () => {
                         </Box>
 
                         {/* Dashboard Contents */}
-                        <Container sx={{ mt: 2 }}>
+                        <Container sx={{ mt: 2 }} maxWidth='md'>
                             <Typography variant="h4" color="#272727">
                                 Welcome {user.given_name}!
                             </Typography>
