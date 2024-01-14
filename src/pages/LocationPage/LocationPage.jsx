@@ -83,7 +83,7 @@ const LocationPage = () => {
 
     return (
         <>
-            <Container>
+            <Container maxWidth='sm'>
                 <Slide direction="right" in={!showLocationDetail} mountOnEnter unmountOnExit appear={false}>
                     <Box>
                         <Box 
