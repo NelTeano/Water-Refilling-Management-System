@@ -97,21 +97,19 @@ export const Header = () => {
                         {menuList.map((item, index) => (
                         <ListItem key={index} disablePadding>
                             <ListItemButton>
-                            <ListItemIcon>
-                                {renderIcon(item.icon)}
-                            </ListItemIcon>
-                            <Link to={item.url}>
-                                <ListItemText  style={{ color: 'black' }} primary={item.name} />
-                            </Link>
+                                <ListItemIcon>
+                                    {renderIcon(item.icon)}
+                                </ListItemIcon>
+                                <a href={item.url} style={{ textDecoration: 'none', color: '#212B36' }}>{item.name}</a>
                             </ListItemButton>
                         </ListItem>
                         ))}
                         <ListItem disablePadding>
                             <ListItemButton onClick={()=> logout()}>
-                            <ListItemIcon>
-                                {renderIcon(<LogoutOutlined />)}
-                            </ListItemIcon>
-                                <ListItemText sx={{textDecoration: 'underline'}} primary="Logout" />
+                                <ListItemIcon>
+                                    {renderIcon(<LogoutOutlined />)}
+                                </ListItemIcon>
+                                <ListItemText primary="Logout" />
                             </ListItemButton>
                         </ListItem>
                     </List>
