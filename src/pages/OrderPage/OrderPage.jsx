@@ -66,10 +66,16 @@ const OrderPage = () => {
         status: 'pending',
         isOwned: false,
         total: 30,
-        username: ""
+        username: "",
+        location: {
+            longitude: 0,
+            latitude: 0,
+            address: ""
+        }
     });
 
-
+    console.log("LOCATION", location)
+    console.log("ORDER", orderDetails)
 
     const handleIncrement = (index) => {
         const updatedOrders = [...orders];
@@ -154,15 +160,30 @@ const OrderPage = () => {
             }));
 
             axios.get(`http://localhost:5174/api/users/${user.email}`)
-            .then((res)=>{
+            .then((res) => {
                 for(let i in res.data[0].location){
                     if(res.data[0].location[i].isSelected){
                         setLocation(res.data[0].location[i])
                     }
                 }
-                setIsLoading(false)
+            for (let i in res.data[0].location) {
+                if (res.data[0].location[i].isSelected) {
+                    setOrderDetails((prevOrderDetails) => ({
+                        ...prevOrderDetails,
+                        location: {
+                            ...prevOrderDetails.location,
+                            longitude: res.data[0].location[i].longitude,
+                            latitude: res.data[0].location[i].latitude,
+                            address: res.data[0].location[i].address
+                        }
+                    }));
+                }
+            }
+            setIsLoading(false);
             })
         }
+
+
     },[user])
   
     const [typeSlim, setTypeSlim] = useState();

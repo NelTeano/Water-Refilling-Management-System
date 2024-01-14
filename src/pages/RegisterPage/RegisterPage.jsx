@@ -19,27 +19,89 @@ const RegisterPage = () => {
         longitude: 0,
         latitude: 0,
         zoom: 15,
-      });
-    
-    const {user} = useAuth0()
+    });
+    const [hasLocation, setHasLocation] = useState([]);
+    const { user, isAuthenticated, isLoading } = useAuth0();
     const navigate = useNavigate()
+
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(
-          (position) => {
-            setLatitude(position.coords.latitude);
-            setLongitude(position.coords.longitude);
-            setViewport({
-              ...viewport,
-              longitude: position.coords.longitude,
-              latitude: position.coords.latitude,
-            });
-          },
-          (error) => console.log(error),
-          { enableHighAccuracy: true }
+            (position) => {
+                setLatitude(position.coords.latitude);
+                setLongitude(position.coords.longitude);
+                setViewport({
+                ...viewport,
+                longitude: position.coords.longitude,
+                latitude: position.coords.latitude,
+                });
+            },
+            (error) => console.log(error),
+            { enableHighAccuracy: true }
         );
-      }, []);
 
+        
+
+    }, []);
+
+    // useEffect(()=>{
+    //     const checkUserLocation = async () => {
+    //         try {
+    //             if (user && user?.email && isAuthenticated) {
+    //                 const response = await fetch(
+    //                     `http://localhost:5174/api/users/${user.email}`
+    //                 );
+        
+    //                 if (!response.ok) {
+    //                     throw new Error(`HTTP error! Status: ${response.status}`);
+    //                 }
+        
+    //                 const result = await response.json();
+    //                 setHasLocation(result);
+    //                 console.log(hasLocation)
+    //             } 
+    //             // else {
+    //             //     console.error("User or user email is undefined.");
+    //             // }
+    //         } catch (error) {
+    //             console.error("Error fetching data:", error);
+    //         }
+    //     }
+
+    //    checkUserLocation();
+
+
+    //     if(hasLocation ){
+    //         navigate('/client-dashboard');
+    //     }
+
+    //     console.log(user.email)
+        
+    // },[user, user?.email])
+
+
+    useEffect(()=>{
+
+        const checkUserLocation = async () => {
+            
+            try {
+                if(isAuthenticated && user && user?.email){
+                    const response = await fetch(`http://localhost:5174/api/users/${user.email}`);
+                    const result = await response.json();
+
+                    if(result){
+                        navigate('/client-dashboard');
+                    }
+                }
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        }
+
+        checkUserLocation();
+
+
+    },[user,user?.email,isAuthenticated])
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -75,6 +137,8 @@ const RegisterPage = () => {
     }
     
     return(
+
+        isAuthenticated &&
         <Container className="register">
             <Box sx={{ display: 'flex', justifyContent: 'center', mt: 3}}>
                 <Typography 

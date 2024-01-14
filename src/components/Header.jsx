@@ -31,6 +31,7 @@ import { Link } from 'react-router-dom';
 
 
 // import '../styles/header.css';
+
 import Authbutton from './AuthButton';
 
 const menuList = [
@@ -110,7 +111,7 @@ export const Header = () => {
                             <ListItemIcon>
                                 {renderIcon(<LogoutOutlined />)}
                             </ListItemIcon>
-                            <ListItemText primary="Logout" />
+                                <ListItemText sx={{textDecoration: 'underline'}} primary="Logout" />
                             </ListItemButton>
                         </ListItem>
                     </List>
