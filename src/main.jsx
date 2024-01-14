@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import ThemeProvider from './theme/index.jsx';
 import App from './App.jsx'
 
 // AUTH0 PROVIDER
@@ -21,9 +22,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     }}
   >
       <React.StrictMode>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+          <ThemeProvider>
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
+          </ThemeProvider>
       </React.StrictMode>
   </Auth0Provider>
 )

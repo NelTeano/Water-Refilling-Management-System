@@ -1,50 +1,43 @@
-import { Link } from "react-router-dom"
-
-import {
-    Box,
-    Typography,
-} from '@mui/material';
-
+// import { Link } from "react-router-dom"
+import { Box, Container, Typography, Link } from "@mui/material"
 
 export const Footer = () => {
     return(
-        <Box
-            sx={{
-                display: "flex",
-                justifyContent: {xs: "center" , md: 'space-between'},
-                alignItems: "center",
-                gap: {xs: '50px'},
-                position: "relative",
-                height: "300px",
-                width: "100%",
-                backgroundColor: "#099DBD",
-                flexWrap: 'wrap',
-            }}
-        >
-            <Box 
-                sx={{display: "flex", alignItems: 'center', justifyContent: 'center', flexDirection: "column", gap: "30px", ml: {xs: 0, md: 10}}}
-            >
-                <Box>
-                    <Typography variant="h5" sx={{flexGrow: 1, fontSize: "40px",color: '#fff', fontWeight:'700'}} mb={2}>HydroMaze</Typography>
-                    
-                </Box>
-                <Box sx={{display: {xs: 'none', md: 'block'}}}>
-                    <Typography mb={3} sx={{color: '#fff'}}>Join and Become our customer</Typography>
-                    <Typography sx={{color: '#fff'}}>Be one of us drinking healthy water everyday<br></br> makes our family and love ones safe.</Typography>
-                </Box>
-            </Box>
-            <Box sx={{ml: {xs: 0, md: 10}}}>
-                <Box sx={{display: "flex",alignItems: 'center', gap: '70px', mr: {xs: 0, md: 10}}}>
-                    <Box>
-                        <Link style={{textDecoration: "none"}} to={"/#"}><Typography sx={{color: '#fff', fontWeight:'500'}}>About Us</Typography></Link>
-                        <Link style={{textDecoration: "none"}} to={"/#"}><Typography sx={{color: '#fff', fontWeight:'500'}} mt={6}>Contact Us</Typography></Link>
-                    </Box>
-                    <Box >
-                        <Link style={{textDecoration: "none"}} to={"/#"}><Typography sx={{color: '#fff', fontWeight:'500'}}>Privacy Policy</Typography></Link>
-                        <Link style={{textDecoration: "none"}} to={"/#"}><Typography mt={6} sx={{color: '#fff', fontWeight:'500'}}>Terms of Service</Typography></Link>
+        <>
+        <Box sx={{ background: '#090d1d', pt: 10, pb: 10 }}>
+            <Container>
+                <Box sx={{ 
+                    display: 'flex', 
+                    alignItems: 'center',
+                    flexDirection: {xs: 'column', md: 'row'}
+                }}>
+                    <Typography 
+                        variant="h3"
+                        sx={{ flexGrow: 1, color: '#2563EB', fontWeight:'700' }}
+                    >
+                        Hydro<span style={{ color:'#60A5FA' }}>Maze</span>
+                    </Typography>
+                    <Box sx={{
+                        display: 'flex',
+                        gap: '1em',
+                        color: '#cfcfcf',
+                        flexDirection: {xs: 'column', md: 'row'},
+                        alignItems: 'center',
+                        mt: {xs: 2, md: 0}
+                    }}>
+                        <Link color='inherit' underline="hover" sx={{ cursor: 'pointer' }}>About Us</Link>
+                        <Link color='inherit' underline="hover" sx={{ cursor: 'pointer' }}>Contact Us</Link>
+                        <Link color='inherit' underline="hover" sx={{ cursor: 'pointer' }}>Privacy Policy</Link>
+                        <Link color='inherit' underline="hover" sx={{ cursor: 'pointer' }}>Terms of Service</Link>
                     </Box>
                 </Box>
-            </Box>
+            </Container>
         </Box>
+        <Box>
+            <Container>
+                <Typography textAlign="center" sx={{ p: .5, fontSize: '.8rem', color: '#616060' }}>©2023 HydroMaze. All rights reserved.</Typography>
+            </Container>
+        </Box>
+        </>
     )
 }

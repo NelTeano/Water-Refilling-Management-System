@@ -13,6 +13,7 @@ import {
     ListItemText,
     Divider,
     ListItemIcon,
+    Container,
 } from '@mui/material';
 
 import {
@@ -139,40 +140,40 @@ export const Header = () => {
         );
 
     return (
-        <Box sx={{ flexGrow: 1, mb: 12}}>
-        <AppBar 
-            position="fixed"
-            sx={{ 
-                background:'white',
-                height: '80px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-around', 
-                flexDirection:'row',
-            }}
-            >
-            <Toolbar>
-            <Typography 
-                variant="h5" 
-                component="div" 
-                sx={{ flexGrow: 1, color: '#34ACAC', fontWeight:'700' }}
-            >
-                HydroMaze
-            </Typography>
-            </Toolbar>
+    <Box>
+        <AppBar position="fixed" sx={{ background: 'white' }}>
+                <Container>
+                    <Box
+                        sx={{ 
+                            background:'white',
+                            height: '80px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'space-between', 
+                        }}>
+                        <Toolbar>
+                            <Typography 
+                                variant="h3" 
+                                component="div" 
+                                sx={{ flexGrow: 1, color: '#2563EB', fontWeight:'700' }}
+                            >
+                                Hydro<span style={{ color:'#60A5FA' }}>Maze</span>
+                            </Typography>
+                        </Toolbar>
 
-            <Authbutton/>
-            <Box sx={{ display: { xs: 'block', md: 'none' } }}>
-            <IconButton
-                size="large"
-                edge="start"
-                aria-label="menu"
-                sx={{ mr: 2 }}
-                onClick={toggleMenu}
-            >
-                <MenuIcon />
-            </IconButton>
-            </Box>
+                        <Authbutton/>
+                        <Box sx={{ display: { xs: 'block', md: 'none' } }}>
+                            <IconButton
+                                size="large"
+                                edge="start"
+                                aria-label="menu"
+                                onClick={toggleMenu}
+                            >
+                                <MenuIcon />
+                            </IconButton>
+                        </Box>
+                    </Box>
+                </Container>
         </AppBar>
         <Drawer 
             anchor={'right'} 
@@ -181,6 +182,6 @@ export const Header = () => {
         >
             {list()}
         </Drawer>
-        </Box>
+    </Box>
     );
 };
