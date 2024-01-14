@@ -67,37 +67,38 @@ const DashboardPage = () => {
                 isAuthenticated && !isLoading && 
                     <>
                         {/* Current Location */}
-                        <Container 
-                            sx={{ 
-                                background: '#EEFCFF', 
-                                pt: 1, 
-                                pb: 1, 
-                                display: 'flex',
-                                alignItems: 'start',
-                                justifyContent: 'space-between'
-                            }}
-                        >
-                            <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                                <Box mr={1}>
-                                    <LocationOnIcon sx={{ color: '#4690A7' }} />
+                        <Box sx={{ background: '#EEFCFF' }}>
+                            <Container 
+                                sx={{ 
+                                    pt: 1, 
+                                    pb: 1, 
+                                    display: 'flex',
+                                    alignItems: 'start',
+                                    justifyContent: 'space-between'
+                                }}
+                            >
+                                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                                    <Box mr={1}>
+                                        <LocationOnIcon sx={{ color: '#4690A7' }} fontSize="medium" />
+                                    </Box>
+                                    <Box>
+                                        <Typography sx={{ fontSize: '1rem', color: '#21495f', fontWeight: 600 }}>{selectedLoc.locName}</Typography>
+                                        <Typography sx={{ fontSize: '.85rem', color: '#1a3d50' }}>{selectedLoc.address}</Typography>
+                                    </Box>
                                 </Box>
-                                <Box>
-                                    <Typography sx={{ fontSize: '.8rem', color: '#5B7C8E', fontWeight: 600 }}>{selectedLoc.locName}</Typography>
-                                    <Typography sx={{ fontSize: '.7rem', color: '#91AAB8' }}>{selectedLoc.address}</Typography>
+                                <Box color='#5B7C8E'>
+                                    <Button 
+                                        variant="text"
+                                        color="inherit"
+                                        size="small"
+                                        sx={{ fontSize: '.7rem' }}
+                                        onClick={()=>navigate('/client-dashboard/location')}
+                                    >
+                                        Edit
+                                    </Button>
                                 </Box>
-                            </Box>
-                            <Box color='#5B7C8E'>
-                                <Button 
-                                    variant="text"
-                                    color="inherit"
-                                    size="small"
-                                    sx={{ fontSize: '.7rem' }}
-                                    onClick={()=>navigate('/client-dashboard/location')}
-                                >
-                                    Edit
-                                </Button>
-                            </Box>
-                        </Container>
+                            </Container>
+                        </Box>
 
                         {/* Dashboard Contents */}
                         <Container sx={{ mt: 2 }}>

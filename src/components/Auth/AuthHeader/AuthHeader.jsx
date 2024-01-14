@@ -40,7 +40,7 @@ const AuthHeader = () => {
 
   const menuList = [
     {
-      name: 'Home',
+      name: 'Dashboard',
       url: '/client-dashboard',
       icon: <HomeTwoToneIcon />,
     },
@@ -90,18 +90,16 @@ const AuthHeader = () => {
               <ListItemIcon>
                 {renderIcon(item.icon)}
               </ListItemIcon>
-              <Link to={item.url}>
-                <ListItemText  style={{ color: 'black' }} primary={item.name} />
-              </Link>
+                <a href={item.url} style={{ textDecoration: 'none', color: '#212B36' }}>{item.name}</a>
             </ListItemButton>
           </ListItem>
         ))}
         <ListItem disablePadding>
           <ListItemButton onClick={()=> logout()}>
-          <ListItemIcon>
-              {renderIcon(<LogoutOutlined />)}
-          </ListItemIcon>
-          <ListItemText sx={{textDecoration: 'underline'}} primary="Logout" />
+            <ListItemIcon>
+                {renderIcon(<LogoutOutlined />)}
+            </ListItemIcon>
+            <ListItemText primary="Logout" />
           </ListItemButton>
         </ListItem>
       </List>
@@ -112,25 +110,25 @@ const AuthHeader = () => {
 
   return (
     <Box sx={{ flexGrow: 1, mb: 7 }}>
-      <AppBar position="fixed" sx={{ background:'#099DBD' }}>
-        <Toolbar>
+      <AppBar position="fixed" sx={{ background:'#090d1d' }}>
+        <Toolbar sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <IconButton
             size="large"
             edge="start"
             color="inherit"
             aria-label="menu"
-            sx={{ mr: 2 }}
             onClick={toggleMenu}
           >
             <MenuIcon />
           </IconButton>
           <Typography 
-            variant="h6" 
+            variant="h3" 
             component="div" 
-            sx={{ flexGrow: 1 }}
+            sx={{ color: '#FFF', fontWeight:'700' }}
           >
-            HydroMaze
+            Hydro<span style={{ color:'#60A5FA' }}>Maze</span>
           </Typography>
+          <Box ml={1} />
         </Toolbar>
       </AppBar>
       <Drawer 
