@@ -105,6 +105,8 @@ const OrderPage = () => {
 
     const handleSubmit = async () => {
         try {
+            
+
             const response = await fetch("http://localhost:5174/api/place-order", {
                 method: 'POST',
                 headers: {
@@ -113,10 +115,13 @@ const OrderPage = () => {
                 body: JSON.stringify(orderDetails),
             });
 
+            
             if (response.ok) {
                 const data = await response.json();
                 console.log("Order Successful" , data);
-                navigate(`/receipt`)
+
+                const orderSummary = encodeURIComponent(JSON.stringify(data));
+                navigate(`/receipt/${orderSummary}`)
             } else {
                 console.error('Server responded with an error:', response.statusText);
             }
@@ -185,7 +190,7 @@ const OrderPage = () => {
 
 
     },[user])
-  
+
     const [typeSlim, setTypeSlim] = useState();
     const [typeRound, setTypeRound] = useState();
 
@@ -203,7 +208,7 @@ const OrderPage = () => {
         user && !isLoading &&
         <Container>
             <Typography mt={10}>Order Details</Typography>
-
+            <Typography fontSize={12}>For 5 pcs or more ₱25/pc | otherwise ₱30/pc</Typography>
             {bulk ? (
                 orders.map((item, index) => (
                     <Card key={item.id} sx={{ mb: 2, mt: 2 }}>

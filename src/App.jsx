@@ -43,7 +43,7 @@ function App() {
         element: OrderPage
       },
       {
-        pathname: "/receipt",
+        pathname: "/receipt/:orderSummary",
         element: ReceiptPage
       },
       {

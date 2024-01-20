@@ -1,7 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react"
 import axios from "axios"
 import { useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
+import {  useNavigate } from "react-router-dom"
 import ReactMapGL, { Marker } from "react-map-gl";
 import { FaLocationDot } from "react-icons/fa6";
 import "mapbox-gl/dist/mapbox-gl.css";
@@ -20,7 +20,7 @@ const RegisterPage = () => {
         latitude: 0,
         zoom: 15,
     });
-    const [hasLocation, setHasLocation] = useState([]);
+
     const { user, isAuthenticated, isLoading } = useAuth0();
     const navigate = useNavigate()
 
@@ -80,28 +80,32 @@ const RegisterPage = () => {
     // },[user, user?.email])
 
 
-    // useEffect(()=>{
+    useEffect(() => {
+        const checkUserLocation = async () => {
+            try {
+                if (isAuthenticated && user && user.email) {
+                    const response = await fetch(`http://localhost:5174/api/users/${user.email}`);
+                    const result = await response.json();
+        
+                    if (Array.isArray(result) && result.length === 0) {
 
-    //     const checkUserLocation = async () => {
-            
-    //         try {
-    //             if(isAuthenticated && user && user?.email){
-    //                 const response = await fetch(`http://localhost:5174/api/users/${user.email}`);
-    //                 const result = await response.json();
+                        console.log("User not registered yet:", user.email);
 
-    //                 if(result){
-    //                     navigate('/client-dashboard');
-    //                 }
-    //             }
-    //         } catch (error) {
-    //             console.error("Error fetching data:", error);
-    //         }
-    //     }
-
-    //     checkUserLocation();
-
-
-    // },[user,user?.email,isAuthenticated])
+                    } else {
+                        
+                        console.log("User already Registered", result);
+                        navigate('/client-dashboard');
+                    }
+                }
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                // Handle the error as needed
+            }
+        };
+    
+        checkUserLocation();
+    
+    }, [isAuthenticated, user, user?.email, navigate]);
 
     const handleSubmit = (e) => {
         e.preventDefault()
