@@ -24,11 +24,10 @@ const ReceiptPage = () => {
             </Box>
             
             <Box mt={4}>
-                <Container sx={{ background: '#dff7fe', pt: 3, pb: 3, borderRadius: 2 }}>
+                <Container sx={{ background: '#dff7fe', pt: 3, pb: 3, borderRadius: 1, border: '1px solid #bfe5f0' }}>
                     {/* <Typography variant="caption" fontWeight={500}>Order Date: </Typography> 
                     <Typography variant="caption">dd/mm/yyyy</Typography>  */}
-                    <br />
-                    <Typography variant="caption" fontWeight={600}>Order Id: </Typography>
+                    <Typography variant="caption" fontWeight={600}>Order ID: </Typography>
                     <Typography variant="caption">{serializedSummary._id}</Typography>
                     <Divider sx={{ mt: 2, mb: 2 }} />
                     <Typography variant="caption" fontWeight={600}>Shipping Address</Typography>
@@ -39,7 +38,7 @@ const ReceiptPage = () => {
     
                     <Typography variant="caption" fontWeight={600}>Summary</Typography>
                     <Grid container mt={1.5} mb={.5} sx={{ color: '#7b7b7b' }}>    
-                        <Grid item xs={6}>
+                        <Grid item xs={7}>
                             <Typography variant="caption" fontWeight={500}>Type</Typography>
                         </Grid>
                         <Grid item xs={5}>
@@ -48,7 +47,7 @@ const ReceiptPage = () => {
                     </Grid>
     
                     <Grid container>    
-                        <Grid item xs={6}>
+                        <Grid item xs={7}>
                             <Typography variant="caption">Slim Gallon</Typography>
                         </Grid>
                         <Grid item xs={5}>
@@ -56,7 +55,7 @@ const ReceiptPage = () => {
                         </Grid>
                     </Grid>
                     <Grid container>    
-                        <Grid item xs={6}>
+                        <Grid item xs={7}>
                             <Typography variant="caption">Round Gallon</Typography>
                         </Grid>
                         <Grid item xs={5}>
@@ -71,7 +70,7 @@ const ReceiptPage = () => {
                             <Typography variant="h6" color='#2563EB'>TOTAL</Typography>
                         </Grid>
                         <Grid item xs={3}>
-                            <Typography sx={{ float: 'right' }} variant="h6" color='#2563EB'>₱{serializedSummary.total}</Typography>
+                            <Typography sx={{ float: 'right' }} variant="h6" color='#2563EB'>₱{serializedSummary.total}.00</Typography>
                         </Grid>
                     </Grid>
                 </Container>

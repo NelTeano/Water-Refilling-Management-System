@@ -23,8 +23,8 @@ import { useAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
 import { useParams } from 'react-router-dom';
-import bulkImg from '../../assets/images/bulk_img.jpg'
-import singleImg from '../../assets/images/single_img.jpg'
+import roundGal from '../../assets/images/round.jpg'
+import slimGal from '../../assets/images/slim.jpeg'
 
 const OrderPage = () => {
     const {user} = useAuth0()
@@ -287,10 +287,11 @@ const OrderPage = () => {
                                 <CardActionArea onClick={selectSlim}>
                                     <CardMedia
                                         sx={{ height: 140,  }}
-                                        image={singleImg}
+                                        image={slimGal}
                                     />
-                                    <CardContent>
+                                    <CardContent sx={{ display: 'flex', justifyContent: 'space-between' }}>
                                         <Typography>Slim</Typography>
+                                        <Typography>₱ 30.00</Typography>
                                     </CardContent>
                                 </CardActionArea>
                             </Card>
@@ -300,10 +301,11 @@ const OrderPage = () => {
                                 <CardActionArea onClick={selectRound}>
                                     <CardMedia
                                         sx={{ height: 140 }}
-                                        image={bulkImg}
+                                        image={roundGal}
                                     />
-                                    <CardContent>
+                                    <CardContent sx={{ display: 'flex', justifyContent: 'space-between' }}>
                                         <Typography>Round</Typography>
+                                        <Typography>₱ 30.00</Typography>
                                     </CardContent>
                                 </CardActionArea>
                             </Card>
@@ -326,8 +328,8 @@ const OrderPage = () => {
                 />
             </FormGroup>
 
-            <Card sx={{ mt: 3, mb: 3 }}>
-                <CardContent sx={{ background: '#EDFCFF' }}>
+            <Box sx={{ mt: 3, mb: 3 }}>
+                <Container sx={{ background: '#EDFCFF', pt: 2, pb: 3, borderRadius: 1, border: '1px solid #bfe5f0' }}>
                     <Typography 
                         variant='subtitle2'
                         mb={2}
@@ -368,7 +370,7 @@ const OrderPage = () => {
                             <Typography>Item Total</Typography>
                         </Grid>
                         <Grid item xs>
-                            <Typography variant='h6' sx={{ float: 'right' }}>{orderDetails.total}</Typography>
+                            <Typography variant='h6' sx={{ float: 'right' }}>₱ {orderDetails.total}.00</Typography>
                         </Grid>
                     </Grid>
 
@@ -426,8 +428,8 @@ const OrderPage = () => {
                             </Button>
                         </Grid>
                     </Grid>
-                </CardContent>
-            </Card>
+                </Container>
+            </Box>
         </Container>
     );
 }
