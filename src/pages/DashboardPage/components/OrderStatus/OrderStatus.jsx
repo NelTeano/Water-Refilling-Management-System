@@ -12,15 +12,16 @@ import {
     CheckCircle as CheckCircleIcon,
 } from '@mui/icons-material';
 
-const OrderStatus = ({pending}) => {
+const OrderStatus = ({ pending, confirmed, rejected, delivered }) => {
+
     const sampleOrderStatus = {
-        confirmed: 0,
+        confirmed: confirmed,
         pending: pending,
-        rejected: 0,
-        completed: 0,
+        rejected: rejected,
+        completed: delivered,
     }
 
-  return (
+return (
     <Box mt={5}>
         <Typography color="textSecondary">My Orders</Typography>
         <Grid container spacing={2} mt={.5}>

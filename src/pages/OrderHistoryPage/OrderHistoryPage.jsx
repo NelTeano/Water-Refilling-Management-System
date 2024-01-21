@@ -75,11 +75,10 @@ function OrderHistoryPage() {
                     <Table style={{height: '100px'}}>
                         <TableHead>
                         <TableRow>
-                            <TableCell>Date</TableCell>
+                            <TableCell>Status</TableCell>
                             <TableCell>Slim</TableCell>
                             <TableCell>Round</TableCell>
                             <TableCell>Total</TableCell>
-                            <TableCell>Status</TableCell>
                             <TableCell>Track</TableCell>
                         </TableRow>
                         </TableHead>
@@ -89,11 +88,10 @@ function OrderHistoryPage() {
                             : userOrders
                         ).map((details, index) => (
                             <TableRow style={{textTransform: 'capitalize'}} key={index}>
-                            <TableCell>{formatDate(details.createdAt)}</TableCell>
+                            <TableCell><Typography fontSize={'15px'} fontWeight={700}>{details.status}</Typography> <Typography fontSize={'10px'}>{formatDate(details.createdAt)}</Typography></TableCell>
                             <TableCell>{details.slim}</TableCell>
                             <TableCell>{details.round}</TableCell>
                             <TableCell>{details.total}</TableCell>
-                            <TableCell>{details.status}</TableCell>
                             <TableCell>
                                 <Link to={`/client-dashboard/order-status/${encodeURIComponent(JSON.stringify(details))}`}>
                                 <Button variant="contained">

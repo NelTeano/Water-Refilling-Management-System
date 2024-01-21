@@ -19,7 +19,13 @@ const DashboardPage = () => {
     const [userDetails, setUserDetails] = useState()
     const [isLoading, setIsLoading] = useState(true)
     const [selectedLoc, setSelectedLoc] = useState()
-    const [pending, setPending] = useState(0)
+
+    // STATUS COUNTER
+    const [pending, setPending] = useState(0);
+    const [rejected, setRejected] = useState(0);
+    const [confirmed, setconfirmed] = useState(0);
+    const [forDelivery, setForDelivery] = useState(0);
+    const [delivered, setDelivered] = useState(0);
 
     useEffect(()=>{
         const fetchUser = async () =>{
@@ -40,26 +46,66 @@ const DashboardPage = () => {
             }
         }
 
-        let pending = 0
 
-        const fetchOrder = async () =>{
-            if(user){
-                axios.get(`http://localhost:5174/api/orders/${user.email}`)
-                .then((res)=>{
-                    for(let i in res.data){
-                        if(res.data[i].status === "pending"){
-                            pending++
+        const fetchOrder = async () => {
+            try {
+                if (user) {
+                    const response = await axios.get(`http://localhost:5174/api/orders/${user.email}`);
+                    const orders = response.data;
+        
+                    // Initialize counts for each status
+                    let pendingCount = 0;
+                    let confirmedCount = 0;
+                    let rejectedCount = 0;
+                    let forDeliveryCount = 0;
+                    let deliveredCount = 0;
+        
+                    // Iterate through orders and update counts based on status
+                    orders.forEach(order => {
+                        switch (order.status) {
+                            case 'pending':
+                                pendingCount += 1;
+                                break;
+                            case 'confirmed':
+                                confirmedCount += 1;
+                                break;
+                            case 'rejected':
+                                rejectedCount += 1;
+                                break;
+                            case 'for delivery':
+                                forDeliveryCount += 1;
+                                break;
+                            case 'delivered':
+                                deliveredCount += 1;
+                                break;
+                            // Add more cases for other status if needed
+                            default:
+                                break;
                         }
-                    }
-                    setPending(pending)
-                })
+                    });
+        
+                    
+        
+                    setPending(pendingCount)
+                    setconfirmed(confirmedCount);
+                    setRejected(rejectedCount);
+                    setForDelivery(forDeliveryCount);
+                    setDelivered(deliveredCount);
+
+                    console.log("Confirmed Count:", confirmed);
+                    console.log("Rejected Count:", rejected);
+                    console.log("For Delivery Count:", forDelivery);
+                    console.log("Delivered Count:", delivered);
+                }
+            } catch (error) {
+                console.error("Error fetching data:", error);
             }
-        }
+        };
 
         fetchUser()
         fetchOrder()
 
-    },[user])
+    },[user, confirmed, rejected, forDelivery, delivered])
 
     return (
         <>
@@ -109,7 +155,7 @@ const DashboardPage = () => {
 
                             <OrderType />
 
-                            <OrderStatus pending={pending}/>
+                            <OrderStatus pending={pending} rejected={rejected} confirmed={confirmed} delivered={delivered}/>
                         </Container>
                     </>
                 // ) : (

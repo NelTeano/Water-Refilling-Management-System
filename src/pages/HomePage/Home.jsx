@@ -20,6 +20,7 @@ import {
 import PeopleDrinkingWater from '../../assets/images/PeopleDrinking-removebg-preview.png'
 import Background from '../../assets/images/background.png'
 import PhoneOrderPrototype from '../../assets/images/orderPhone.png'
+import PhoneTrackPrototype from '../../assets/images/trackPhone.png'
 import Poster from '../../assets/images/poster.jpg'
 
 import orderLogo from '../../assets/images/orderLogo.png'
@@ -36,7 +37,7 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 export default function Home() {
     
     const navigate = useNavigate();
-    const { isAuthenticated, logout, loginWithRedirect } = useAuth0();
+    const { isAuthenticated, loginWithRedirect } = useAuth0();
 
     const weServe = [
         {
@@ -279,7 +280,7 @@ export default function Home() {
                             </Button>
                         </Box>
                         <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-                            <img src={PhoneOrderPrototype} style={{ height: '100%', maxHeight: '600px' }} />
+                            <img src={PhoneTrackPrototype} style={{ height: '100%', maxHeight: '600px' }} />
                         </Box>
                     </Box>
                 </Container>
