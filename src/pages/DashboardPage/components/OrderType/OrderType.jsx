@@ -8,7 +8,7 @@ import {
     CardActionArea,
 } from '@mui/material';
 import bulkImg from '../../../../assets/images/bulk_img.jpg'
-import singleImg from '../../../../assets/images/single_img.jpg'
+import singleImg from '../../../../assets/images/round.jpg'
 import { useNavigate } from 'react-router-dom';
 
 

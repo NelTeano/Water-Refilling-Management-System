@@ -164,7 +164,7 @@ const LocationPage = () => {
                             <Button 
                                 size='small'
                                 variant='text'
-                                onClick={handleSubmit}
+                                onClick={()=>{ navigate('/client-dashboard')}}
                             >
                                 Cancel
                             </Button>
