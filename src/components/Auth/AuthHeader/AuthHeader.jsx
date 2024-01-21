@@ -46,17 +46,17 @@ const AuthHeader = () => {
     },
     {
       name: 'Order',
-      url: '/client-dashboard/order',
+      url: '/client-dashboard',
       icon: <ShoppingCartTwoToneIcon />,
     },
     {
       name: 'Order Status',
-      url: '/client-dashboard/order-status',
+      url: '/history',
       icon: <ReceiptLongTwoToneIcon />,
     },
     {
       name: 'Transaction History',
-      url: '#',
+      url: '/history',
       icon: <PendingActionsTwoToneIcon />,
     }
   ]

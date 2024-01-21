@@ -35,27 +35,27 @@ import { Link } from 'react-router-dom';
 import Authbutton from './AuthButton';
 
 const menuList = [
-    {
-        name: 'Home',
+        {
+        name: 'Dashboard',
         url: '/client-dashboard',
         icon: <HomeTwoToneIcon />,
-    },
-    {
+        },
+        {
         name: 'Order',
-        url: '/client-dashboard/order',
+        url: '/client-dashboard',
         icon: <ShoppingCartTwoToneIcon />,
-    },
-    {
+        },
+        {
         name: 'Order Status',
-        url: '/client-dashboard/order-status',
+        url: '/history',
         icon: <ReceiptLongTwoToneIcon />,
-    },
-    {
+        },
+        {
         name: 'Transaction History',
-        url: '#',
+        url: '/history',
         icon: <PendingActionsTwoToneIcon />,
-    },
-];
+        }
+]
 
 const renderIcon = (icon) => {
     return cloneElement(icon, { fontSize: 'inherit' });

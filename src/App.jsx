@@ -9,6 +9,7 @@ import OrderPage from './pages/OrderPage';
 import RegisterPage from './pages/RegisterPage';
 import ReceiptPage from './pages/ReceiptPage';
 import OrderStatusPage from './pages/OrderStatusPage';
+import OrderHistoryPage from './pages/OrderHistoryPage';
 
 // STYLES
 import './App.css'
@@ -35,7 +36,7 @@ function App() {
         element: LocationPage
       },
       {
-        pathname: "/client-dashboard/order-status",
+        pathname: "/client-dashboard/order-status/:status",
         element: OrderStatusPage
       },
       {
@@ -49,6 +50,10 @@ function App() {
       {
         pathname: "/register",
         element: RegisterPage
+      },
+      {
+        pathname: "/history",
+        element: OrderHistoryPage
       },
       
     ];
