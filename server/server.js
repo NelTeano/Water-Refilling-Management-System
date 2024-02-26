@@ -2,6 +2,7 @@
 import express from "express"; 
 import dotenv from "dotenv";
 import cors from 'cors';
+import path from 'path';
 
 // DATABASE CONNECTION
 import { initDatabase } from './database.js'
@@ -14,19 +15,21 @@ import orderRoute from "./routes/OrderRoutes.js";
 const app = express();
 dotenv.config();      // ACCESS .ENV 
 initDatabase();
+const __filename = new URL(import.meta.url).pathname;
+const __dirname = path.dirname(__filename);
 
-const PORT = 5174;
+const PORT = process.env.VITE_PORT || 5174;
 console.log("app is running");
 
 //MIDDLEWARE
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, '../public')));
 app.use(cors({
     origin: [
-      'http://localhost:5173',
-      'http://localhost:5173/admin',
-      'http://localhost:5173/admin/dashboard'
+      'https://hydromaze.azurewebsites.net/',
+      'https://hydromaze.azurewebsites.net/admin',
+      'https://hydromaze.azurewebsites.net/admin/dashboard'
     ],  // THE HTTP(ORIGIN) THAT WILL ALLOW TO ACCESS THE ROUTES
     credentials: true,
   }));
