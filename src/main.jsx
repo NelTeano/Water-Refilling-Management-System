@@ -13,6 +13,7 @@ import { BrowserRouter } from 'react-router-dom'
 // import AuthProvider from 'react-auth-kit'
 
 
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Auth0Provider
     domain={import.meta.env.VITE_AUTH0_DOMAIN}
