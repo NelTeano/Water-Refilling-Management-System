@@ -18,7 +18,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     domain={import.meta.env.VITE_AUTH0_DOMAIN}
     clientId={import.meta.env.VITE_AUTH0_CLIENT_ID}
     authorizationParams={{
-      redirect_uri: 'https://hydromaze-water-refilling.vercel.app'
+      redirect_uri: 'http://localhost:5173/register'
     }}
   >
       <React.StrictMode>
