@@ -107,7 +107,7 @@ const OrderPage = () => {
         try {
             
 
-            const response = await fetch("http://localhost:5174/api/place-order", {
+            const response = await fetch("https://hydromaze-server-vercel.vercel.app/api/place-order", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -164,7 +164,7 @@ const OrderPage = () => {
                 username:user.email
             }));
 
-            axios.get(`http://localhost:5174/api/users/${user.email}`)
+            axios.get(`https://hydromaze-server-vercel.vercel.app/api/users/${user.email}`)
             .then((res) => {
                 for(let i in res.data[0].location){
                     if(res.data[0].location[i].isSelected){

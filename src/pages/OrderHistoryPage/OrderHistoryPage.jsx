@@ -32,7 +32,7 @@ function OrderHistoryPage() {
         const getOrders = async () => {
         try {
             if (isAuthenticated && user && user.email) {
-            const response = await fetch(`http://localhost:5174/api/orders/${user.email}`);
+            const response = await fetch(`https://hydromaze-server-vercel.vercel.app/api/orders/${user.email}`);
             const result = await response.json();
             setUserOrders(result);
             }

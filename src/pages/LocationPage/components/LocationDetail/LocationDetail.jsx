@@ -57,7 +57,7 @@ const LocationDetail = ({ closeLocationDetail, isAdd, location }) => {
                 latitude: latitude,
                 longitude: longitude
             }
-            const postData = await axios.post('http://localhost:5174/api/users/loc/add', data)
+            const postData = await axios.post('https://hydromaze-server-vercel.vercel.app/api/users/loc/add', data)
             if(postData.data){
                 navigate("/client-dashboard")
             }
@@ -70,7 +70,7 @@ const LocationDetail = ({ closeLocationDetail, isAdd, location }) => {
                 latitude: latitude,
                 longitude: longitude
             }
-            axios.post('http://localhost:5174/api/users/loc/edit',data)
+            axios.post('https://hydromaze-server-vercel.vercel.app/api/users/loc/edit',data)
             .then(res => {
                 console.log(res.data)
                 navigate(-1)

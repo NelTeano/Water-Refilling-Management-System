@@ -47,7 +47,7 @@ const LocationPage = () => {
             userName: user.email,
             locName: selectedValue
         }
-        axios.post('http://localhost:5174/api/users/loc/select', data)
+        axios.post('https://hydromaze-server-vercel.vercel.app/api/users/loc/select', data)
         .then(res => {
             console.log(res.data)
             if(res.status === 200){
@@ -60,7 +60,7 @@ const LocationPage = () => {
         const fetchData = async () => {
             try {
                 if (user && user.email) {
-                    const response = await axios.get(`http://localhost:5174/api/users/${user.email}`);  
+                    const response = await axios.get(`https://hydromaze-server-vercel.vercel.app/api/users/${user.email}`);  
                     setLocationList(response.data[0].location)
                     setLoading(false); 
                 } else {

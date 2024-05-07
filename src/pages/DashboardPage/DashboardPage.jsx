@@ -30,7 +30,7 @@ const DashboardPage = () => {
     useEffect(()=>{
         const fetchUser = async () =>{
             if(user){
-                axios.get(`http://localhost:5174/api/users/${user.email}`)
+                axios.get(`https://hydromaze-server-vercel.vercel.app/api/users/${user.email}`)
                 .then((res)=>{
                     setUserDetails(res.data[0])
                     
@@ -50,7 +50,7 @@ const DashboardPage = () => {
         const fetchOrder = async () => {
             try {
                 if (user) {
-                    const response = await axios.get(`http://localhost:5174/api/orders/${user.email}`);
+                    const response = await axios.get(`https://hydromaze-server-vercel.vercel.app/api/orders/${user.email}`);
                     const orders = response.data;
         
                     // Initialize counts for each status

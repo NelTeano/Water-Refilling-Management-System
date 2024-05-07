@@ -84,7 +84,7 @@ const RegisterPage = () => {
         const checkUserLocation = async () => {
             try {
                 if (isAuthenticated && user && user.email) {
-                    const response = await fetch(`http://localhost:5174/api/users/${user.email}`);
+                    const response = await fetch(`https://hydromaze-server-vercel.vercel.app/api/users/${user.email}`);
                     const result = await response.json();
         
                     if (Array.isArray(result) && result.length === 0) {
@@ -119,7 +119,7 @@ const RegisterPage = () => {
         }
         console.log(data)    
         
-        axios.post('http://localhost:5174/api/users/new',data)
+        axios.post('https://hydromaze-server-vercel.vercel.app/api/users/new',data)
         .then((res)=>{
             if(res.status === 200){
                 navigate('/client-dashboard')
