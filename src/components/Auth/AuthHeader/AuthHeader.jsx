@@ -97,7 +97,7 @@ const AuthHeader = () => {
           </ListItem>
         ))}
         <ListItem disablePadding>
-          <ListItemButton onClick={()=> logout()}>
+          <ListItemButton onClick={()=> logout({ logoutParams: { returnTo: window.location.origin } })}>
             <ListItemIcon>
                 {renderIcon(<LogoutOutlined />)}
             </ListItemIcon>
