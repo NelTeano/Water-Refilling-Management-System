@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate} from 'react-router-dom'
 import {
   Box,
   AppBar,
@@ -29,6 +29,8 @@ import { useAuth0 } from '@auth0/auth0-react';
 const AuthHeader = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { logout } = useAuth0();
+
+  const navigate = useNavigate()
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -90,7 +92,7 @@ const AuthHeader = () => {
               <ListItemIcon>
                 {renderIcon(item.icon)}
               </ListItemIcon>
-                <a href={item.url} style={{ textDecoration: 'none', color: '#212B36' }}>{item.name}</a>
+                <a onClick={()=> {navigate(item.url)}} style={{ textDecoration: 'none', color: '#212B36' }}>{item.name}</a>
             </ListItemButton>
           </ListItem>
         ))}
