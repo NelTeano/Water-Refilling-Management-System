@@ -18,14 +18,14 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     domain={import.meta.env.VITE_AUTH0_DOMAIN}
     clientId={import.meta.env.VITE_AUTH0_CLIENT_ID}
     authorizationParams={{
-      redirect_uri: 'https://hydromaze-water-refilling.vercel.app/register'
+      redirect_uri: window.location.origin + '/register'
     }}
   >
       <React.StrictMode>
           <ThemeProvider>
             <BrowserRouter>
                 <App />
-            </BrowserRouter>
+            </BrowserRouter>  
           </ThemeProvider>
       </React.StrictMode>
   </Auth0Provider>
