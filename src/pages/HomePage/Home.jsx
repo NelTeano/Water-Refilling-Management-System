@@ -39,6 +39,10 @@ export default function Home() {
     const navigate = useNavigate();
     const { isAuthenticated, loginWithRedirect } = useAuth0();
 
+    isAuthenticated && navigate('/register');
+
+
+
     const weServe = [
         {
             img: orderLogo,
